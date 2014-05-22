@@ -1,0 +1,8 @@
+---
+suites:
+      event_suite:
+        namespace: League\Event
+        psr4_prefix: League\Event
+extensions:
+    - PhpSpec\Extension\CodeCoverageExtension
+formatter.name: pretty

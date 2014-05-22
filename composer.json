@@ -1,0 +1,19 @@
+{
+    "require-dev": {
+        "phpspec/phpspec": "2.0.*@dev",
+        "henrikbjorn/phpspec-code-coverage" : "1.0.*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "League\\Event\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "League\\Event\\Stub\\": "stubs/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
