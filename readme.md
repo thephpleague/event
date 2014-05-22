@@ -81,3 +81,12 @@ $emitter->addListener('event', $second, 10); // This will be handled
 $emitter->addListener('event', $first, 50); // after this is handled.
 $emitter->emit('event');
 ```
+
+## Return values
+
+When an event is emitted the return value has two options:
+
+* `false`<br/> When there were nog listeners
+* `EventAbstract`<br/> The event instance which was handled by the listeners
+
+
