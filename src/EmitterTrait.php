@@ -24,14 +24,18 @@ trait EmitterTrait
 
     public function addListener($event, $listener)
     {
-        call_user_func_array([$this->emitter, 'addListener'], func_get_args());
+        $emitter = $this->getEmitter();
+
+        call_user_func_array([$emitter, 'addListener'], func_get_args());
 
         return $this;
     }
 
     public function addOneTimeListener($event, $listener)
     {
-        call_user_func_array([$this->emitter, 'addOneTimeListener'], func_get_args());
+        $emitter = $this->getEmitter();
+
+        call_user_func_array([$emitter, 'addOneTimeListener'], func_get_args());
 
         return $this;
     }
