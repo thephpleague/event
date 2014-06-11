@@ -24,5 +24,6 @@ class ListenerSpec extends ObjectBehavior
     function it_should_identify_itself()
     {
         $this->isListener($this)->shouldReturn(true);
+        $this->isListener(false)->shouldReturn(false);
     }
 }

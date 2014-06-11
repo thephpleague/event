@@ -87,19 +87,20 @@ class EmitterSpec extends ObjectBehavior
     function it_should_accept_custom_listeners(ListenerInterface $listener)
     {
         $this->addListener('event', $listener);
-        $this->getListeners('event')->shouldContainValueOfType('League\Event\ListenerInterface');
+        $this->getListeners('event')->shouldContain($listener);
     }
 
     function it_should_convert_listeners_to_one_time_listeners(ListenerInterface $listener)
     {
         $this->addOneTimeListener('event', $listener);
-        $this->getListeners('event')->shouldContainValueOfType('League\Event\OneTimeListener');
+        $this->getListeners('event')->shouldContainInstanceOfType('League\Event\OneTimeListener');
+        $this->getListeners('event')->shouldNotContain($listener);
     }
 
     public function getMatchers()
     {
         return [
-            'containValueOfType' => function ($subject, $interface) {
+            'containInstanceOfType' => function ($subject, $interface) {
                 foreach ($subject as $value) {
                     if ($value instanceof $interface) {
                         return true;

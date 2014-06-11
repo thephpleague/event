@@ -32,7 +32,7 @@ class EventSpec extends ObjectBehavior
 
     function it_should_expose_an_emitter(Emitter $emitter)
     {
-        $this->setEmitter($emitter)->shouldReturn($this);
+        $this->setEmitter($emitter);
         $this->getEmitter()->shouldReturn($emitter);
     }
 }
