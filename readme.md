@@ -79,14 +79,7 @@ You can prioritize listeners by using the `PriorityEmitter`.
 $emitter = new League\Event\PriorityEmitter;
 $emitter->addListener('event', $second, 10); // This will be handled
 $emitter->addListener('event', $first, 50); // after this is handled.
-$emitter->emit('event');
+$emittedEvent = $emitter->emit('event');
 ```
-
-## Return values
-
-When an event is emitted the return value has two options:
-
-* `false`<br/> When there were nog listeners
-* `EventAbstract`<br/> The event instance which was handled by the listeners
 
 

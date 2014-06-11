@@ -63,11 +63,6 @@ class EmitterSpec extends ObjectBehavior
         $this->emit($event)->shouldReturnAnInstanceOf('League\Event\Event');
     }
 
-    function it_should_return_false_when_emitting_an_event_without_listeners()
-    {
-        $this->emit('event')->shouldReturn(false);
-    }
-
     function it_should_stop_respond_to_stopping_propagation(Event $event)
     {
         $event->setEmitter($this)->shouldBeCalled();

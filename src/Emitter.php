@@ -141,18 +141,23 @@ class Emitter
     public function emit($event)
     {
         list($name, $event) = $this->prepareEvent($event);
-
-        // Get the listeners
         $listeners = $this->getListeners($name);
-
-        if (empty($listeners)) {
-            return false;
-        }
-
-        // Prepare the arguments
         $arguments = func_get_args();
         $arguments[0] = $event;
+        $this->invokeListeners($listeners, $event, $arguments);
 
+        return $event;
+    }
+
+    /**
+     * Invoke the the handle method on a list of listeners
+     *
+     * @param  array  $listeners
+     * @param  EventAbstract  $event
+     * @param  array  $arguments
+     */
+    protected function invokeListeners(array $listeners, EventAbstract $event, array $arguments)
+    {
         foreach ($listeners as $listener) {
             call_user_func_array([$listener, 'handle'], $arguments);
 
@@ -160,8 +165,6 @@ class Emitter
                 break;
             }
         }
-
-        return $event;
     }
 
     /**
