@@ -1,3 +1,6 @@
 ---
 filter:
     paths: [src/*]
+tools:
+    php_analyzer: true
+    php_mess_detector: true
