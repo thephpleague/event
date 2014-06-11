@@ -46,6 +46,11 @@ class EmitterSpec extends ObjectBehavior
             ->duringAddListener('event', 'invalid@callback');
     }
 
+    function it_should_return_an_empty_array_when_an_event_has_no_listeners()
+    {
+        $this->getListeners('event')->shouldReturn([]);
+    }
+
     function it_should_allow_you_to_emit_plain_events()
     {
         $callback = function () {};
