@@ -140,10 +140,7 @@ class Emitter
      */
     public function emit($event)
     {
-        // Prepare the event
-        $event = $this->ensureEvent($event);
-        $name = $event->getName();
-        $event->setEmitter($this);
+        list($name, $event) = $this->prepareEvent($event);
 
         // Get the listeners
         $listeners = $this->getListeners($name);
@@ -165,6 +162,22 @@ class Emitter
         }
 
         return $event;
+    }
+
+    /**
+     * Prepare an event for emitting
+     *
+     * @param   string|EventAbstract  $event
+     * @return  array  [name, EventAbstract]
+     */
+    protected function prepareEvent($event)
+    {
+        // Prepare the event
+        $event = $this->ensureEvent($event);
+        $name = $event->getName();
+        $event->setEmitter($this);
+
+        return [$name, $event];
     }
 
     /**
