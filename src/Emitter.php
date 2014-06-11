@@ -7,6 +7,11 @@ use InvalidArgumentException;
 class Emitter
 {
     /**
+     * @var  array  $listeners
+     */
+    protected $listeners = [];
+
+    /**
      * Add a listener to for an event
      *
      * @param   string  $event  event name
@@ -78,7 +83,7 @@ class Emitter
      * Ensure the input is a listener
      *
      * @param   string  $event  event name
-     * @param   ListenerInterface|CallbackListener  $listener
+     * @param   ListenerInterface|callable  $listener
      * @throws  InvalidArgumentException
      * @return  $this
      */
@@ -88,11 +93,11 @@ class Emitter
             return $listener;
         }
 
-        if (is_callable($listener)) {
-            return new CallbackListener($listener);
+        if ( ! is_callable($listener)) {
+            throw new InvalidArgumentException('Listeners should be be ListenerInterface, Closure or callable. Received type: ' . gettype($listener));
         }
 
-        throw new InvalidArgumentException('Listeners should be be ListenerInterface, Closure or callable. Received type: ' . gettype($listener));
+        return new CallbackListener($listener);
     }
 
     /**
