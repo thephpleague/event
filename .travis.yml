@@ -1,0 +1,21 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - hhvm
+  - hhvm-nightly
+
+matrix:
+  allow_failures:
+    - php: hhvm
+    - php: hhvm-nightly
+  fast_finish: true
+
+before_script:
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+
+script:
+  - bin/phpspec run
