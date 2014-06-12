@@ -1,4 +1,14 @@
 {
+    "name": "league/event",
+    "description": "Event package",
+    "keywords": ["event", "emitter", "listener"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Frank de Jonge",
+            "email": "info@frenky.net"
+        }
+    ],
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev",
         "henrikbjorn/phpspec-code-coverage" : "1.0.*@dev"
