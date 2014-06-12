@@ -1,6 +1,4 @@
-# League\Event
-
-
+# League\Event by [@frankdejonge](http://twitter.com/frankdejonge)
 
 # Usage (Basic)
 
