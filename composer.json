@@ -8,7 +8,7 @@
             "name": "Frank de Jonge",
             "email": "info@frenky.net"
         }
-    },
+    ],
     "require": {
         "php": ">=5.4.0"
     },
