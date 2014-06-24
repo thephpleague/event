@@ -6,7 +6,7 @@ trait EmitterTrait
 {
     protected $emitter;
 
-    public function setEmitter(Emitter $emitter)
+    public function setEmitter(Emitter $emitter = null)
     {
         $this->emitter = $emitter;
 

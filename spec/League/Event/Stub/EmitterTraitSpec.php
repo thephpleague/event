@@ -15,6 +15,12 @@ class EmitterTraitSpec extends ObjectBehavior
         $this->shouldUseTrait('League\Event\EmitterTrait');
     }
 
+    public function it_should_allow_removal_of_the_emitter(Emitter $emitter)
+    {
+        $this->setEmitter($emitter);
+        $this->setEmitter(null)->getEmitter()->shouldNotEqual($emitter);
+    }
+
     public function it_should_expose_an_emitter()
     {
         $this->getEmitter()->shouldHaveType('League\Event\Emitter');
