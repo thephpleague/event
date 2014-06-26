@@ -64,5 +64,8 @@ abstract class EventAbstract
      *
      * @return  string  event name
      */
-    abstract public function getName();
+    public function getName()
+    {
+        return get_class($this);
+    }
 }
