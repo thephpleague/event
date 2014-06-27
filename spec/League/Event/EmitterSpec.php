@@ -68,6 +68,16 @@ class EmitterSpec extends ObjectBehavior
         $this->emit($event)->shouldReturnAnInstanceOf('League\Event\Event');
     }
 
+    function it_should_allow_batch_emitting(Event $event, ListenerInterface $listener)
+    {
+        $event->getName()->willReturn('event');
+        $event->setEmitter($this)->shouldBeCalled();
+        $event->isPropagationStopped()->willReturn(false);
+        $listener->handle($event)->shouldBeCalled();
+        $this->addListener('event', $listener);
+        $this->emitBatch([$event])->shouldReturn([$event]);
+    }
+
     function it_should_stop_respond_to_stopping_propagation(Event $event)
     {
         $event->setEmitter($this)->shouldBeCalled();

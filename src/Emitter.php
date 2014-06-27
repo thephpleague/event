@@ -150,6 +150,19 @@ class Emitter
     }
 
     /**
+     * Emit a batch of events
+     *
+     * @param   array  $events
+     * @return  array
+     */
+    public function emitBatch(array $events)
+    {
+        $emit = [$this, 'emit'];
+
+        return array_map($emit, $events);
+    }
+
+    /**
      * Invoke the the handle method on a list of listeners
      *
      * @param  array  $listeners
