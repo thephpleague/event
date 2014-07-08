@@ -2,7 +2,7 @@
 
 namespace League\Event;
 
-abstract class EventAbstract
+abstract class AbstractEvent
 {
     /**
      * @var  boolean  $propagationStopped

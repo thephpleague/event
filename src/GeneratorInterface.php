@@ -7,10 +7,10 @@ interface GeneratorInterface
     /**
      * Add an event
      *
-     * @param EventAbstract $event
+     * @param AbstractEvent $event
      * @return self
      */
-    public function addEvent(EventAbstract $event);
+    public function addEvent(AbstractEvent $event);
 
     /**
      * Release all the added events.

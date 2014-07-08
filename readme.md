@@ -25,12 +25,12 @@ $emitter->removeAllListeners('event.name');
 
 # Usage (Advanced)
 
-You can create custom event types by extending the `EventAbstract` class.
+You can create custom event types by extending the `AbstractEvent` class.
 
 ```php
-use League\Event\EventAbstract;
+use League\Event\AbstractEvent;
 
-class DomainEvent extends EventAbstract
+class DomainEvent extends AbstractEvent
 {
     public function getName()
     {
@@ -46,12 +46,12 @@ $emitter->emit(new DomainEvent);
 You can create custom listeners.
 
 ```php
-use League\Event\EventAbstract;
+use League\Event\AbstractEvent;
 use League\Event\ListenerAbstract;
 
 class DomainListener extends ListenerAbstract
 {
-    public function handle(EventAbstract $event)
+    public function handle(AbstractEvent $event)
     {
         // Handle the event.
     }

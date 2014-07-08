@@ -2,12 +2,12 @@
 
 namespace League\Event\Stub;
 
-use League\Event\EventAbstract;
+use League\Event\AbstractEvent;
 use League\Event\ListenerAbstract;
 
 class Listener extends ListenerAbstract
 {
-    public function handle(EventAbstract $event)
+    public function handle(AbstractEvent $event)
     {
         $event->stopPropagation();
     }

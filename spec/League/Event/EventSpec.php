@@ -16,7 +16,7 @@ class EventSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('League\Event\Event');
-        $this->shouldHaveType('League\Event\EventAbstract');
+        $this->shouldHaveType('League\Event\AbstractEvent');
     }
 
     function it_should_have_a_name()

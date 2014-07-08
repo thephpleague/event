@@ -10,10 +10,10 @@ trait GeneratorTrait
     /**
      * Add an event
      *
-     * @param EventAbstract $event
+     * @param AbstractEvent $event
      * @return self
      */
-    public function addEvent(EventAbstract $event)
+    public function addEvent(AbstractEvent $event)
     {
         $this->events[] = $event;
 

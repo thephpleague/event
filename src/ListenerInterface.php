@@ -7,10 +7,10 @@ interface ListenerInterface
     /**
      * Handle an event
      *
-     * @param   EventAbstract  $event
+     * @param   AbstractEvent  $event
      * @return  void
      */
-    public function handle(EventAbstract $event);
+    public function handle(AbstractEvent $event);
 
     /**
      * Check weather the listener is the given parameter

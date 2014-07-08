@@ -2,9 +2,9 @@
 
 namespace League\Event\Stub;
 
-use League\Event\EventAbstract;
+use League\Event\AbstractEvent;
 
-class DomainEvent extends EventAbstract
+class DomainEvent extends AbstractEvent
 {
 
 }

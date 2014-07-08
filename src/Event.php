@@ -2,7 +2,7 @@
 
 namespace League\Event;
 
-class Event extends EventAbstract
+class Event extends AbstractEvent
 {
     /**
      * @var  string  $name

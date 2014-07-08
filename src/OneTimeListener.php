@@ -32,7 +32,7 @@ class OneTimeListener implements ListenerInterface
     /**
      * {inheritdoc}
      */
-    public function handle(EventAbstract $event)
+    public function handle(AbstractEvent $event)
     {
         $name = $event->getName();
         $emitter = $event->getEmitter();

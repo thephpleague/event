@@ -135,8 +135,8 @@ class Emitter
     /**
      * Emit an event
      *
-     * @param   string|EventAbstract
-     * @return  false|EventAbstract
+     * @param   string|AbstractEvent
+     * @return  false|AbstractEvent
      */
     public function emit($event)
     {
@@ -166,10 +166,10 @@ class Emitter
      * Invoke the the handle method on a list of listeners
      *
      * @param  array  $listeners
-     * @param  EventAbstract  $event
+     * @param  AbstractEvent  $event
      * @param  array  $arguments
      */
-    protected function invokeListeners(array $listeners, EventAbstract $event, array $arguments)
+    protected function invokeListeners(array $listeners, AbstractEvent $event, array $arguments)
     {
         foreach ($listeners as $listener) {
             call_user_func_array([$listener, 'handle'], $arguments);
@@ -183,8 +183,8 @@ class Emitter
     /**
      * Prepare an event for emitting
      *
-     * @param   string|EventAbstract  $event
-     * @return  array  [name, EventAbstract]
+     * @param   string|AbstractEvent  $event
+     * @return  array  [name, AbstractEvent]
      */
     protected function prepareEvent($event)
     {
@@ -197,11 +197,11 @@ class Emitter
     }
 
     /**
-     * Ensure event input is of type EventAbstract or convert it
+     * Ensure event input is of type AbstractEvent or convert it
      *
-     * @param   string|EventAbstract  $event
+     * @param   string|AbstractEvent  $event
      * @throws  InvalidArgumentException
-     * @return  EventAbstract
+     * @return  AbstractEvent
      */
     protected function ensureEvent($event)
     {
@@ -209,7 +209,7 @@ class Emitter
             return new Event($event);
         }
 
-        if ( ! $event instanceof EventAbstract) {
+        if ( ! $event instanceof AbstractEvent) {
             throw new InvalidArgumentException('Events should be provides as Event instances or string, received type: ' . gettype($event));
         }
 
