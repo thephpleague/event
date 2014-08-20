@@ -7,7 +7,7 @@ use InvalidArgumentException;
 class Emitter implements EmitterInterface
 {
     /**
-     * @var  ListenerInterface[]  $listeners
+     * @var  array  $listeners
      */
     protected $listeners = [];
 
@@ -54,7 +54,9 @@ class Emitter implements EmitterInterface
      */
     public function removeListener($event, $listener)
     {
-        foreach($this->listeners[$event] as $index => $registered) {
+        $listeners = $this->getListeners($event);
+
+        foreach($listeners as $index => $registered) {
             if ( ! $registered->isListener($listener)) continue;
             unset($this->listeners[$event][$index]);
             break;
@@ -121,7 +123,7 @@ class Emitter implements EmitterInterface
      * Get all the listeners for an event
      *
      * @param   string  $event
-     * @return  array
+     * @return  ListenerInterface[]
      */
     public function getListeners($event)
     {

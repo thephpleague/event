@@ -34,7 +34,6 @@ interface EmitterInterface
      * Remove all listeners for an event
      *
      * @param   string                     $event event name
-     * @param   ListenerInterface|callable $listener
      * @return  $this
      */
     public function removeAllListeners($event);
