@@ -30,7 +30,7 @@ class CallbackListener implements ListenerInterface
     }
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function handle(AbstractEvent $event)
     {
@@ -38,7 +38,7 @@ class CallbackListener implements ListenerInterface
     }
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function isListener($listener)
     {

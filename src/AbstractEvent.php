@@ -18,7 +18,7 @@ abstract class AbstractEvent
      * Set the Emitter
      *
      * @param   Emitter  $emitter
-     * @return  self
+     * @return  $this
      */
     public function setEmitter(Emitter $emitter)
     {
@@ -40,7 +40,7 @@ abstract class AbstractEvent
     /**
      * Stop event propagation
      *
-     * @return  self
+     * @return  $this
      */
     public function stopPropagation()
     {

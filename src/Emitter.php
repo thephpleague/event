@@ -4,10 +4,10 @@ namespace League\Event;
 
 use InvalidArgumentException;
 
-class Emitter
+class Emitter implements EmitterInterface
 {
     /**
-     * @var  array  $listeners
+     * @var  ListenerInterface[]  $listeners
      */
     protected $listeners = [];
 
@@ -16,7 +16,7 @@ class Emitter
      *
      * @param   string  $event  event name
      * @param   ListenerInterface|callable  $listener
-     * @return  self
+     * @return  $this
      */
     public function addListener($event, $listener)
     {
@@ -35,7 +35,7 @@ class Emitter
      *
      * @param   string  $event  event name
      * @param   ListenerInterface|callable  $listener
-     * @return  self
+     * @return $this
      */
     public function addOneTimeListener($event, $listener)
     {
@@ -50,7 +50,7 @@ class Emitter
      *
      * @param   string  $event  event name
      * @param   ListenerInterface|callable  $listener
-     * @return  self
+     * @return $this
      */
     public function removeListener($event, $listener)
     {
@@ -67,8 +67,7 @@ class Emitter
      * Remove all listeners for an event
      *
      * @param   string  $event  event name
-     * @param   ListenerInterface|callable  $listener
-     * @return  self
+     * @return  $this
      */
     public function removeAllListeners($event)
     {
@@ -82,7 +81,6 @@ class Emitter
     /**
      * Ensure the input is a listener
      *
-     * @param   string  $event  event name
      * @param   ListenerInterface|callable  $listener
      * @throws  InvalidArgumentException
      * @return  $this
@@ -103,6 +101,7 @@ class Emitter
     /**
      * Check weather an event has listeners
      *
+     * @param   string  $event
      * @return  boolean
      */
     public function hasListeners($event)
@@ -121,6 +120,7 @@ class Emitter
     /**
      * Get all the listeners for an event
      *
+     * @param   string  $event
      * @return  array
      */
     public function getListeners($event)
@@ -135,8 +135,8 @@ class Emitter
     /**
      * Emit an event
      *
-     * @param   string|AbstractEvent
-     * @return  false|AbstractEvent
+     * @param   string|AbstractEvent  $event
+     * @return  AbstractEvent
      */
     public function emit($event)
     {

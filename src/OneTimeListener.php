@@ -30,7 +30,7 @@ class OneTimeListener implements ListenerInterface
     }
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function handle(AbstractEvent $event)
     {
@@ -42,7 +42,7 @@ class OneTimeListener implements ListenerInterface
     }
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function isListener($listener)
     {

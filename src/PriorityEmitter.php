@@ -2,8 +2,6 @@
 
 namespace League\Event;
 
-use SplPriorityQueue;
-
 class PriorityEmitter extends Emitter
 {
     /**
@@ -24,9 +22,10 @@ class PriorityEmitter extends Emitter
     /**
      * Add a listener to an event
      *
-     * @param  string  $event  event name
-     * @param  callable|ListenerInterface  $listener
-     * @param  integer  $priority
+     * @param   string  $event  event name
+     * @param   callable|ListenerInterface  $listener
+     * @param   integer  $priority
+     * @return  $this
      */
     public function addListener($event, $listener, $priority = self::P_NORMAL)
     {
@@ -43,7 +42,7 @@ class PriorityEmitter extends Emitter
     }
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function removeListener($event, $listener)
     {
@@ -54,7 +53,7 @@ class PriorityEmitter extends Emitter
     }
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function getListeners($event)
     {
@@ -72,6 +71,6 @@ class PriorityEmitter extends Emitter
         {
             return $listener[0];
 
-        } , $listeners);
+        }, $listeners);
     }
 }

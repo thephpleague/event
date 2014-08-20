@@ -13,6 +13,7 @@ class EmitterSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('League\Event\Emitter');
+        $this->shouldHaveType('League\Event\EmitterInterface');
     }
 
     function it_should_accept_listeners()
