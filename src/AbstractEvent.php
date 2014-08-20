@@ -10,7 +10,7 @@ abstract class AbstractEvent
     protected $propagationStopped = false;
 
     /**
-     * @var  Emitter  $emitter
+     * @var  EmitterInterface  $emitter
      */
     protected $emitter;
 
