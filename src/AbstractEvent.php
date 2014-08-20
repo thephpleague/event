@@ -17,10 +17,10 @@ abstract class AbstractEvent
     /**
      * Set the Emitter
      *
-     * @param   Emitter  $emitter
+     * @param   EmitterInterface  $emitter
      * @return  $this
      */
-    public function setEmitter(Emitter $emitter)
+    public function setEmitter(EmitterInterface $emitter)
     {
         $this->emitter = $emitter;
 
@@ -30,7 +30,7 @@ abstract class AbstractEvent
     /**
      * Get the Emitter
      *
-     * @return  Emitter
+     * @return  EmitterInterface
      */
     public function getEmitter()
     {
