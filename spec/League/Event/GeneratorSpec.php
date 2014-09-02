@@ -4,7 +4,6 @@ namespace spec\League\Event;
 
 use League\Event\AbstractEvent;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class GeneratorSpec extends ObjectBehavior
 {

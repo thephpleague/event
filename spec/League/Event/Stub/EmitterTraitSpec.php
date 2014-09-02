@@ -3,7 +3,6 @@
 namespace spec\League\Event\Stub;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use League\Event\Emitter;
 use League\Event\ListenerInterface;
 

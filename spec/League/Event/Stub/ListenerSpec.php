@@ -3,9 +3,7 @@
 namespace spec\League\Event\Stub;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use League\Event\Event;
-use League\Event\Emitter;
 
 class ListenerSpec extends ObjectBehavior
 {
