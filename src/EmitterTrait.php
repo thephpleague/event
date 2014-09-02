@@ -4,14 +4,19 @@ namespace League\Event;
 
 trait EmitterTrait
 {
+    /**
+     * The emitter instance.
+     *
+     * @var EmitterInterface|null
+     */
     protected $emitter;
 
-
     /**
-     * Set the emitter
+     * Set the Emitter.
      *
-     * @param   Emitter|null $emitter
-     * @return  $this
+     * @param EmitterInterface|null $emitter
+     *
+     * @return $this
      */
     public function setEmitter(EmitterInterface $emitter = null)
     {
@@ -21,9 +26,9 @@ trait EmitterTrait
     }
 
     /**
-     * Get the Emitter
+     * Get the Emitter.
      *
-     * @return Emitter
+     * @return EmitterInterface
      */
     public function getEmitter()
     {
@@ -35,11 +40,16 @@ trait EmitterTrait
     }
 
     /**
-     * Add a listener
+     * Add a listener for an event.
      *
-     * @param   string  $event
-     * @param   mixes   $listener
-     * @return  $this
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable".
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     *
+     * @return $this
      */
     public function addListener($event, $listener)
     {
@@ -51,11 +61,16 @@ trait EmitterTrait
     }
 
     /**
-     * Add a one time listener
+     * Add a one time listener for an event.
      *
-     * @param   string  $event
-     * @param   mixes   $listener
-     * @return  $this
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable".
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     *
+     * @return $this
      */
     public function addOneTimeListener($event, $listener)
     {
@@ -67,11 +82,16 @@ trait EmitterTrait
     }
 
     /**
-     * Remove a listeners
+     * Remove a specific listener for an event.
      *
-     * @param   string  $event
-     * @param   mixed   $listener
-     * @return  $this
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable".
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     *
+     * @return $this
      */
     public function removeListener($event, $listener)
     {
@@ -83,24 +103,28 @@ trait EmitterTrait
     }
 
     /**
-     * Remove all listeners for an event
+     * Remove all listeners for an event.
      *
-     * @param   string  $event
-     * @return  $this
+     * The first parameter should be the event name. All event listeners will
+     * be removed.
+     *
+     * @param string $event
+     *
+     * @return $this
      */
     public function removeAllListeners($event)
     {
-        $emitter = $this->getEmitter();
-        $emitter->removeAllListeners($event);
+        $this->getEmitter()->removeAllListeners($event);
 
         return $this;
     }
 
     /**
-     * Emit an event
+     * Emit an event.
      *
-     * @param   string  $event
-     * @return  mixed
+     * @param string|AbstractEvent $event
+     *
+     * @return AbstractEvent
      */
     public function emit($event)
     {

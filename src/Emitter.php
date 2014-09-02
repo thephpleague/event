@@ -7,23 +7,22 @@ use InvalidArgumentException;
 class Emitter implements EmitterInterface
 {
     /**
-     * @var  array  $listeners
+     * The registered listeners.
+     *
+     * @var array
      */
     protected $listeners = [];
 
     /**
-     * Add a listener to for an event
-     *
-     * @param   string  $event  event name
-     * @param   ListenerInterface|callable  $listener
-     * @return  $this
+     * {@inheritdoc}
      */
     public function addListener($event, $listener)
     {
         $listener = $this->ensureListener($listener);
 
-        if ( ! isset($this->listeners[$event]))
+        if ( ! isset($this->listeners[$event])) {
             $this->listeners[$event] = [];
+        }
 
         $this->listeners[$event][] = $listener;
 
@@ -31,11 +30,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Add a listener to for an event
-     *
-     * @param   string  $event  event name
-     * @param   ListenerInterface|callable  $listener
-     * @return $this
+     * {@inheritdoc}
      */
     public function addOneTimeListener($event, $listener)
     {
@@ -46,18 +41,16 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Remove a specific listener for an event
-     *
-     * @param   string  $event  event name
-     * @param   ListenerInterface|callable  $listener
-     * @return $this
+     * {@inheritdoc}
      */
     public function removeListener($event, $listener)
     {
         $listeners = $this->getListeners($event);
 
-        foreach($listeners as $index => $registered) {
-            if ( ! $registered->isListener($listener)) continue;
+        foreach ($listeners as $index => $registered) {
+            if ( ! $registered->isListener($listener)) {
+                continue;
+            }
             unset($this->listeners[$event][$index]);
             break;
         }
@@ -66,10 +59,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Remove all listeners for an event
-     *
-     * @param   string  $event  event name
-     * @return  $this
+     * {@inheritdoc}
      */
     public function removeAllListeners($event)
     {
@@ -81,11 +71,13 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Ensure the input is a listener
+     * Ensure the input is a listener.
      *
-     * @param   ListenerInterface|callable  $listener
-     * @throws  InvalidArgumentException
-     * @return  $this
+     * @param ListenerInterface|callable $listener
+     *
+     * @throws InvalidArgumentException
+     *
+     * @return $this
      */
     protected function ensureListener($listener)
     {
@@ -101,10 +93,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Check weather an event has listeners
-     *
-     * @param   string  $event
-     * @return  boolean
+     * {@inheritdoc}
      */
     public function hasListeners($event)
     {
@@ -120,10 +109,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Get all the listeners for an event
-     *
-     * @param   string  $event
-     * @return  ListenerInterface[]
+     * {@inheritdoc}
      */
     public function getListeners($event)
     {
@@ -135,10 +121,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Emit an event
-     *
-     * @param   string|AbstractEvent  $event
-     * @return  AbstractEvent
+     * {@inheritdoc}
      */
     public function emit($event)
     {
@@ -150,12 +133,8 @@ class Emitter implements EmitterInterface
         return $event;
     }
 
-
     /**
-     * Emit a batch of events
-     *
-     * @param   array  $events
-     * @return  array
+     * {@inheritdoc}
      */
     public function emitBatch(array $events)
     {
@@ -167,9 +146,11 @@ class Emitter implements EmitterInterface
     /**
      * Invoke the listeners for an event.
      *
-     * @param  string  $name
-     * @param  AbstractEvent  $event
-     * @param  array  $arguments
+     * @param string        $name
+     * @param AbstractEvent $event
+     * @param array         $arguments
+     *
+     * @return void
      */
     protected function invokeListeners($name, AbstractEvent $event, array $arguments)
     {
@@ -185,14 +166,14 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Prepare an event for emitting
+     * Prepare an event for emitting.
      *
-     * @param   string|AbstractEvent  $event
-     * @return  array  [name, AbstractEvent]
+     * @param string|AbstractEvent $event
+     *
+     * @return array
      */
     protected function prepareEvent($event)
     {
-        // Prepare the event
         $event = $this->ensureEvent($event);
         $name = $event->getName();
         $event->setEmitter($this);
@@ -201,11 +182,13 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Ensure event input is of type AbstractEvent or convert it
+     * Ensure event input is of type AbstractEvent or convert it.
      *
-     * @param   string|AbstractEvent  $event
-     * @throws  InvalidArgumentException
-     * @return  AbstractEvent
+     * @param string|AbstractEvent $event
+     *
+     * @throws InvalidArgumentException
+     *
+     * @return AbstractEvent
      */
     protected function ensureEvent($event)
     {
