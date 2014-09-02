@@ -11,23 +11,23 @@ class OneTimeListenerSpec extends ObjectBehavior
 {
     protected $listener;
 
-    function let(ListenerInterface $listener)
+    public function let(ListenerInterface $listener)
     {
         $this->listener = $listener;
         $this->beConstructedWith($this->listener);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('League\Event\OneTimeListener');
     }
 
-    function it_should_expose_the_wrapped_listener()
+    public function it_should_expose_the_wrapped_listener()
     {
         $this->getWrappedListener()->shouldHaveType('League\Event\ListenerInterface');
     }
 
-    function it_should_unregister_and_forward_the_handle_call(AbstractEvent $event, Emitter $emitter)
+    public function it_should_unregister_and_forward_the_handle_call(AbstractEvent $event, Emitter $emitter)
     {
         $event->getName()->willReturn('event');
         $event->getEmitter()->willReturn($emitter);
@@ -36,7 +36,7 @@ class OneTimeListenerSpec extends ObjectBehavior
         $this->handle($event);
     }
 
-    function it_should_identify_itself()
+    public function it_should_identify_itself()
     {
         $this->listener->isListener($this->listener)->willReturn(true);
         $this->isListener($this)->shouldReturn(true);
