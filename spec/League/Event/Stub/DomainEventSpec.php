@@ -3,7 +3,6 @@
 namespace spec\League\Event\Stub;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class DomainEventSpec extends ObjectBehavior
 {

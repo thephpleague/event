@@ -3,7 +3,6 @@
 namespace spec\League\Event;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use League\Event\Event;
 use League\Event\CallbackListener;
 

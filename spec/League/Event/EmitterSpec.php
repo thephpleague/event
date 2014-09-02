@@ -3,8 +3,6 @@
 namespace spec\League\Event;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
-use Closure;
 use League\Event\Event;
 use League\Event\ListenerInterface;
 
