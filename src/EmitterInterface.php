@@ -43,7 +43,7 @@ interface EmitterInterface
      *
      * @return $this
      */
-    public function removeListener($event, $listener)
+    public function removeListener($event, $listener);
 
     /**
      * Remove all listeners for an event.
