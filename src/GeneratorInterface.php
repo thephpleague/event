@@ -5,17 +5,18 @@ namespace League\Event;
 interface GeneratorInterface
 {
     /**
-     * Add an event
+     * Add an event.
      *
      * @param AbstractEvent $event
-     * @return self
+     *
+     * @return $this
      */
     public function addEvent(AbstractEvent $event);
 
     /**
      * Release all the added events.
      *
-     * @return array
+     * @return AbstractEvent[]
      */
     public function releaseEvents();
 }

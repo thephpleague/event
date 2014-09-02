@@ -5,7 +5,11 @@ namespace League\Event;
 abstract class ListenerAbstract implements ListenerInterface
 {
     /**
-     * {@inheritdoc}
+     * Check weather the listener is the given parameter.
+     *
+     * @param mixed $listener
+     *
+     * @return bool
      */
     public function isListener($listener)
     {

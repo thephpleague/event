@@ -3,18 +3,17 @@
 namespace spec\League\Event;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use League\Event\Event;
 use League\Event\CallbackListener;
 
 class PriorityEmitterSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('League\Event\PriorityEmitter');
     }
 
-    function it_should_prioritize_listeners(Event $event, CallbackListener $first, CallbackListener $second)
+    public function it_should_prioritize_listeners(Event $event, CallbackListener $first, CallbackListener $second)
     {
         $event->setEmitter($this)->shouldBeCalled();
         $event->isPropagationStopped()->willReturn(false);
@@ -28,7 +27,7 @@ class PriorityEmitterSpec extends ObjectBehavior
         $this->emit($event)->shouldReturn($event);
     }
 
-    function it_should_allow_to_remove_specific_listeners(Event $event, CallbackListener $remove, CallbackListener $keep)
+    public function it_should_allow_to_remove_specific_listeners(Event $event, CallbackListener $remove, CallbackListener $keep)
     {
         $event->setEmitter($this)->shouldBeCalled();
         $event->isPropagationStopped()->willReturn(false);
@@ -42,7 +41,7 @@ class PriorityEmitterSpec extends ObjectBehavior
         $this->emit($event)->shouldReturn($event);
     }
 
-    function it_should_return_an_empty_array_when_there_are_no_listeners()
+    public function it_should_return_an_empty_array_when_there_are_no_listeners()
     {
         $this->getListeners('event')->shouldHaveCount(0);
     }

@@ -5,14 +5,18 @@ namespace League\Event;
 class CallbackListener implements ListenerInterface
 {
     /**
-     * @var  callable  $callback
+     * The callback.
+     *
+     * @var callable
      */
     protected $callback;
 
     /**
-     * Constructor
+     * Create a new instance.
      *
-     * @param  callable  $callback
+     * @param callable $callback
+     *
+     * @return void
      */
     public function __construct(callable $callback)
     {
@@ -20,9 +24,9 @@ class CallbackListener implements ListenerInterface
     }
 
     /**
-     * Get the callback
+     * Get the callback.
      *
-     * @return  callable
+     * @return callable
      */
     public function getCallback()
     {
@@ -30,7 +34,11 @@ class CallbackListener implements ListenerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Handle an event.
+     *
+     * @param AbstractEvent $event
+     *
+     * @return void
      */
     public function handle(AbstractEvent $event)
     {
@@ -38,7 +46,11 @@ class CallbackListener implements ListenerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Check weather the listener is the given parameter.
+     *
+     * @param mixed $listener
+     *
+     * @return bool
      */
     public function isListener($listener)
     {
