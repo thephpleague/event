@@ -3,20 +3,18 @@
 namespace spec\League\Event;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
-use Closure;
 use League\Event\Event;
 use League\Event\ListenerInterface;
 
 class EmitterSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('League\Event\Emitter');
         $this->shouldHaveType('League\Event\EmitterInterface');
     }
 
-    function it_should_accept_listeners()
+    public function it_should_accept_listeners()
     {
         $this->addListener('event', function () {})
             ->shouldReturn($this);
@@ -24,7 +22,7 @@ class EmitterSpec extends ObjectBehavior
         $this->hasListeners('event')->shouldReturn(true);
     }
 
-    function it_should_allow_you_to_remove_listeners()
+    public function it_should_allow_you_to_remove_listeners()
     {
         $callback = function () {};
         $this->addListener('event', $callback);
@@ -32,7 +30,7 @@ class EmitterSpec extends ObjectBehavior
         $this->shouldNotHaveListeners('event');
     }
 
-    function it_should_allow_you_to_remove_multiple_listeners_at_once()
+    public function it_should_allow_you_to_remove_multiple_listeners_at_once()
     {
         $callback = function () {};
         $this->addListener('event', $callback);
@@ -41,25 +39,25 @@ class EmitterSpec extends ObjectBehavior
         $this->hasListeners('event')->shouldReturn(false);
     }
 
-    function it_should_throw_an_exception_when_registering_an_invalid_listener()
+    public function it_should_throw_an_exception_when_registering_an_invalid_listener()
     {
         $this->shouldThrow('InvalidArgumentException')
             ->duringAddListener('event', 'invalid@callback');
     }
 
-    function it_should_return_an_empty_array_when_an_event_has_no_listeners()
+    public function it_should_return_an_empty_array_when_an_event_has_no_listeners()
     {
         $this->getListeners('event')->shouldReturn([]);
     }
 
-    function it_should_allow_you_to_emit_plain_events()
+    public function it_should_allow_you_to_emit_plain_events()
     {
         $callback = function () {};
         $this->addListener('event', $callback);
         $this->emit('event')->shouldReturnAnInstanceOf('League\Event\Event');
     }
 
-    function it_should_allow_you_to_emit_custom_events(Event $event)
+    public function it_should_allow_you_to_emit_custom_events(Event $event)
     {
         $event->setEmitter($this)->shouldBeCalled();
         $event->getName()->willReturn('event');
@@ -69,7 +67,7 @@ class EmitterSpec extends ObjectBehavior
         $this->emit($event)->shouldReturnAnInstanceOf('League\Event\Event');
     }
 
-    function it_should_allow_batch_emitting(Event $event, ListenerInterface $listener)
+    public function it_should_allow_batch_emitting(Event $event, ListenerInterface $listener)
     {
         $event->getName()->willReturn('event');
         $event->setEmitter($this)->shouldBeCalled();
@@ -79,7 +77,7 @@ class EmitterSpec extends ObjectBehavior
         $this->emitBatch([$event])->shouldReturn([$event]);
     }
 
-    function it_should_stop_respond_to_stopping_propagation(Event $event)
+    public function it_should_stop_respond_to_stopping_propagation(Event $event)
     {
         $event->setEmitter($this)->shouldBeCalled();
         $event->getName()->willReturn('event');
@@ -89,19 +87,19 @@ class EmitterSpec extends ObjectBehavior
         $this->emit($event)->shouldReturnAnInstanceOf('League\Event\Event');
     }
 
-    function it_should_throw_an_exception_when_an_invalid_event_type_is_supplied()
+    public function it_should_throw_an_exception_when_an_invalid_event_type_is_supplied()
     {
         $this->shouldThrow('InvalidArgumentException')
             ->duringEmit(true);
     }
 
-    function it_should_accept_custom_listeners(ListenerInterface $listener)
+    public function it_should_accept_custom_listeners(ListenerInterface $listener)
     {
         $this->addListener('event', $listener);
         $this->getListeners('event')->shouldContain($listener);
     }
 
-    function it_should_convert_listeners_to_one_time_listeners(ListenerInterface $listener)
+    public function it_should_convert_listeners_to_one_time_listeners(ListenerInterface $listener)
     {
         $this->addOneTimeListener('event', $listener);
         $this->getListeners('event')->shouldContainInstanceOfType('League\Event\OneTimeListener');

@@ -5,32 +5,44 @@ namespace League\Event;
 class PriorityEmitter extends Emitter
 {
     /**
-     * @const  P_HIGH  High priority
+     * High priority.
+     *
+     * @var int
      */
     const P_HIGH = 100;
 
     /**
-     * @const  P_NORMAL  Normal priority
+     * Normal priority.
+     *
+     * @var int
      */
     const P_NORMAL = 0;
 
     /**
-     * @const  P_LOW  Low priority
+     * Low priority.
+     *
+     * @var int
      */
     const P_LOW = -100;
 
     /**
-     * Add a listener to an event
+     * Add a listener for an event.
      *
-     * @param   string  $event  event name
-     * @param   callable|ListenerInterface  $listener
-     * @param   integer  $priority
-     * @return  $this
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable".
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     * @param int                        $priority
+     *
+     * @return $this
      */
     public function addListener($event, $listener, $priority = self::P_NORMAL)
     {
-        if ( ! $listener instanceof ListenerInterface)
+        if ( ! $listener instanceof ListenerInterface) {
             $listener = $this->ensureListener($listener);
+        }
 
         if ( ! isset($this->listeners[$event])) {
             $this->listeners[$event] = [];
@@ -42,18 +54,35 @@ class PriorityEmitter extends Emitter
     }
 
     /**
-     * {@inheritdoc}
+     * Remove a specific listener for an event.
+     *
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable".
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     *
+     * @return $this
      */
     public function removeListener($event, $listener)
     {
-        foreach($this->listeners[$event] as $index => $registered) {
-            if ($registered[0]->isListener($listener))
+        foreach ($this->listeners[$event] as $index => $registered) {
+            if ($registered[0]->isListener($listener)) {
                 unset($this->listeners[$event][$index]);
+            }
         }
     }
 
     /**
-     * {@inheritdoc}
+     * Get all the listeners for an event.
+     *
+     * The first parameter should be the event name. We'll return an array of
+     * all the registered even listeners, or an empty array if there are none.
+     *
+     * @param string $event
+     *
+     * @return array
      */
     public function getListeners($event)
     {
@@ -67,8 +96,7 @@ class PriorityEmitter extends Emitter
             return $a[1] - $b[1];
         });
 
-        return array_map(function ($listener)
-        {
+        return array_map(function ($listener) {
             return $listener[0];
 
         }, $listeners);

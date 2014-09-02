@@ -7,23 +7,31 @@ use InvalidArgumentException;
 class Emitter implements EmitterInterface
 {
     /**
-     * @var  array  $listeners
+     * The registered listeners.
+     *
+     * @var array
      */
     protected $listeners = [];
 
     /**
-     * Add a listener to for an event
+     * Add a listener for an event.
      *
-     * @param   string  $event  event name
-     * @param   ListenerInterface|callable  $listener
-     * @return  $this
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable".
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     *
+     * @return $this
      */
     public function addListener($event, $listener)
     {
         $listener = $this->ensureListener($listener);
 
-        if ( ! isset($this->listeners[$event]))
+        if ( ! isset($this->listeners[$event])) {
             $this->listeners[$event] = [];
+        }
 
         $this->listeners[$event][] = $listener;
 
@@ -31,10 +39,15 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Add a listener to for an event
+     * Add a one time listener for an event.
      *
-     * @param   string  $event  event name
-     * @param   ListenerInterface|callable  $listener
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable".
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     *
      * @return $this
      */
     public function addOneTimeListener($event, $listener)
@@ -46,18 +59,25 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Remove a specific listener for an event
+     * Remove a specific listener for an event.
      *
-     * @param   string  $event  event name
-     * @param   ListenerInterface|callable  $listener
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable".
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     *
      * @return $this
      */
     public function removeListener($event, $listener)
     {
         $listeners = $this->getListeners($event);
 
-        foreach($listeners as $index => $registered) {
-            if ( ! $registered->isListener($listener)) continue;
+        foreach ($listeners as $index => $registered) {
+            if ( ! $registered->isListener($listener)) {
+                continue;
+            }
             unset($this->listeners[$event][$index]);
             break;
         }
@@ -66,10 +86,14 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Remove all listeners for an event
+     * Remove all listeners for an event.
      *
-     * @param   string  $event  event name
-     * @return  $this
+     * The first parameter should be the event name. All event listeners will
+     * be removed.
+     *
+     * @param string $event
+     *
+     * @return $this
      */
     public function removeAllListeners($event)
     {
@@ -81,11 +105,13 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Ensure the input is a listener
+     * Ensure the input is a listener.
      *
-     * @param   ListenerInterface|callable  $listener
-     * @throws  InvalidArgumentException
-     * @return  $this
+     * @param ListenerInterface|callable $listener
+     *
+     * @throws InvalidArgumentException
+     *
+     * @return $this
      */
     protected function ensureListener($listener)
     {
@@ -93,18 +119,22 @@ class Emitter implements EmitterInterface
             return $listener;
         }
 
-        if ( ! is_callable($listener)) {
-            throw new InvalidArgumentException('Listeners should be be ListenerInterface, Closure or callable. Received type: ' . gettype($listener));
+        if (is_callable($listener)) {
+            return new CallbackListener($listener);
         }
 
-        return new CallbackListener($listener);
+        throw new InvalidArgumentException('Listeners should be be ListenerInterface, Closure or callable. Received type: ' . gettype($listener));
     }
 
     /**
-     * Check weather an event has listeners
+     * Check weather an event has listeners.
      *
-     * @param   string  $event
-     * @return  boolean
+     * The first parameter should be the event name. We'll return true if the
+     * event has one or more registered even listeners, and false otherwise.
+     *
+     * @param string $event
+     *
+     * @return bool
      */
     public function hasListeners($event)
     {
@@ -120,10 +150,14 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Get all the listeners for an event
+     * Get all the listeners for an event.
      *
-     * @param   string  $event
-     * @return  ListenerInterface[]
+     * The first parameter should be the event name. We'll return an array of
+     * all the registered even listeners, or an empty array if there are none.
+     *
+     * @param string $event
+     *
+     * @return array
      */
     public function getListeners($event)
     {
@@ -135,10 +169,11 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Emit an event
+     * Emit an event.
      *
-     * @param   string|AbstractEvent  $event
-     * @return  AbstractEvent
+     * @param string|AbstractEvent $event
+     *
+     * @return AbstractEvent
      */
     public function emit($event)
     {
@@ -152,10 +187,11 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Emit a batch of events
+     * Emit a batch of events.
      *
-     * @param   array  $events
-     * @return  array
+     * @param array $events
+     *
+     * @return array
      */
     public function emitBatch(array $events)
     {
@@ -165,11 +201,13 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Invoke the the handle method on a list of listeners
+     * Invoke the the handle method on a list of listeners.
      *
-     * @param  array  $listeners
-     * @param  AbstractEvent  $event
-     * @param  array  $arguments
+     * @param array         $listeners
+     * @param AbstractEvent $event
+     * @param array         $arguments
+     *
+     * @return void
      */
     protected function invokeListeners(array $listeners, AbstractEvent $event, array $arguments)
     {
@@ -183,14 +221,14 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Prepare an event for emitting
+     * Prepare an event for emitting.
      *
-     * @param   string|AbstractEvent  $event
-     * @return  array  [name, AbstractEvent]
+     * @param string|AbstractEvent $event
+     *
+     * @return array
      */
     protected function prepareEvent($event)
     {
-        // Prepare the event
         $event = $this->ensureEvent($event);
         $name = $event->getName();
         $event->setEmitter($this);
@@ -199,11 +237,13 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Ensure event input is of type AbstractEvent or convert it
+     * Ensure event input is of type AbstractEvent or convert it.
      *
-     * @param   string|AbstractEvent  $event
-     * @throws  InvalidArgumentException
-     * @return  AbstractEvent
+     * @param string|AbstractEvent $event
+     *
+     * @throws InvalidArgumentException
+     *
+     * @return AbstractEvent
      */
     protected function ensureEvent($event)
     {
@@ -211,10 +251,10 @@ class Emitter implements EmitterInterface
             return new Event($event);
         }
 
-        if ( ! $event instanceof AbstractEvent) {
-            throw new InvalidArgumentException('Events should be provides as Event instances or string, received type: ' . gettype($event));
+        if ($event instanceof AbstractEvent) {
+            return $event;
         }
 
-        return $event;
+        throw new InvalidArgumentException('Events should be provides as Event instances or string, received type: ' . gettype($event));
     }
 }

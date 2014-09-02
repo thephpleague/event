@@ -5,14 +5,18 @@ namespace League\Event;
 class Event extends AbstractEvent
 {
     /**
-     * @var  string  $name
+     * The event name.
+     *
+     * @var string
      */
     protected $name;
 
     /**
-     * Constructor
+     * Create a new instance.
      *
-     * @param  string  $name
+     * @param string $name
+     *
+     * @return void
      */
     public function __construct($name)
     {
@@ -20,9 +24,9 @@ class Event extends AbstractEvent
     }
 
     /**
-     * Get the event name
+     * Get the event name.
      *
-     * @return  string  name
+     * @return string
      */
     public function getName()
     {

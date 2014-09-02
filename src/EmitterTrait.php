@@ -4,14 +4,19 @@ namespace League\Event;
 
 trait EmitterTrait
 {
+    /**
+     * The emitter instance.
+     *
+     * @var EmitterInterface|null
+     */
     protected $emitter;
 
-
     /**
-     * Set the emitter
+     * Set the Emitter.
      *
-     * @param   Emitter|null $emitter
-     * @return  $this
+     * @param EmitterInterface $emitter
+     *
+     * @return $this
      */
     public function setEmitter(EmitterInterface $emitter = null)
     {
@@ -21,91 +26,144 @@ trait EmitterTrait
     }
 
     /**
-     * Get the Emitter
+     * Get the Emitter.
      *
-     * @return Emitter
+     * @return EmitterInterface
      */
     public function getEmitter()
     {
         if ( ! $this->emitter) {
-            $this->emitter = new Emitter;
+            $this->emitter = new Emitter();
         }
 
         return $this->emitter;
     }
 
     /**
-     * Add a listener
+     * Add a listener for an event.
      *
-     * @param   string  $event
-     * @param   mixes   $listener
-     * @return  $this
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable".
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     *
+     * @return $this
      */
     public function addListener($event, $listener)
     {
-        $emitter = $this->getEmitter();
-
-        call_user_func_array([$emitter, 'addListener'], func_get_args());
+        $this->getEmitter()->addListener($event, $listener);
 
         return $this;
     }
 
     /**
-     * Add a one time listener
+     * Add a one time listener for an event.
      *
-     * @param   string  $event
-     * @param   mixes   $listener
-     * @return  $this
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable".
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     *
+     * @return $this
      */
     public function addOneTimeListener($event, $listener)
     {
-        $emitter = $this->getEmitter();
-
-        call_user_func_array([$emitter, 'addOneTimeListener'], func_get_args());
+        $this->getEmitter()->addOneTimeListener($event, $listener);
 
         return $this;
     }
 
     /**
-     * Remove a listeners
+     * Remove a specific listener for an event.
      *
-     * @param   string  $event
-     * @param   mixed   $listener
-     * @return  $this
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable".
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     *
+     * @return $this
      */
     public function removeListener($event, $listener)
     {
-        $emitter = $this->getEmitter();
-
-        call_user_func_array([$emitter, 'removeListener'], func_get_args());
+        $this->getEmitter()->removeListener($event, $listener);
 
         return $this;
     }
 
     /**
-     * Remove all listeners for an event
+     * Remove all listeners for an event.
      *
-     * @param   string  $event
-     * @return  $this
+     * The first parameter should be the event name. All event listeners will
+     * be removed.
+     *
+     * @param string $event
+     *
+     * @return $this
      */
     public function removeAllListeners($event)
     {
-        $emitter = $this->getEmitter();
-        $emitter->removeAllListeners($event);
+        $this->getEmitter()->removeAllListeners($event);
 
         return $this;
     }
 
     /**
-     * Emit an event
+     * Check weather an event has listeners.
      *
-     * @param   string  $event
-     * @return  mixed
+     * The first parameter should be the event name. We'll return true if the
+     * event has one or more registered even listeners, and false otherwise.
+     *
+     * @param string $event
+     *
+     * @return bool
+     */
+    public function hasListeners($event)
+    {
+        return $this->getEmitter()->hasListeners($event);
+    }
+
+    /**
+     * Get all the listeners for an event.
+     *
+     * The first parameter should be the event name. We'll return an array of
+     * all the registered even listeners, or an empty array if there are none.
+     *
+     * @param string $event
+     *
+     * @return array
+     */
+    public function getListeners($event)
+    {
+        return $this->getEmitter()->getListeners($event);
+    }
+
+    /**
+     * Emit an event.
+     *
+     * @param string|AbstractEvent $event
+     *
+     * @return AbstractEvent
      */
     public function emit($event)
     {
-        $emitter = $this->getEmitter();
+        return $this->getEmitter()->emit($event);
+    }
 
-        return call_user_func_array([$emitter, 'emit'], func_get_args());
+    /**
+     * Emit a batch of events.
+     *
+     * @param array $events
+     *
+     * @return array
+     */
+    public function emitBatch(array $events)
+    {
+        return $this->getEmitter()->emitBatch($events);
     }
 }
