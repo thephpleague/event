@@ -108,6 +108,14 @@ class EmitterSpec extends ObjectBehavior
         $this->getListeners('event')->shouldNotContain($listener);
     }
 
+    function it_should_allow_an_any_listener(ListenerInterface $listener)
+    {
+        $event = new Event('event');
+        $this->addListener('*', $listener);
+        $listener->handle($event)->shouldBeCalled();
+        $this->emit($event);
+    }
+
     public function getMatchers()
     {
         return [
