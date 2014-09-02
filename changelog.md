@@ -4,7 +4,7 @@
 
 ### Added
 
-- Nothing
+- Wildcard listeners: When specifying `*` as the event name to listen to it will listen to all events. Wildcard listeners will be invoked AFTER named event listeners.
 
 ### Deprecated
 
