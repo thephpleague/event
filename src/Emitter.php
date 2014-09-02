@@ -143,16 +143,13 @@ class Emitter implements EmitterInterface
     public function emit($event)
     {
         list($name, $event) = $this->prepareEvent($event);
-        $listeners = $this->getListeners($name);
-        $arguments = func_get_args();
-        $arguments[0] = $event;
-        $this->invokeListeners($listeners, $event, $arguments);
-
-        // Trigger Catch-All Listeners
-        $this->invokeListeners($this->getListeners('*'), $event, $arguments);
+        $arguments = [$event] + func_get_args();
+        $this->invokeListeners($name, $event, $arguments);
+        $this->invokeListeners('*', $event, $arguments);
 
         return $event;
     }
+
 
     /**
      * Emit a batch of events
@@ -168,14 +165,16 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Invoke the the handle method on a list of listeners
+     * Invoke the listeners for an event.
      *
-     * @param  array  $listeners
+     * @param  string  $name
      * @param  AbstractEvent  $event
      * @param  array  $arguments
      */
-    protected function invokeListeners(array $listeners, AbstractEvent $event, array $arguments)
+    protected function invokeListeners($name, AbstractEvent $event, array $arguments)
     {
+        $listeners = $this->getListeners($name);
+
         foreach ($listeners as $listener) {
             call_user_func_array([$listener, 'handle'], $arguments);
 

@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.3.1 - Unreleaded
+
+### Added
+
+- Nothing
+
+### Deprecated
+
+- Nothing
+
+### Removed
+
+- Nothing
+
+### Fixed
+
+- Nothing
+
+### Altered
+
+- Listener invovation is now responsible for retrieving the events attached to an event name. [internal]
+
 ## 0.3.0 - 23-08-2014
 
 ### Added
