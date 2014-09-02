@@ -148,6 +148,9 @@ class Emitter implements EmitterInterface
         $arguments[0] = $event;
         $this->invokeListeners($listeners, $event, $arguments);
 
+        // Trigger Catch-All Listeners
+        $this->invokeListeners($this->getListeners('*'), $event, $arguments);
+
         return $event;
     }
 
