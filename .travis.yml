@@ -14,12 +14,12 @@ matrix:
   fast_finish: true
 
 before_script:
-  - composer self-update
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ] || [ "$TRAVIS_PHP_VERSION" == "hhvm-nightly" ]; then rm composer.json; fi;'
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ] || [ "$TRAVIS_PHP_VERSION" == "hhvm-nightly" ]; then mv composer.json.hhvm composer.json; fi;'
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ] || [ "$TRAVIS_PHP_VERSION" == "hhvm-nightly" ]; then rm phpspec.yml; fi;'
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ] || [ "$TRAVIS_PHP_VERSION" == "hhvm-nightly" ]; then mv phpspec.yml.hhvm phpspec.yml; fi;'
-  - composer install --prefer-source --no-interaction --dev
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-source --dev
 
 script:
   - bin/phpspec run
