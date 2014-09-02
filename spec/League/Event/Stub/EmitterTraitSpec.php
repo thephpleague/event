@@ -9,7 +9,7 @@ use League\Event\ListenerInterface;
 
 class EmitterTraitSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('League\Event\Stub\EmitterTrait');
         $this->shouldUseTrait('League\Event\EmitterTrait');
