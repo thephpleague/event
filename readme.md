@@ -1,5 +1,12 @@
 # League\Event by [@frankdejonge](http://twitter.com/frankdejonge)
 
+[![Build Status](https://img.shields.io/travis/thephpleague/event/2.1.svg?style=flat-square)](https://travis-ci.org/thephpleague/event)
+<!-- [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/thephpleague/event.svg?style=flat-square)](https://scrutinizer-ci.com/g/thephpleague/event/code-structure) -->
+[![Quality Score](https://img.shields.io/scrutinizer/g/thephpleague/event.svg?style=flat-square)](https://scrutinizer-ci.com/g/thephpleague/event)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Latest Version](https://img.shields.io/github/release/thephpleague/event.svg?style=flat-square)](https://github.com/thephpleague/event/releases)
+[![Total Downloads](https://img.shields.io/packagist/dt/league/event.svg?style=flat-square)](https://packagist.org/packages/league/event)
+
 # Usage (Basic)
 
 Register a listener for an event.
@@ -70,6 +77,7 @@ $emitter->addListener('event', function ($event) {
 
 $emitter->emit('event');
 ```
+
 
 You can prioritize listeners by using the `PriorityEmitter`.
 
