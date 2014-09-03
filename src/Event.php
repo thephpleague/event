@@ -12,11 +12,9 @@ class Event extends AbstractEvent
     protected $name;
 
     /**
-     * Create a new instance.
+     * Create a new event instance.
      *
      * @param string $name
-     *
-     * @return void
      */
     public function __construct($name)
     {

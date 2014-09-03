@@ -12,11 +12,9 @@ class OneTimeListener implements ListenerInterface
     protected $listener;
 
     /**
-     * Create a new instance.
+     * Create a new one time listener instance.
      *
      * @param ListenerInterface $listener
-     *
-     * @return void
      */
     public function __construct(ListenerInterface $listener)
     {

@@ -12,11 +12,9 @@ class CallbackListener implements ListenerInterface
     protected $callback;
 
     /**
-     * Create a new instance.
+     * Create a new callback listener instance.
      *
      * @param callable $callback
-     *
-     * @return void
      */
     public function __construct(callable $callback)
     {
