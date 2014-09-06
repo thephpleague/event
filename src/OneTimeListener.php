@@ -5,14 +5,16 @@ namespace League\Event;
 class OneTimeListener implements ListenerInterface
 {
     /**
-     * @var  ListenerInterface  $listener
+     * The listener instance.
+     *
+     * @var ListenerInterface
      */
     protected $listener;
 
     /**
-     * Constructor
+     * Create a new one time listener instance.
      *
-     * @param  ListenerInterface
+     * @param ListenerInterface $listener
      */
     public function __construct(ListenerInterface $listener)
     {
@@ -20,9 +22,9 @@ class OneTimeListener implements ListenerInterface
     }
 
     /**
-     * Get the wrapped listener
+     * Get the wrapped listener.
      *
-     * @return  ListenerInterface
+     * @return ListenerInterface
      */
     public function getWrappedListener()
     {

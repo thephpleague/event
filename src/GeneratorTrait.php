@@ -2,19 +2,21 @@
 
 namespace League\Event;
 
-
 trait GeneratorTrait
 {
     /**
-     * @var AbstractEvent[]  $events
+     * The registered events.
+     *
+     * @var AbstractEvent[]
      */
     protected $events = [];
 
     /**
-     * Add an event
+     * Add an event.
      *
-     * @param   AbstractEvent $event
-     * @return  $this
+     * @param AbstractEvent $event
+     *
+     * @return $this
      */
     public function addEvent(AbstractEvent $event)
     {
@@ -35,4 +37,4 @@ trait GeneratorTrait
 
         return $events;
     }
-} 
+}

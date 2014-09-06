@@ -5,20 +5,25 @@ namespace League\Event;
 abstract class AbstractEvent
 {
     /**
-     * @var  boolean  $propagationStopped
+     * Has propagation stopped?
+     *
+     * @var bool
      */
     protected $propagationStopped = false;
 
     /**
-     * @var  EmitterInterface  $emitter
+     * The emitter instance.
+     *
+     * @var EmitterInterface|null
      */
     protected $emitter;
 
     /**
-     * Set the Emitter
+     * Set the Emitter.
      *
-     * @param   EmitterInterface  $emitter
-     * @return  $this
+     * @param EmitterInterface $emitter
+     *
+     * @return $this
      */
     public function setEmitter(EmitterInterface $emitter)
     {
@@ -28,9 +33,9 @@ abstract class AbstractEvent
     }
 
     /**
-     * Get the Emitter
+     * Get the Emitter.
      *
-     * @return  EmitterInterface
+     * @return EmitterInterface
      */
     public function getEmitter()
     {
@@ -38,9 +43,9 @@ abstract class AbstractEvent
     }
 
     /**
-     * Stop event propagation
+     * Stop event propagation.
      *
-     * @return  $this
+     * @return $this
      */
     public function stopPropagation()
     {
@@ -50,9 +55,9 @@ abstract class AbstractEvent
     }
 
     /**
-     * Check weather propagation was stopped
+     * Check weather propagation was stopped.
      *
-     * @return  boolean
+     * @return bool
      */
     public function isPropagationStopped()
     {
@@ -60,9 +65,9 @@ abstract class AbstractEvent
     }
 
     /**
-     * Get the event name
+     * Get the event name.
      *
-     * @return  string  event name
+     * @return string
      */
     public function getName()
     {
