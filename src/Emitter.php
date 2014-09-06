@@ -47,13 +47,12 @@ class Emitter implements EmitterInterface
     {
         $listeners = $this->getListeners($event);
 
-        foreach ($listeners as $index => $registered) {
-            if ( ! $registered->isListener($listener)) {
-                continue;
-            }
-            unset($this->listeners[$event][$index]);
-            break;
-        }
+        $filter = function ($registered) use ($listener) {
+            /** @var ListenerInterface  $registered */
+            return ! $registered->isListener($listener);
+        };
+
+        $this->listeners[$event] = array_filter($listeners, $filter);
 
         return $this;
     }

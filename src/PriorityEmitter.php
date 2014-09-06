@@ -60,11 +60,19 @@ class PriorityEmitter extends Emitter
      */
     public function removeListener($event, $listener)
     {
-        foreach ($this->listeners[$event] as $index => $registered) {
-            if ($registered[0]->isListener($listener)) {
-                unset($this->listeners[$event][$index]);
-            }
+        $listeners = [];
+
+        if ($this->hasListeners($event)) {
+            $listeners = $this->listeners[$event];
         }
+
+        $filter = function ($registered) use ($listener) {
+            return ! $registered[0]->isListener($listener);
+        };
+
+        $this->listeners[$event] = array_filter($listeners, $filter);
+
+        return $this;
     }
 
     /**
@@ -79,12 +87,11 @@ class PriorityEmitter extends Emitter
         $listeners = $this->listeners[$event];
 
         usort($listeners, function ($a, $b) {
-            return $a[1] - $b[1];
+            return $b[1] - $a[1];
         });
 
         return array_map(function ($listener) {
             return $listener[0];
-
         }, $listeners);
     }
 }
