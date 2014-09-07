@@ -76,7 +76,7 @@ class Emitter implements EmitterInterface
      *
      * @throws InvalidArgumentException
      *
-     * @return $this
+     * @return ListenerInterface
      */
     protected function ensureListener($listener)
     {
