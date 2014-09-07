@@ -42,9 +42,7 @@ class PriorityEmitter extends Emitter
      */
     public function addListener($event, $listener, $priority = self::P_NORMAL)
     {
-        if ( ! $listener instanceof ListenerInterface) {
-            $listener = $this->ensureListener($listener);
-        }
+        $listener = $this->ensureListener($listener);
 
         if ( ! isset($this->listeners[$event])) {
             $this->listeners[$event] = [];

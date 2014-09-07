@@ -96,11 +96,7 @@ class Emitter implements EmitterInterface
      */
     public function hasListeners($event)
     {
-        if ( ! isset($this->listeners[$event])) {
-            return false;
-        }
-
-        if (count($this->listeners[$event]) === 0) {
+        if ( ! isset($this->listeners[$event]) || count($this->listeners[$event]) === 0) {
             return false;
         }
 

@@ -2,6 +2,8 @@
 
 namespace spec\League\Event;
 
+use League\Event\ListenerAbstract;
+use League\Event\Stub\Listener;
 use PhpSpec\ObjectBehavior;
 use League\Event\Event;
 use League\Event\ListenerInterface;
@@ -22,12 +24,24 @@ class EmitterSpec extends ObjectBehavior
         $this->hasListeners('event')->shouldReturn(true);
     }
 
+    public function it_should_should_expose_when_an_event_has_listeners()
+    {
+        $this->addListener('event', function () {});
+        $this->hasListeners('event')->shouldReturn(true);
+    }
+
+    public function it_should_should_expose_when_an_event_has_no_listeners()
+    {
+        $this->hasListeners('event')->shouldReturn(false);
+    }
+
     public function it_should_allow_you_to_remove_listeners()
     {
         $callback = function () {};
         $this->addListener('event', $callback);
+        $this->addListener('event', $listener = new Listener());
         $this->removeListener('event', $callback);
-        $this->shouldNotHaveListeners('event');
+        $this->getListeners('event')->shouldHaveCount(1);
     }
 
     public function it_should_allow_you_to_remove_multiple_listeners_at_once()
@@ -53,18 +67,18 @@ class EmitterSpec extends ObjectBehavior
     public function it_should_allow_you_to_emit_plain_events()
     {
         $callback = function () {};
-        $this->addListener('event', $callback);
+        $this->addListener('event', $callback)->shouldReturn($this);
         $this->emit('event')->shouldReturnAnInstanceOf('League\Event\Event');
     }
 
-    public function it_should_allow_you_to_emit_custom_events(Event $event)
+    public function it_should_allow_you_to_emit_event_instances(Event $event)
     {
         $event->setEmitter($this)->shouldBeCalled();
         $event->getName()->willReturn('event');
         $event->isPropagationStopped()->willReturn(false);
         $callback = function ($event) {};
         $this->addListener('event', $callback);
-        $this->emit($event)->shouldReturnAnInstanceOf('League\Event\Event');
+        $this->emit($event)->shouldReturn($event);
     }
 
     public function it_should_allow_batch_emitting(Event $event, ListenerInterface $listener)
