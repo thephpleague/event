@@ -1,6 +1,30 @@
 # Changelog
 
-## 0.3.1 - Unreleaded
+
+## 0.3.2 - Unreleaded
+
+### Added
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+### Altered
+
+- Nothing.
+
+
+## 0.3.1 - 06-09-2014
 
 ### Added
 
@@ -8,19 +32,21 @@
 
 ### Deprecated
 
-- Nothing
+- Nothing.
 
 ### Removed
 
-- Nothing
+- Nothing.
 
 ### Fixed
 
-- Nothing
+- Various code style fixes.
+- Corrected priority emitter sorting.
 
 ### Altered
 
 - Listener invovation is now responsible for retrieving the events attached to an event name. [internal]
+
 
 ## 0.3.0 - 23-08-2014
 
@@ -29,10 +55,17 @@
 - EmitterInterface: an interface is derived from the Emitter class to allow more flexible type hinting and custom implementations. All the code expecting an Emitter now expect an EmitterInterface implementation.
 
 ### Deprecated
+
 - Nothing.
 
 ### Removed
+
 - Nothing.
 
 ### Fixed
+
+- Nothing.
+
+### Altered
+
 - Nothing.
