@@ -152,11 +152,11 @@ class Emitter implements EmitterInterface
         $listeners = $this->getListeners($name);
 
         foreach ($listeners as $listener) {
-            call_user_func_array([$listener, 'handle'], $arguments);
-
             if ($event->isPropagationStopped()) {
                 break;
             }
+
+            call_user_func_array([$listener, 'handle'], $arguments);
         }
     }
 
