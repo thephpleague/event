@@ -21,7 +21,7 @@
 
 ### Altered
 
-- Nothing.
+- The Emitter now checks if propagation has been stopped before invoking the first listener.
 
 
 ## 0.3.1 - 06-09-2014
