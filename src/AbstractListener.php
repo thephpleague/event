@@ -2,7 +2,7 @@
 
 namespace League\Event;
 
-abstract class ListenerAbstract implements ListenerInterface
+abstract class AbstractListener implements ListenerInterface
 {
     /**
      * {@inheritdoc}

@@ -3,9 +3,9 @@
 namespace League\Event\Stub;
 
 use League\Event\AbstractEvent;
-use League\Event\ListenerAbstract;
+use League\Event\AbstractListener;
 
-class Listener extends ListenerAbstract
+class Listener extends AbstractListener
 {
     public function handle(AbstractEvent $event)
     {

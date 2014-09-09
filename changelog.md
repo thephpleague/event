@@ -1,7 +1,7 @@
 # Changelog
 
 
-## 0.3.2 - Unreleaded
+## 1.0.0 - 2014-10-09
 
 ### Added
 
@@ -22,6 +22,7 @@
 ### Altered
 
 - The Emitter now checks if propagation has been stopped before invoking the first listener.
+- Renamed ListenerAbstract to AbstractListener
 
 
 ## 0.3.1 - 06-09-2014

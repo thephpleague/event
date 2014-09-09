@@ -2,7 +2,7 @@
 
 namespace spec\League\Event;
 
-use League\Event\ListenerAbstract;
+use League\Event\AbstractListener;
 use League\Event\Stub\Listener;
 use PhpSpec\ObjectBehavior;
 use League\Event\Event;
