@@ -10,6 +10,7 @@ class PriorityEmitterSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType('League\Event\PriorityEmitter');
+        $this->shouldHaveType('League\Event\EmitterInterface');
     }
 
     public function it_should_prioritize_listeners(CallbackListener $first, CallbackListener $second)
