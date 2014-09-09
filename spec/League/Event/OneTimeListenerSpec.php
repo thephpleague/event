@@ -24,7 +24,7 @@ class OneTimeListenerSpec extends ObjectBehavior
 
     public function it_should_expose_the_wrapped_listener()
     {
-        $this->getWrappedListener()->shouldHaveType('League\Event\ListenerInterface');
+        $this->getWrappedListener()->shouldReturn($this->listener);
     }
 
     public function it_should_unregister_and_forward_the_handle_call(AbstractEvent $event, Emitter $emitter)
