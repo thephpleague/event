@@ -53,9 +53,9 @@ You can create custom listeners.
 
 ```php
 use League\Event\AbstractEvent;
-use League\Event\ListenerAbstract;
+use League\Event\AbstractListener;
 
-class DomainListener extends ListenerAbstract
+class DomainListener extends AbstractListener
 {
     public function handle(AbstractEvent $event)
     {
