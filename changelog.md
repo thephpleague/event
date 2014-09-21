@@ -3,22 +3,6 @@
 
 ## 1.0.0 - 2014-10-09
 
-### Added
-
-- Nothing.
-
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
-
-### Fixed
-
-- Nothing.
-
 ### Altered
 
 - The Emitter now checks if propagation has been stopped before invoking the first listener.
@@ -30,14 +14,6 @@
 ### Added
 
 - Wildcard listeners: When specifying `*` as the event name to listen to it will listen to all events. Wildcard listeners will be invoked AFTER named event listeners.
-
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
 
 ### Fixed
 
@@ -54,19 +30,3 @@
 ### Added
 
 - EmitterInterface: an interface is derived from the Emitter class to allow more flexible type hinting and custom implementations. All the code expecting an Emitter now expect an EmitterInterface implementation.
-
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
-
-### Fixed
-
-- Nothing.
-
-### Altered
-
-- Nothing.
