@@ -87,4 +87,31 @@ $emitter->addListener('event', $first, 50); // after this is handled.
 $emittedEvent = $emitter->emit('event');
 ```
 
+## Passing additional parameters to event listeners
 
+When emitting an event, all trailing arguments will be forwarded to the listeners. Due to how php's interfaces work a default value must be supplied when present in the `handle` method signature to ensure method signature compatibility.
+
+### Using a closure
+
+```php
+$emitter->on('event', function ($event, $param = null) {
+	var_dump(func_get_args());
+});
+
+$emitter->emit('event', 'param value');
+```
+
+### Using a class
+
+```php
+class Listener extends AbstractListener
+{
+	public function handle(AbstractEvent $event, $param = null)
+	{
+		var_dump(func_get_args());
+	}
+}
+
+$emitter->on('event', new Listener);
+$emitter->emit('event', 'param value');
+```
