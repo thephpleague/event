@@ -55,7 +55,7 @@ trait EmitterTrait
     {
         $emitter = $this->getEmitter();
 
-        call_user_func_array([$emitter, 'addListener'], func_get_args());
+        call_user_func_array([$emitter, 'addListener'], [$event, $listener]);
 
         return $this;
     }
@@ -76,7 +76,7 @@ trait EmitterTrait
     {
         $emitter = $this->getEmitter();
 
-        call_user_func_array([$emitter, 'addOneTimeListener'], func_get_args());
+        call_user_func_array([$emitter, 'addOneTimeListener'], [$event, $listener]);
 
         return $this;
     }
@@ -97,7 +97,7 @@ trait EmitterTrait
     {
         $emitter = $this->getEmitter();
 
-        call_user_func_array([$emitter, 'removeListener'], func_get_args());
+        call_user_func_array([$emitter, 'removeListener'], [$event, $listener]);
 
         return $this;
     }
@@ -130,6 +130,6 @@ trait EmitterTrait
     {
         $emitter = $this->getEmitter();
 
-        return call_user_func_array([$emitter, 'emit'], func_get_args());
+        return call_user_func_array([$emitter, 'emit'], [$event]);
     }
 }
