@@ -1,0 +1,4 @@
+title: "Event"
+tagline: "Event package for your app and/or domain."
+description: "General purpose (DDD friendly) event dispatcher/emitter package."
+google_analytics_tracking_id:
