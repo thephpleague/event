@@ -24,7 +24,7 @@ Install `league/event` through composer.
 ~~~ json
 {
     "require": {
-        "league/flysystem": "~1.0.0"
+        "league/event": "~1.0.0"
     }
 }
 ~~~
