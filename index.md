@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /
-title: Introduction
+title: Event
 ---
 
 # League\\Event
