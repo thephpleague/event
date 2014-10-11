@@ -6,7 +6,7 @@ title: Event
 
 # League\\Event
 
-[![Author](http://img.shields.io/badge/author-@frankejonge-blue.svg?style=flat-square)](https://twitter.com/frankejonge)
+[![Author](http://img.shields.io/badge/author-@frankdejonge-blue.svg?style=flat-square)](https://twitter.com/frankdejonge)
 [![Source Code](http://img.shields.io/badge/source-league/event-blue.svg?style=flat-square)](https://github.com/thephpleague/event)
 [![Build Status](https://img.shields.io/travis/thephpleague/event/master.svg?style=flat-square)](https://travis-ci.org/thephpleague/event)
 [![Quality Score](https://img.shields.io/scrutinizer/g/thephpleague/event.svg?style=flat-square)](https://scrutinizer-ci.com/g/thephpleague/event)
