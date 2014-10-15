@@ -34,7 +34,7 @@ class CallbackListener implements ListenerInterface
     /**
      * {@inheritdoc}
      */
-    public function handle(AbstractEvent $event)
+    public function handle(EventInterface $event)
     {
         call_user_func_array($this->callback, func_get_args());
     }

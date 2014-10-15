@@ -4,7 +4,7 @@ namespace spec\League\Event;
 
 use PhpSpec\ObjectBehavior;
 use League\Event\ListenerInterface;
-use League\Event\AbstractEvent;
+use League\Event\EventInterface;
 use League\Event\Emitter;
 
 class OneTimeListenerSpec extends ObjectBehavior
@@ -27,7 +27,7 @@ class OneTimeListenerSpec extends ObjectBehavior
         $this->getWrappedListener()->shouldReturn($this->listener);
     }
 
-    public function it_should_unregister_and_forward_the_handle_call(AbstractEvent $event, Emitter $emitter)
+    public function it_should_unregister_and_forward_the_handle_call(EventInterface $event, Emitter $emitter)
     {
         $event->getName()->willReturn('event');
         $event->getEmitter()->willReturn($emitter);
