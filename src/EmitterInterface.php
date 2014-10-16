@@ -85,9 +85,9 @@ interface EmitterInterface
     /**
      * Emit an event.
      *
-     * @param string|AbstractEvent $event
+     * @param string|EventInterface $event
      *
-     * @return AbstractEvent
+     * @return EventInterface
      */
     public function emit($event);
 

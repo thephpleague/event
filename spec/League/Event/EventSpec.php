@@ -16,6 +16,7 @@ class EventSpec extends ObjectBehavior
     {
         $this->shouldHaveType('League\Event\Event');
         $this->shouldHaveType('League\Event\AbstractEvent');
+        $this->shouldHaveType('League\Event\EventInterface');
     }
 
     public function it_should_have_a_name()

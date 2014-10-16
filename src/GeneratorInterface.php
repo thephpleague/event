@@ -7,16 +7,16 @@ interface GeneratorInterface
     /**
      * Add an event.
      *
-     * @param AbstractEvent $event
+     * @param EventInterface $event
      *
      * @return $this
      */
-    public function addEvent(AbstractEvent $event);
+    public function addEvent(EventInterface $event);
 
     /**
      * Release all the added events.
      *
-     * @return AbstractEvent[]
+     * @return EventInterface[]
      */
     public function releaseEvents();
 }

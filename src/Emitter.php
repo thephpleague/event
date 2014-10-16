@@ -141,13 +141,13 @@ class Emitter implements EmitterInterface
     /**
      * Invoke the listeners for an event.
      *
-     * @param string        $name
-     * @param AbstractEvent $event
-     * @param array         $arguments
+     * @param string         $name
+     * @param EventInterface $event
+     * @param array          $arguments
      *
      * @return void
      */
-    protected function invokeListeners($name, AbstractEvent $event, array $arguments)
+    protected function invokeListeners($name, EventInterface $event, array $arguments)
     {
         $listeners = $this->getListeners($name);
 
@@ -163,7 +163,7 @@ class Emitter implements EmitterInterface
     /**
      * Prepare an event for emitting.
      *
-     * @param string|AbstractEvent $event
+     * @param string|EventInterface $event
      *
      * @return array
      */
@@ -177,13 +177,13 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Ensure event input is of type AbstractEvent or convert it.
+     * Ensure event input is of type EventInterface or convert it.
      *
-     * @param string|AbstractEvent $event
+     * @param string|EventInterface $event
      *
      * @throws InvalidArgumentException
      *
-     * @return AbstractEvent
+     * @return EventInterface
      */
     protected function ensureEvent($event)
     {
@@ -191,7 +191,7 @@ class Emitter implements EmitterInterface
             return new Event($event);
         }
 
-        if ( ! $event instanceof AbstractEvent) {
+        if ( ! $event instanceof EventInterface) {
             throw new InvalidArgumentException('Events should be provides as Event instances or string, received type: ' . gettype($event));
         }
 
