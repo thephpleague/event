@@ -32,8 +32,8 @@ trait EmitterTrait
      */
     public function getEmitter()
     {
-        if ( ! $this->emitter) {
-            $this->emitter = new Emitter;
+        if (! $this->emitter) {
+            $this->emitter = new Emitter();
         }
 
         return $this->emitter;

@@ -2,11 +2,10 @@
 
 namespace spec\League\Event;
 
-use League\Event\AbstractListener;
-use League\Event\Stub\Listener;
-use PhpSpec\ObjectBehavior;
 use League\Event\Event;
 use League\Event\ListenerInterface;
+use League\Event\Stub\Listener;
+use PhpSpec\ObjectBehavior;
 
 class EmitterSpec extends ObjectBehavior
 {

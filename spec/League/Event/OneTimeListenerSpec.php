@@ -2,10 +2,10 @@
 
 namespace spec\League\Event;
 
-use PhpSpec\ObjectBehavior;
-use League\Event\ListenerInterface;
-use League\Event\EventInterface;
 use League\Event\Emitter;
+use League\Event\EventInterface;
+use League\Event\ListenerInterface;
+use PhpSpec\ObjectBehavior;
 
 class OneTimeListenerSpec extends ObjectBehavior
 {

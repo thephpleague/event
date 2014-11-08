@@ -20,7 +20,7 @@ class Emitter implements EmitterInterface
     {
         $listener = $this->ensureListener($listener);
 
-        if ( ! isset($this->listeners[$event])) {
+        if (! isset($this->listeners[$event])) {
             $this->listeners[$event] = [];
         }
 
@@ -84,8 +84,8 @@ class Emitter implements EmitterInterface
             return $listener;
         }
 
-        if ( ! is_callable($listener)) {
-            throw new InvalidArgumentException('Listeners should be be ListenerInterface, Closure or callable. Received type: ' . gettype($listener));
+        if (! is_callable($listener)) {
+            throw new InvalidArgumentException('Listeners should be be ListenerInterface, Closure or callable. Received type: '.gettype($listener));
         }
 
         return new CallbackListener($listener);
@@ -96,7 +96,7 @@ class Emitter implements EmitterInterface
      */
     public function hasListeners($event)
     {
-        if ( ! isset($this->listeners[$event]) || count($this->listeners[$event]) === 0) {
+        if (! isset($this->listeners[$event]) || count($this->listeners[$event]) === 0) {
             return false;
         }
 
@@ -108,7 +108,7 @@ class Emitter implements EmitterInterface
      */
     public function getListeners($event)
     {
-        if ( ! $this->hasListeners($event)) {
+        if (! $this->hasListeners($event)) {
             return [];
         }
 
@@ -191,8 +191,8 @@ class Emitter implements EmitterInterface
             return new Event($event);
         }
 
-        if ( ! $event instanceof EventInterface) {
-            throw new InvalidArgumentException('Events should be provides as Event instances or string, received type: ' . gettype($event));
+        if (! $event instanceof EventInterface) {
+            throw new InvalidArgumentException('Events should be provides as Event instances or string, received type: '.gettype($event));
         }
 
         return $event;
