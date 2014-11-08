@@ -2,8 +2,8 @@
 
 namespace League\Event\Stub;
 
-use League\Event\EventInterface;
 use League\Event\AbstractListener;
+use League\Event\EventInterface;
 
 class Listener extends AbstractListener
 {

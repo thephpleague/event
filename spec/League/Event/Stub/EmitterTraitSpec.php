@@ -2,9 +2,9 @@
 
 namespace spec\League\Event\Stub;
 
-use PhpSpec\ObjectBehavior;
 use League\Event\Emitter;
 use League\Event\ListenerInterface;
+use PhpSpec\ObjectBehavior;
 
 class EmitterTraitSpec extends ObjectBehavior
 {

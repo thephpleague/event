@@ -2,8 +2,8 @@
 
 namespace spec\League\Event\Stub;
 
-use PhpSpec\ObjectBehavior;
 use League\Event\Event;
+use PhpSpec\ObjectBehavior;
 
 class ListenerSpec extends ObjectBehavior
 {

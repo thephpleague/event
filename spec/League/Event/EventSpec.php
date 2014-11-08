@@ -2,8 +2,8 @@
 
 namespace spec\League\Event;
 
-use PhpSpec\ObjectBehavior;
 use League\Event\Emitter;
+use PhpSpec\ObjectBehavior;
 
 class EventSpec extends ObjectBehavior
 {

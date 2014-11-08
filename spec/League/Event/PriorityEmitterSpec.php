@@ -2,8 +2,8 @@
 
 namespace spec\League\Event;
 
-use PhpSpec\ObjectBehavior;
 use League\Event\CallbackListener;
+use PhpSpec\ObjectBehavior;
 
 class PriorityEmitterSpec extends ObjectBehavior
 {
@@ -35,5 +35,4 @@ class PriorityEmitterSpec extends ObjectBehavior
     {
         $this->getListeners('event')->shouldHaveCount(0);
     }
-
 }
