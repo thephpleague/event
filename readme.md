@@ -105,6 +105,8 @@ $emitter->emit('event', 'param value');
 ### Using a class
 
 ```php
+use League\Event\AbstractListener;
+
 class Listener extends AbstractListener
 {
     public function handle(EventInterface $event, $param = null)
@@ -113,6 +115,6 @@ class Listener extends AbstractListener
     }
 }
 
-$emitter->on('event', new Listener);
+$emitter->on('event', new Listener());
 $emitter->emit('event', 'param value');
 ```
