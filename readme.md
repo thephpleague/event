@@ -14,7 +14,7 @@ Register a listener for an event.
 ```php
 use League\Event\Emitter;
 
-$emitter = new Emitter;
+$emitter = new Emitter();
 $emitter->addListener('event.name', function ($event) {
     echo "I've listened to " . $event->getName();
 });
@@ -53,8 +53,8 @@ $emitter->emit(new DomainEvent);
 You can create custom listeners.
 
 ```php
-use League\Event\EventInterface;
 use League\Event\AbstractListener;
+use League\Event\EventInterface;
 
 class DomainListener extends AbstractListener
 {
@@ -82,7 +82,7 @@ $emitter->emit('event');
 You can prioritize listeners by using the `PriorityEmitter`.
 
 ```php
-$emitter = new League\Event\PriorityEmitter;
+$emitter = new League\Event\PriorityEmitter();
 $emitter->addListener('event', $second, 10); // This will be handled
 $emitter->addListener('event', $first, 50); // after this is handled.
 $emittedEvent = $emitter->emit('event');
@@ -96,7 +96,7 @@ When emitting an event, all trailing arguments will be forwarded to the listener
 
 ```php
 $emitter->on('event', function ($event, $param = null) {
-	var_dump(func_get_args());
+    var_dump(func_get_args());
 });
 
 $emitter->emit('event', 'param value');
@@ -107,10 +107,10 @@ $emitter->emit('event', 'param value');
 ```php
 class Listener extends AbstractListener
 {
-	public function handle(EventInterface $event, $param = null)
-	{
-		var_dump(func_get_args());
-	}
+    public function handle(EventInterface $event, $param = null)
+    {
+        var_dump(func_get_args());
+    }
 }
 
 $emitter->on('event', new Listener);
