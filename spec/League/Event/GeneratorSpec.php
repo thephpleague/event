@@ -2,7 +2,7 @@
 
 namespace spec\League\Event;
 
-use League\Event\AbstractEvent;
+use League\Event\EventInterface;
 use PhpSpec\ObjectBehavior;
 
 class GeneratorSpec extends ObjectBehavior
@@ -12,12 +12,12 @@ class GeneratorSpec extends ObjectBehavior
         $this->shouldHaveType('League\Event\Generator');
     }
 
-    public function it_should_accept_an_event_object(AbstractEvent $event)
+    public function it_should_accept_an_event_object(EventInterface $event)
     {
         $this->addEvent($event)->shouldReturn($this);
     }
 
-    public function it_should_release_events(AbstractEvent $event)
+    public function it_should_release_events(EventInterface $event)
     {
         $this->releaseEvents()->shouldHaveCount(0);
         $this->addEvent($event);

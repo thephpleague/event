@@ -22,9 +22,7 @@ class Event extends AbstractEvent
     }
 
     /**
-     * Get the event name.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {

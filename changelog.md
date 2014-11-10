@@ -1,6 +1,11 @@
 # Changelog
 
 
+### Added
+
+- EventInterface: an interface is derived from the AbstractEvent class to allow more flexible type hinting and custom implementations. All the code expecting an AbstractEvent now expect an EventInterface implementation, however AbstractEvent covers the most use cases.
+
+
 ## 1.0.0 - 2014-10-09
 
 ### Altered

@@ -2,7 +2,7 @@
 
 namespace League\Event;
 
-abstract class AbstractEvent
+abstract class AbstractEvent implements EventInterface
 {
     /**
      * Has propagation stopped?
@@ -19,11 +19,7 @@ abstract class AbstractEvent
     protected $emitter;
 
     /**
-     * Set the Emitter.
-     *
-     * @param EmitterInterface $emitter
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function setEmitter(EmitterInterface $emitter)
     {
@@ -33,9 +29,7 @@ abstract class AbstractEvent
     }
 
     /**
-     * Get the Emitter.
-     *
-     * @return EmitterInterface
+     * {@inheritdoc}
      */
     public function getEmitter()
     {
@@ -43,9 +37,7 @@ abstract class AbstractEvent
     }
 
     /**
-     * Stop event propagation.
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function stopPropagation()
     {
@@ -55,9 +47,7 @@ abstract class AbstractEvent
     }
 
     /**
-     * Check weather propagation was stopped.
-     *
-     * @return bool
+     * {@inheritdoc}
      */
     public function isPropagationStopped()
     {
@@ -65,9 +55,7 @@ abstract class AbstractEvent
     }
 
     /**
-     * Get the event name.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {

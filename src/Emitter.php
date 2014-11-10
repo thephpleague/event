@@ -20,7 +20,7 @@ class Emitter implements EmitterInterface
     {
         $listener = $this->ensureListener($listener);
 
-        if ( ! isset($this->listeners[$event])) {
+        if (! isset($this->listeners[$event])) {
             $this->listeners[$event] = [];
         }
 
@@ -84,8 +84,8 @@ class Emitter implements EmitterInterface
             return $listener;
         }
 
-        if ( ! is_callable($listener)) {
-            throw new InvalidArgumentException('Listeners should be be ListenerInterface, Closure or callable. Received type: ' . gettype($listener));
+        if (! is_callable($listener)) {
+            throw new InvalidArgumentException('Listeners should be be ListenerInterface, Closure or callable. Received type: '.gettype($listener));
         }
 
         return new CallbackListener($listener);
@@ -96,7 +96,7 @@ class Emitter implements EmitterInterface
      */
     public function hasListeners($event)
     {
-        if ( ! isset($this->listeners[$event]) || count($this->listeners[$event]) === 0) {
+        if (! isset($this->listeners[$event]) || count($this->listeners[$event]) === 0) {
             return false;
         }
 
@@ -108,7 +108,7 @@ class Emitter implements EmitterInterface
      */
     public function getListeners($event)
     {
-        if ( ! $this->hasListeners($event)) {
+        if (! $this->hasListeners($event)) {
             return [];
         }
 
@@ -141,13 +141,13 @@ class Emitter implements EmitterInterface
     /**
      * Invoke the listeners for an event.
      *
-     * @param string        $name
-     * @param AbstractEvent $event
-     * @param array         $arguments
+     * @param string         $name
+     * @param EventInterface $event
+     * @param array          $arguments
      *
      * @return void
      */
-    protected function invokeListeners($name, AbstractEvent $event, array $arguments)
+    protected function invokeListeners($name, EventInterface $event, array $arguments)
     {
         $listeners = $this->getListeners($name);
 
@@ -163,7 +163,7 @@ class Emitter implements EmitterInterface
     /**
      * Prepare an event for emitting.
      *
-     * @param string|AbstractEvent $event
+     * @param string|EventInterface $event
      *
      * @return array
      */
@@ -177,13 +177,13 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * Ensure event input is of type AbstractEvent or convert it.
+     * Ensure event input is of type EventInterface or convert it.
      *
-     * @param string|AbstractEvent $event
+     * @param string|EventInterface $event
      *
      * @throws InvalidArgumentException
      *
-     * @return AbstractEvent
+     * @return EventInterface
      */
     protected function ensureEvent($event)
     {
@@ -191,8 +191,8 @@ class Emitter implements EmitterInterface
             return new Event($event);
         }
 
-        if ( ! $event instanceof AbstractEvent) {
-            throw new InvalidArgumentException('Events should be provides as Event instances or string, received type: ' . gettype($event));
+        if (! $event instanceof EventInterface) {
+            throw new InvalidArgumentException('Events should be provides as Event instances or string, received type: '.gettype($event));
         }
 
         return $event;

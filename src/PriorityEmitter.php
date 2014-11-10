@@ -44,7 +44,7 @@ class PriorityEmitter extends Emitter
     {
         $listener = $this->ensureListener($listener);
 
-        if ( ! isset($this->listeners[$event])) {
+        if (! isset($this->listeners[$event])) {
             $this->listeners[$event] = [];
         }
 
@@ -78,7 +78,7 @@ class PriorityEmitter extends Emitter
      */
     public function getListeners($event)
     {
-        if ( ! $this->hasListeners($event)) {
+        if (! $this->hasListeners($event)) {
             return [];
         }
 

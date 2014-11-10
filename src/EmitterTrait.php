@@ -32,8 +32,8 @@ trait EmitterTrait
      */
     public function getEmitter()
     {
-        if ( ! $this->emitter) {
-            $this->emitter = new Emitter;
+        if (! $this->emitter) {
+            $this->emitter = new Emitter();
         }
 
         return $this->emitter;
@@ -122,9 +122,9 @@ trait EmitterTrait
     /**
      * Emit an event.
      *
-     * @param string|AbstractEvent $event
+     * @param string|EventInterface $event
      *
-     * @return AbstractEvent
+     * @return EventInterface
      */
     public function emit($event)
     {

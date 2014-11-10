@@ -10,10 +10,8 @@
 
 # Installation
 
-Through Composer, obviously:
-
 ```
 composer require league/event
 ```
 
-[Read the documentation](http://event.thephpleague.com)
+# [Read the documentation](http://event.thephpleague.com)
