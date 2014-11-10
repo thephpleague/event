@@ -29,6 +29,8 @@ class DomainListener implements ListenerInterface
         // Handle the event.
     }
 }
+
+$emitter->addListener('event.name', new DomainListener);
 ~~~
 
 ## Extending the AbstractListener
