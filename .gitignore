@@ -2,3 +2,4 @@ vendor/
 coverage/
 bin/
 composer.lock
+coverage.xml

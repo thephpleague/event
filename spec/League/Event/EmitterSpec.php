@@ -5,6 +5,7 @@ namespace spec\League\Event;
 use League\Event\Event;
 use League\Event\ListenerInterface;
 use League\Event\Stub\Listener;
+use League\Event\CallbackListener;
 use PhpSpec\ObjectBehavior;
 
 class EmitterSpec extends ObjectBehavior
@@ -39,6 +40,7 @@ class EmitterSpec extends ObjectBehavior
         $callback = function () {};
         $this->addListener('event', $callback);
         $this->addListener('event', $listener = new Listener());
+        $this->getListeners('event')->shouldHaveCount(2);
         $this->removeListener('event', $callback);
         $this->getListeners('event')->shouldHaveCount(1);
     }
@@ -125,6 +127,13 @@ class EmitterSpec extends ObjectBehavior
         $this->addListener('*', $listener);
         $listener->handle($event)->shouldBeCalled();
         $this->emit($event);
+    }
+
+    public function it_should_prioritize_listeners(CallbackListener $first, CallbackListener $second)
+    {
+        $this->addListener('event', $first, 0);
+        $this->addListener('event', $second, 50);
+        $this->getListeners('event')->shouldReturn([$second, $first]);
     }
 
     public function getMatchers()

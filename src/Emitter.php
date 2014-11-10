@@ -14,9 +14,30 @@ class Emitter implements EmitterInterface
     protected $listeners = [];
 
     /**
-     * {@inheritdoc}
+     * The sorted listeners
+     *
+     * Listeners will get sorted and stored for re-use.
+     *
+     * @var array
      */
-    public function addListener($event, $listener)
+    protected $sortedListeners = [];
+
+    /**
+     * Add a listener for an event.
+     *
+     * The first parameter should be the event name, and the second should be
+     * the event listener. It may implement the League\Event\ListenerInterface
+     * or simply be "callable". In this case, the priority emitter also accepts
+     * an optional third parameter specifying the priority as an integer. You
+     * may use one of our predefined constants here if you want.
+     *
+     * @param string                     $event
+     * @param ListenerInterface|callable $listener
+     * @param int                        $priority
+     *
+     * @return $this
+     */
+    public function addListener($event, $listener, $priority = self::P_NORMAL)
     {
         $listener = $this->ensureListener($listener);
 
@@ -24,7 +45,8 @@ class Emitter implements EmitterInterface
             $this->listeners[$event] = [];
         }
 
-        $this->listeners[$event][] = $listener;
+        $this->listeners[$event][] = [$listener, $priority];
+        $this->clearSortedListeners($event);
 
         return $this;
     }
@@ -32,12 +54,12 @@ class Emitter implements EmitterInterface
     /**
      * {@inheritdoc}
      */
-    public function addOneTimeListener($event, $listener)
+    public function addOneTimeListener($event, $listener, $priority = self::P_NORMAL)
     {
         $listener = $this->ensureListener($listener);
         $listener = new OneTimeListener($listener);
 
-        return $this->addListener($event, $listener);
+        return $this->addListener($event, $listener, $priority);
     }
 
     /**
@@ -45,14 +67,18 @@ class Emitter implements EmitterInterface
      */
     public function removeListener($event, $listener)
     {
-        $listeners = $this->getListeners($event);
+        $listeners = [];
+
+        if ($this->hasListeners($event)) {
+            $listeners = $this->listeners[$event];
+        }
 
         $filter = function ($registered) use ($listener) {
-            /** @var ListenerInterface  $registered */
-            return ! $registered->isListener($listener);
+            return ! $registered[0]->isListener($listener);
         };
 
         $this->listeners[$event] = array_filter($listeners, $filter);
+        $this->clearSortedListeners($event);
 
         return $this;
     }
@@ -62,6 +88,8 @@ class Emitter implements EmitterInterface
      */
     public function removeAllListeners($event)
     {
+        $this->clearSortedListeners($event);
+
         if ($this->hasListeners($event)) {
             unset($this->listeners[$event]);
         }
@@ -108,11 +136,34 @@ class Emitter implements EmitterInterface
      */
     public function getListeners($event)
     {
+        if (array_key_exists($event, $this->sortedListeners)) {
+            return $this->sortedListeners[$event];
+        }
+
+        return $this->sortedListeners[$event] = $this->getSortedListeners($event);
+    }
+
+    /**
+     * Get the listeners sorted by priority for a given event.
+     *
+     * @param string $event
+     * @return ListenerInterface[]
+     */
+    protected function getSortedListeners($event)
+    {
         if (! $this->hasListeners($event)) {
             return [];
         }
 
-        return $this->listeners[$event];
+        $listeners = $this->listeners[$event];
+
+        usort($listeners, function ($a, $b) {
+            return $b[1] - $a[1];
+        });
+
+        return array_map(function ($listener) {
+            return $listener[0];
+        }, $listeners);
     }
 
     /**
@@ -196,5 +247,17 @@ class Emitter implements EmitterInterface
         }
 
         return $event;
+    }
+
+    /**
+     * Clear the sorted listeners for an event
+     *
+     * @param $event
+     */
+    protected function clearSortedListeners($event)
+    {
+        if (isset($this->sortedListeners[$event])) {
+            unset($this->sortedListeners[$event]);
+        }
     }
 }
