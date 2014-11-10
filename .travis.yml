@@ -23,3 +23,8 @@ before_script:
 
 script:
   - bin/phpspec run
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - bash -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ] && [ "$TRAVIS_PHP_VERSION" == "hhvm-nightly" ]; then rm composer.json; fi;'
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover

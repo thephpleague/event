@@ -1,8 +1,15 @@
 ---
 suites:
-      event_suite:
-        namespace: League\Event
-        psr4_prefix: League\Event
+  event_suite:
+    namespace: League\Event
+    psr4_prefix: League\Event
 extensions:
-    - PhpSpec\Extension\CodeCoverageExtension
+  - PhpSpec\Extension\CodeCoverageExtension
 formatter.name: pretty
+code_coverage:
+  format:
+    - html
+    - clover
+  output:
+    html: coverage
+    clover: coverage.xml
