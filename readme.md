@@ -6,7 +6,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Packagist Version](https://img.shields.io/packagist/v/league/event.svg?style=flat-square)](https://packagist.org/packages/league/event)
 [![Total Downloads](https://img.shields.io/packagist/dt/league/event.svg?style=flat-square)](https://packagist.org/packages/league/event)
-<!-- [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/thephpleague/event.svg?style=flat-square)](https://scrutinizer-ci.com/g/thephpleague/event/code-structure) -->
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/thephpleague/event.svg?style=flat-square)](https://scrutinizer-ci.com/g/thephpleague/event/code-structure)
 
 # Installation
 
