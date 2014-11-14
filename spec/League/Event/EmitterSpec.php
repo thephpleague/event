@@ -4,6 +4,7 @@ namespace spec\League\Event;
 
 use League\Event\Event;
 use League\Event\ListenerInterface;
+use League\Event\ListenerProviderInterface;
 use League\Event\Stub\Listener;
 use League\Event\CallbackListener;
 use PhpSpec\ObjectBehavior;
@@ -22,6 +23,12 @@ class EmitterSpec extends ObjectBehavior
             ->shouldReturn($this);
 
         $this->hasListeners('event')->shouldReturn(true);
+    }
+
+    public function it_should_use_providers_to_add_listeners(ListenerProviderInterface $provider)
+    {
+        $provider->provideListeners($this)->shouldBeCalled();
+        $this->useListenerProvider($provider)->shouldBe($this);
     }
 
     public function it_should_should_expose_when_an_event_has_listeners()

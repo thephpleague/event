@@ -23,19 +23,7 @@ class Emitter implements EmitterInterface
     protected $sortedListeners = [];
 
     /**
-     * Add a listener for an event.
-     *
-     * The first parameter should be the event name, and the second should be
-     * the event listener. It may implement the League\Event\ListenerInterface
-     * or simply be "callable". In this case, the priority emitter also accepts
-     * an optional third parameter specifying the priority as an integer. You
-     * may use one of our predefined constants here if you want.
-     *
-     * @param string                     $event
-     * @param ListenerInterface|callable $listener
-     * @param int                        $priority
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function addListener($event, $listener, $priority = self::P_NORMAL)
     {
@@ -60,6 +48,16 @@ class Emitter implements EmitterInterface
         $listener = new OneTimeListener($listener);
 
         return $this->addListener($event, $listener, $priority);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function useListenerProvider(ListenerProviderInterface $provider)
+    {
+        $provider->provideListeners($this);
+
+        return $this;
     }
 
     /**
@@ -101,9 +99,7 @@ class Emitter implements EmitterInterface
      * Ensure the input is a listener.
      *
      * @param ListenerInterface|callable $listener
-     *
      * @throws InvalidArgumentException
-     *
      * @return ListenerInterface
      */
     protected function ensureListener($listener)

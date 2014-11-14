@@ -72,6 +72,14 @@ interface EmitterInterface
     public function removeListener($event, $listener);
 
     /**
+     * Use a provider to add listeners.
+     *
+     * @param ListenerProviderInterface $provider
+     * @return $this
+     */
+    public function useListenerProvider(ListenerProviderInterface $provider);
+
+    /**
      * Remove all listeners for an event.
      *
      * The first parameter should be the event name. All event listeners will
