@@ -1,0 +1,19 @@
+<footer>
+    <span>&copy; Copyright <a href="http://thephpleague.com">The League of Extraordinary Packages</a>.</span>
+    <span>Site design by <a href="http://reinink.ca">Jonathan Reinink</a>.</span>
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://theme.thephpleague.com/js/scripts.js"></script>
+<script src="http://theme.thephpleague.com/js/prism.js"></script>
+
+{% if site.data.project.google_analytics_tracking_id %}
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','{{  site.data.project.google_analytics_tracking_id }}');ga('send','pageview');
+    </script>
+{% endif %}

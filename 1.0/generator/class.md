@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /generator/class/
 title: Generator Class
 ---
 

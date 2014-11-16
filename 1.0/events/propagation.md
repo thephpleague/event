@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /events/propagation/
 title: Additional Arguments
 ---
 

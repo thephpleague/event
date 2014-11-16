@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /emitter/normal/
 title: Emitter (Normal)
 ---
 

@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /events/class-based-events/
 title: Class Based Events
 ---
 

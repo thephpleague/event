@@ -1,16 +1,32 @@
-Getting Started:
-    Introduction: '/'
-Emitter:
-    Emitter: '/emitter/normal/'
-    Priority Emitter: '/emitter/priority/'
-Events:
-    String Events: '/events/string-events/'
-    Class Based Domain Events: '/events/class-based-events/'
-    Additional Arguments: '/events/arguments/'
-    Propagation: '/events/propagation/'
-Listeners:
-    Closure or Callable: '/listeners/callables/'
-    Class Based Domain Listeners: '/listeners/class-based-listeners/'
-Generator:
-    Generator Class: '/generator/class/'
-    Generator Trait: '/generator/trait/'
+'dev-master':
+    Getting Started:
+        Introduction: '/dev-master/'
+        Basic Usage: '/dev-master/emitter/basic-usage/'
+    Events:
+        String Events: '/dev-master/events/string-events/'
+        Events Classes: '/dev-master/events/events-classes/'
+        Event Arguments: '/dev-master/events/arguments/'
+        Propagation: '/dev-master/events/propagation/'
+    Listeners:
+        Closure or Callable: '/dev-master/listeners/callables/'
+        Listeners Classes: '/dev-master/listeners/listeners-classes/'
+    Generator:
+        Generator Class: '/dev-master/generator/class/'
+        Generator Trait: '/dev-master/generator/trait/'
+'1.0':
+    Getting Started:
+        Introduction: '/1.0/'
+    Emitter:
+        Emitter: '/1.0/emitter/normal/'
+        Priority Emitter: '/1.0/emitter/priority/'
+    Events:
+        String Events: '/1.0/events/string-events/'
+        Class Based Domain Events: '/1.0/events/class-based-events/'
+        Additional Arguments: '/1.0/events/arguments/'
+        Propagation: '/1.0/events/propagation/'
+    Listeners:
+        Closure or Callable: '/1.0/listeners/callables/'
+        Class Based Domain Listeners: '/1.0/listeners/class-based-listeners/'
+    Generator:
+        Generator Class: '/1.0/generator/class/'
+        Generator Trait: '/1.0/generator/trait/'

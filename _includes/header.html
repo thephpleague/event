@@ -1,0 +1,14 @@
+<header>
+    <a class="logo" href="/">
+        {% if site.data.images.logo %}
+            <span class="icon">
+                <img src="{{ site.data.images.logo }}" width="50" height="40" alt="{{ site.data.project.title }} - {{ site.data.project.tagline }}">
+            </span>
+        {% endif %}
+        <span class="name">{{ site.data.project.title }}</span>
+        <span class="tagline">{{ site.data.project.tagline }}</span>
+    </a>
+    <a href="http://thephpleague.com/" class="league">
+        Presented by The League of Extraordinary Packages
+    </a>
+</header>

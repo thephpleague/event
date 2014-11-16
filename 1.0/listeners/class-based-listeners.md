@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /listeners/class-based-listeners/
 title: Class Based Listeners
 ---
 

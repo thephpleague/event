@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /generator/trait/
 title: Generator Trait
 ---
 

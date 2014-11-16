@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /events/string-events/
 title: String Events
 ---
 

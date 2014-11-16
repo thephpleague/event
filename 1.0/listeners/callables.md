@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /listeners/callables/
 title: Callable Listeners
 ---
 

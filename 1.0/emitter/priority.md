@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /emitter/priority/
 title: Emitter (Priority)
 ---
 

@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /events/arguments/
 title: Additional Arguments
 ---
 

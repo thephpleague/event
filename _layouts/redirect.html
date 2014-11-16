@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirect page</title>
+    <meta http-equiv="refresh" content="0;URL='{{ page.redirect_url }}'" />
+    <link rel="stylesheet" href="http://theme.thephpleague.com/css/all.css">
+</head>
+<body>
+{% include header.html %}
+
+<main>
+    <menu>
+    </menu>
+    <article>
+        <h2>Redirect</h2>
+        <p>
+            If you're not redirected in 5 seconds, click <a href="{{ page.redirect_url }}">here</a>.
+        </p>
+    </article>
+</main>
+</body>
+</html>
