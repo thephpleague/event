@@ -132,4 +132,13 @@ interface EmitterInterface
      * @return array
      */
     public function emitBatch(array $events);
+
+    /**
+     * Release all events stored in a generator
+     *
+     * @param GeneratorInterface $generator
+     *
+     * @return EventInterface[]
+     */
+    public function releaseGeneratorEvents(GeneratorInterface $generator);
 }

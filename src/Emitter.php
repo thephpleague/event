@@ -186,6 +186,16 @@ class Emitter implements EmitterInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function releaseGeneratorEvents(GeneratorInterface $generator)
+    {
+        $events = $generator->releaseEvents();
+
+        return $this->emitBatch($events);
+    }
+
+    /**
      * Invoke the listeners for an event.
      *
      * @param string         $name

@@ -3,10 +3,12 @@
 namespace spec\League\Event;
 
 use League\Event\Event;
+use League\Event\GeneratorInterface;
 use League\Event\ListenerInterface;
 use League\Event\ListenerProviderInterface;
 use League\Event\Stub\Listener;
 use League\Event\CallbackListener;
+use PhpSpec\Event\EventInterface;
 use PhpSpec\ObjectBehavior;
 
 class EmitterSpec extends ObjectBehavior
@@ -141,6 +143,15 @@ class EmitterSpec extends ObjectBehavior
         $this->addListener('event', $first, 0);
         $this->addListener('event', $second, 50);
         $this->getListeners('event')->shouldReturn([$second, $first]);
+    }
+
+    public function it_should_release_generator_events(GeneratorInterface $generator, ListenerInterface $listener)
+    {
+        $event = new Event('name');
+        $this->addListener($event->getName(), $listener);
+        $listener->handle($event)->shouldBeCalled();
+        $generator->releaseEvents()->willReturn([$event]);
+        $this->releaseGeneratorEvents($generator)->shouldReturn([$event]);
     }
 
     public function getMatchers()
