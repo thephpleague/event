@@ -27,7 +27,7 @@
 
 ### Altered
 
-- Listener invovation is now responsible for retrieving the events attached to an event name. [internal]
+- Listener invocation is now responsible for retrieving the events attached to an event name. [internal]
 
 
 ## 0.3.0 - 23-08-2014

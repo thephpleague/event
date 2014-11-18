@@ -55,7 +55,8 @@ class Emitter implements EmitterInterface
      */
     public function useListenerProvider(ListenerProviderInterface $provider)
     {
-        $provider->provideListeners($this);
+        $acceptor = new ListenerAcceptor($this);
+        $provider->provideListeners($acceptor);
 
         return $this;
     }

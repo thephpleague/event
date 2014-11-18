@@ -4,12 +4,14 @@ namespace spec\League\Event;
 
 use League\Event\Event;
 use League\Event\GeneratorInterface;
+use League\Event\ListenerAwareInterface;
 use League\Event\ListenerInterface;
 use League\Event\ListenerProviderInterface;
 use League\Event\Stub\Listener;
 use League\Event\CallbackListener;
 use PhpSpec\Event\EventInterface;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 
 class EmitterSpec extends ObjectBehavior
 {
@@ -29,7 +31,7 @@ class EmitterSpec extends ObjectBehavior
 
     public function it_should_use_providers_to_add_listeners(ListenerProviderInterface $provider)
     {
-        $provider->provideListeners($this)->shouldBeCalled();
+        $provider->provideListeners(Argument::type('League\Event\ListenerAwareInterface'))->shouldBeCalled();
         $this->useListenerProvider($provider)->shouldBe($this);
     }
 
