@@ -2,7 +2,7 @@
 
 namespace League\Event;
 
-interface ListenerAwareInterface
+interface ListenerAcceptorInterface
 {
     /**
      * High priority.

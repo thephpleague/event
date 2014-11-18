@@ -2,7 +2,7 @@
 
 namespace League\Event;
 
-interface EmitterInterface extends ListenerAwareInterface
+interface EmitterInterface extends ListenerAcceptorInterface
 {
     /**
      * Remove a specific listener for an event.

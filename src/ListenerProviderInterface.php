@@ -7,8 +7,8 @@ interface ListenerProviderInterface
     /**
      * Provide event
      *
-     * @param ListenerAwareInterface $listenerAcceptor
+     * @param ListenerAcceptorInterface $listenerAcceptor
      * @return $this
      */
-    public function provideListeners(ListenerAwareInterface $listenerAcceptor);
+    public function provideListeners(ListenerAcceptorInterface $listenerAcceptor);
 } 

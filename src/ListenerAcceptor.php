@@ -2,7 +2,7 @@
 
 namespace League\Event;
 
-class ListenerAcceptor implements ListenerAwareInterface
+class ListenerAcceptor implements ListenerAcceptorInterface
 {
     protected $emitter;
 

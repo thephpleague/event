@@ -19,7 +19,7 @@ class ListenerAcceptorSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('League\Event\ListenerAcceptor');
-        $this->shouldHaveType('League\Event\ListenerAwareInterface');
+        $this->shouldHaveType('League\Event\ListenerAcceptorInterface');
     }
 
     public function it_should_delegate_addListener_calls()
