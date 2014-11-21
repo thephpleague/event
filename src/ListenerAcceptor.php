@@ -4,6 +4,11 @@ namespace League\Event;
 
 class ListenerAcceptor implements ListenerAcceptorInterface
 {
+    /**
+     * The emitter instance.
+     *
+     * @var EmitterInterface|null
+     */
     protected $emitter;
 
     /**
