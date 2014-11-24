@@ -118,6 +118,19 @@ trait EmitterTrait
     }
 
     /**
+     * Add listeners from a provider.
+     *
+     * @param ListenerProviderInterface $provider
+     * @return $this
+     */
+    public function useListenerProvider(ListenerProviderInterface $provider)
+    {
+        $this->getEmitter()->useListenerProvider($provider);
+
+        return $this;
+    }
+
+    /**
      * Emit an event.
      *
      * @param string|EventInterface $event
