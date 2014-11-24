@@ -133,7 +133,7 @@ class EmitterSpec extends ObjectBehavior
 
     public function it_should_allow_an_any_listener(ListenerInterface $listener)
     {
-        $event = new Event('event');
+        $event = Event::named('event');
         $this->addListener('*', $listener);
         $listener->handle($event)->shouldBeCalled();
         $this->emit($event);

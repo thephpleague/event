@@ -3,6 +3,7 @@
 namespace spec\League\Event\Stub;
 
 use League\Event\Emitter;
+use League\Event\ListenerAcceptorInterface;
 use League\Event\ListenerInterface;
 use PhpSpec\ObjectBehavior;
 
@@ -47,14 +48,14 @@ class EmitterTraitSpec extends ObjectBehavior
 
     public function it_should_forward_add_listener_calls(Emitter $emitter, ListenerInterface $listener)
     {
-        $emitter->addListener('event', $listener)->shouldBeCalled();
+        $emitter->addListener('event', $listener, ListenerAcceptorInterface::P_NORMAL)->shouldBeCalled();
         $this->setEmitter($emitter);
         $this->addListener('event', $listener);
     }
 
     public function it_should_forward_add_one_time_listener_calls(Emitter $emitter, ListenerInterface $listener)
     {
-        $emitter->addOneTimeListener('event', $listener)->shouldBeCalled();
+        $emitter->addOneTimeListener('event', $listener, ListenerAcceptorInterface::P_NORMAL)->shouldBeCalled();
         $this->setEmitter($emitter);
         $this->addOneTimeListener('event', $listener);
     }

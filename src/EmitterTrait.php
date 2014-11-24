@@ -48,14 +48,13 @@ trait EmitterTrait
      *
      * @param string                     $event
      * @param ListenerInterface|callable $listener
-     *
+     * @param int                        $priority
      * @return $this
      */
-    public function addListener($event, $listener)
+    public function addListener($event, $listener, $priority = ListenerAcceptorInterface::P_NORMAL)
     {
         $emitter = $this->getEmitter();
-
-        call_user_func_array([$emitter, 'addListener'], func_get_args());
+        $emitter->addListener($event, $listener, $priority);
 
         return $this;
     }
@@ -69,14 +68,13 @@ trait EmitterTrait
      *
      * @param string                     $event
      * @param ListenerInterface|callable $listener
-     *
+     * @param int                        $priority
      * @return $this
      */
-    public function addOneTimeListener($event, $listener)
+    public function addOneTimeListener($event, $listener, $priority = ListenerAcceptorInterface::P_NORMAL)
     {
         $emitter = $this->getEmitter();
-
-        call_user_func_array([$emitter, 'addOneTimeListener'], func_get_args());
+        $emitter->addOneTimeListener($event, $listener, $priority);
 
         return $this;
     }

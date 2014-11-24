@@ -28,4 +28,13 @@ class Event extends AbstractEvent
     {
         return $this->name;
     }
+
+    /**
+     * @param $name
+     * @return static
+     */
+    public static function named($name)
+    {
+        return new static($name);
+    }
 }
