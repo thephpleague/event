@@ -57,4 +57,4 @@ interface ListenerAcceptorInterface
      */
     public function addOneTimeListener($event, $listener, $priority = self::P_NORMAL);
 
-} 
+}
