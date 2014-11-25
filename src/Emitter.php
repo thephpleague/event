@@ -18,7 +18,7 @@ class Emitter implements EmitterInterface
      *
      * Listeners will get sorted and stored for re-use.
      *
-     * @var array
+     * @var ListenerInterface[]
      */
     protected $sortedListeners = [];
 
