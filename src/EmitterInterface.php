@@ -87,5 +87,5 @@ interface EmitterInterface extends ListenerAcceptorInterface
      *
      * @return EventInterface[]
      */
-    public function releaseGeneratorEvents(GeneratorInterface $generator);
+    public function emitGeneratedEvents(GeneratorInterface $generator);
 }

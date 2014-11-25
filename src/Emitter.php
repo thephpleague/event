@@ -109,11 +109,11 @@ class Emitter implements EmitterInterface
             return $listener;
         }
 
-        if (! is_callable($listener)) {
-            throw new InvalidArgumentException('Listeners should be be ListenerInterface, Closure or callable. Received type: '.gettype($listener));
+        if (is_callable($listener)) {
+            return CallbackListener::fromCallable($listener);
         }
 
-        return new CallbackListener($listener);
+        throw new InvalidArgumentException('Listeners should be be ListenerInterface, Closure or callable. Received type: '.gettype($listener));
     }
 
     /**
@@ -189,7 +189,7 @@ class Emitter implements EmitterInterface
     /**
      * {@inheritdoc}
      */
-    public function releaseGeneratorEvents(GeneratorInterface $generator)
+    public function emitGeneratedEvents(GeneratorInterface $generator)
     {
         $events = $generator->releaseEvents();
 
@@ -246,7 +246,7 @@ class Emitter implements EmitterInterface
     protected function ensureEvent($event)
     {
         if (is_string($event)) {
-            return new Event($event);
+            return Event::named($event);
         }
 
         if (! $event instanceof EventInterface) {

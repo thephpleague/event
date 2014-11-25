@@ -50,4 +50,15 @@ class CallbackListener implements ListenerInterface
 
         return $this->callback === $listener;
     }
+
+    /**
+     * Named constructor
+     *
+     * @param callable $callable
+     * @return static
+     */
+    public static function fromCallable(callable $callable)
+    {
+        return new static($callable);
+    }
 }

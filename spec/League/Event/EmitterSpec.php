@@ -77,7 +77,7 @@ class EmitterSpec extends ObjectBehavior
 
     public function it_should_allow_you_to_emit_plain_events()
     {
-        $callback = function () {};
+        $callback = CallbackListener::fromCallable(function () {});
         $this->addListener('event', $callback)->shouldReturn($this);
         $this->emit('event')->shouldReturnAnInstanceOf('League\Event\Event');
     }
@@ -146,13 +146,13 @@ class EmitterSpec extends ObjectBehavior
         $this->getListeners('event')->shouldReturn([$second, $first]);
     }
 
-    public function it_should_release_generator_events(GeneratorInterface $generator, ListenerInterface $listener)
+    public function it_should_emit_generator_events(GeneratorInterface $generator, ListenerInterface $listener)
     {
         $event = new Event('name');
         $this->addListener($event->getName(), $listener);
         $listener->handle($event)->shouldBeCalled();
         $generator->releaseEvents()->willReturn([$event]);
-        $this->releaseGeneratorEvents($generator)->shouldReturn([$event]);
+        $this->emitGeneratedEvents($generator)->shouldReturn([$event]);
     }
 
     public function getMatchers()
