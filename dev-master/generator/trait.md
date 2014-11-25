@@ -36,7 +36,7 @@ $user = new User;
 $user->updateAddress(new Addres(...));
 ~~~
 
-## Releasing Generated Events
+## Emitting and Releasing Generated Events
 
 Once events are generated, you'll want to release them so they can be emitted. The
 `GeneratorInterface` specifies a `releaseGeneratedEvents` which returns an arrray

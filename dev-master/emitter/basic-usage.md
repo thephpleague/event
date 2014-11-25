@@ -49,10 +49,21 @@ The `League\Event\EmitterInterface` has 3 predefined priorities:
 Events are emitted using the `emit` function.
 
 ~~~ php
-$emitter->emit($event);
+$event = $emitter->emit($event);
 ~~~
 
 The event can be of two types:
 
 * `string` - ([view docs](/dev-master/events/named/))
 * `League\Event\EventInterface` - ([view docs](/dev-master/events/classes/))
+
+### Emitting events in batches
+
+~~~ php
+$events = $emitter->emitBatch([$event, $event, $event]);
+~~~
+
+### Emit Return Values
+
+Events emitted are retuned as the result. When emitting events in batches an array
+of events is returned.
