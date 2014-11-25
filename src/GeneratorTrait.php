@@ -18,7 +18,7 @@ trait GeneratorTrait
      *
      * @return $this
      */
-    public function addEvent(EventInterface $event)
+    protected function addEvent(EventInterface $event)
     {
         $this->events[] = $event;
 
