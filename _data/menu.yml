@@ -10,6 +10,7 @@
     Listeners:
         Closure or Callable: '/dev-master/listeners/callables/'
         Listeners Classes: '/dev-master/listeners/listeners-classes/'
+        Providers: '/dev-master/listeners/providers/'
     Generator:
         Generator Class: '/dev-master/generator/class/'
         Generator Trait: '/dev-master/generator/trait/'

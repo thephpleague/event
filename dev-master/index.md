@@ -16,7 +16,8 @@ title: Event
 The `league/event` package provides a versatile tool to manage events in
 your app or domain. The package supports string based and class based events,
 as well as Closure or class based listeners. This makes the package ideal for
-regular event management but also allows for a clean DDD style of programming.
+regular event management but also allows for a clean event-driven style of
+programming.
 
 ## Installation
 
