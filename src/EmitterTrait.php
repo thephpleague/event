@@ -53,8 +53,7 @@ trait EmitterTrait
      */
     public function addListener($event, $listener, $priority = ListenerAcceptorInterface::P_NORMAL)
     {
-        $emitter = $this->getEmitter();
-        $emitter->addListener($event, $listener, $priority);
+        $this->getEmitter()->addListener($event, $listener, $priority);
 
         return $this;
     }
@@ -73,8 +72,7 @@ trait EmitterTrait
      */
     public function addOneTimeListener($event, $listener, $priority = ListenerAcceptorInterface::P_NORMAL)
     {
-        $emitter = $this->getEmitter();
-        $emitter->addOneTimeListener($event, $listener, $priority);
+        $this->getEmitter()->addOneTimeListener($event, $listener, $priority);
 
         return $this;
     }
@@ -93,9 +91,7 @@ trait EmitterTrait
      */
     public function removeListener($event, $listener)
     {
-        $emitter = $this->getEmitter();
-
-        call_user_func_array([$emitter, 'removeListener'], func_get_args());
+        $this->getEmitter()->removeListener($event, $listener);
 
         return $this;
     }
@@ -140,7 +136,8 @@ trait EmitterTrait
     public function emit($event)
     {
         $emitter = $this->getEmitter();
+        $arguments = [$event] + func_get_args();
 
-        return call_user_func_array([$emitter, 'emit'], func_get_args());
+        return call_user_func_array([$emitter, 'emit'], $arguments);
     }
 }
