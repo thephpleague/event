@@ -27,7 +27,7 @@ $emitter->addListenet('event.name', $listener);
 The listener can be of two types:
 
 * `callable` - ([view docs](/dev-master/listeners/callables/))
-* `League\Event\ListenerInterface` - ([view docs](/dev-master/listeners/class-based-listeners))
+* `League\Event\ListenerInterface` - ([view docs](/dev-master/listeners/classes/))
 
 ## Listener Priority
 
@@ -44,4 +44,15 @@ The `League\Event\EmitterInterface` has 3 predefined priorities:
 * `EmitterInterface::P_NORMAL` - 0
 * `EmitterInterface::P_HIGH` - -100
 
+## Emitting events
 
+Events are emitted using the `emit` function.
+
+~~~ php
+$emitter->emit($event);
+~~~
+
+The event can be of two types:
+
+* `string` - ([view docs](/dev-master/events/named/))
+* `League\Event\EventInterface` - ([view docs](/dev-master/events/classes/))
