@@ -13,6 +13,8 @@ same implementation of `isListener` the `AbstractListener` implements this for y
 ## Implementing the ListenerInterface
 
 ~~~ php
+<?php
+
 use League\Event\ListenerInterface;
 use League\Event\AbstractEvent;
 

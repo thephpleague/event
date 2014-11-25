@@ -3,7 +3,7 @@
         Introduction: '/dev-master/'
         Basic Usage: '/dev-master/emitter/basic-usage/'
     Events:
-        String Events: '/dev-master/events/string-events/'
+        Named Events: '/dev-master/events/named-events/'
         Events Classes: '/dev-master/events/events-classes/'
         Event Arguments: '/dev-master/events/arguments/'
         Propagation: '/dev-master/events/propagation/'
