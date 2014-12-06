@@ -65,5 +65,5 @@ $events = $emitter->emitBatch([$event, $event, $event]);
 
 ### Emit Return Values
 
-Events emitted are retuned as the result. When emitting events in batches an array
+Events emitted are returned as the result. When emitting events in batches an array
 of events is returned.

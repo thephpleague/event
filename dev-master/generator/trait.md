@@ -33,18 +33,19 @@ class User implements GeneratorInterface
 }
 
 $user = new User;
-$user->updateAddress(new Addres(...));
+$user->updateAddress(new Address(...));
 ~~~
 
 ## Emitting and Releasing Generated Events
 
 Once events are generated, you'll want to release them so they can be emitted. The
-`GeneratorInterface` specifies a `releaseGeneratedEvents` which returns an arrray
+`GeneratorInterface` specifies a `releaseGeneratedEvents` which returns an array
 of events to be emitted.
 
 ~~~ php
 $events = $user->releaseGeneratedEvents();
 $emitter->emitBatch($events);
+
 // Or the shorter version
 $emitter->emitGeneratedEvents($user);
 ~~~

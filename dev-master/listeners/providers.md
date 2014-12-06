@@ -5,7 +5,7 @@ title: Listener Providers
 
 # Listener Providers
 
-Listener providers allow for a class based listeners bootstrapping.
+Listener providers allow for a class based listeners registration.
 
 ~~~ php
 <?php
