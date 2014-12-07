@@ -24,5 +24,5 @@ programming.
 Install `league/event` through composer.
 
 ~~~ bash
-$ composer install league/event
+$ composer require league/event
 ~~~

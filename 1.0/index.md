@@ -23,5 +23,5 @@ regular event management but also allows for a clean DDD style of programming.
 Install `league/event` through composer.
 
 ~~~ bash
-$ composer install league/event
+$ composer require league/event
 ~~~
