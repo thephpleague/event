@@ -21,7 +21,7 @@ $emitter = new Emitter;
 Listeners are registered through the `addListener` method.
 
 ~~~ php
-$emitter->addListenet('event.name', $listener);
+$emitter->addListener('event.name', $listener);
 ~~~
 
 The listener can be of two types:
