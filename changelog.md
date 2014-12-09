@@ -1,10 +1,24 @@
 # Changelog
 
+## 2.0.0 - 2014-12-09
 
 ### Added
 
 - EventInterface: an interface is derived from the AbstractEvent class to allow more flexible type hinting and custom implementations. All the code expecting an AbstractEvent now expect an EventInterface implementation, however AbstractEvent covers the most use cases.
+- Event::named: named construtor to create string based events
+- CallbackListener::fromCallable: create a callback listener from a callable.
+- ListenerAcceptorInterface: An interface (distilled from the EmitterInterface) to only focus on accepting listeners.
+- ListenerProviderInterface: An interface to focus on providing the Emitter with new listeners.
+- EmitterInterface::useListenerProvider: Allows you to use an implementation of the ListenerProviderInterface to add listeners.
+- EmitterInterface::releaseGeneratedEvents: Eases the way events are released from GeneratorInterface implementations.
 
+### Altered
+
+- All event typehints have been changed from AbstractEvent to EventInterface
+
+### Removed
+
+- PriorityEmitter: this functionality is now part of the standard emitter.
 
 ## 1.0.0 - 2014-10-09
 
