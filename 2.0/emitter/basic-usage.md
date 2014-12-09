@@ -26,8 +26,8 @@ $emitter->addListener('event.name', $listener);
 
 The listener can be of two types:
 
-* `callable` - ([view docs](/dev-master/listeners/callables/))
-* `League\Event\ListenerInterface` - ([view docs](/dev-master/listeners/classes/))
+* `callable` - ([view docs](/2.0/listeners/callables/))
+* `League\Event\ListenerInterface` - ([view docs](/2.0/listeners/classes/))
 
 ## Listener Priority
 
@@ -54,8 +54,8 @@ $event = $emitter->emit($event);
 
 The event can be of two types:
 
-* `string` - ([view docs](/dev-master/events/named/))
-* `League\Event\EventInterface` - ([view docs](/dev-master/events/classes/))
+* `string` - ([view docs](/2.0/events/named/))
+* `League\Event\EventInterface` - ([view docs](/2.0/events/classes/))
 
 ### Emitting events in batches
 

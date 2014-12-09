@@ -1,4 +1,4 @@
 ---
 layout: redirect
-redirect_url: /1.0/
+redirect_url: /2.0/
 ---

@@ -15,4 +15,4 @@ $emitter = new Emitter;
 ~~~
 
 Once you've got the `Emitter` instance, you can register listeners using
-[callables](/listeners/callables) or [classes](/listeners/class-based-listeners).
+[callables](/1.0/listeners/callables) or [classes](/1.0/listeners/class-based-listeners).
