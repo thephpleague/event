@@ -42,7 +42,7 @@ The `League\Event\EmitterInterface` has 3 predefined priorities:
 
 * `EmitterInterface::P_HIGH`: 100
 * `EmitterInterface::P_NORMAL`: 0
-* `EmitterInterface::P_HIGH`: -100
+* `EmitterInterface::P_LOW`: -100
 
 ## Emitting events
 
