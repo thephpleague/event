@@ -1,6 +1,9 @@
 {
+    "require": {
+        "hhvm": ">=3.3.0"
+    },
     "require-dev": {
-        "phpspec/phpspec": "2.0.*@dev"
+        "phpspec/phpspec": "2.0.*"
     },
     "autoload": {
         "psr-4": {
@@ -14,5 +17,5 @@
     },
     "config": {
         "bin-dir": "bin"
-    }
+    },
 }

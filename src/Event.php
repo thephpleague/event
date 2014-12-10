@@ -30,7 +30,10 @@ class Event extends AbstractEvent
     }
 
     /**
-     * @param $name
+     * Create a new event instance.
+     *
+     * @param string $name
+     *
      * @return static
      */
     public static function named($name)

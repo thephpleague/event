@@ -22,6 +22,7 @@ interface EmitterInterface extends ListenerAcceptorInterface
      * Use a provider to add listeners.
      *
      * @param ListenerProviderInterface $provider
+     *
      * @return $this
      */
     public function useListenerProvider(ListenerProviderInterface $provider);

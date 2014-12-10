@@ -49,6 +49,7 @@ trait EmitterTrait
      * @param string                     $event
      * @param ListenerInterface|callable $listener
      * @param int                        $priority
+     *
      * @return $this
      */
     public function addListener($event, $listener, $priority = ListenerAcceptorInterface::P_NORMAL)
@@ -68,6 +69,7 @@ trait EmitterTrait
      * @param string                     $event
      * @param ListenerInterface|callable $listener
      * @param int                        $priority
+     *
      * @return $this
      */
     public function addOneTimeListener($event, $listener, $priority = ListenerAcceptorInterface::P_NORMAL)
@@ -117,6 +119,7 @@ trait EmitterTrait
      * Add listeners from a provider.
      *
      * @param ListenerProviderInterface $provider
+     *
      * @return $this
      */
     public function useListenerProvider(ListenerProviderInterface $provider)

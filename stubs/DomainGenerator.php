@@ -14,4 +14,4 @@ class DomainGenerator implements GeneratorInterface
     {
         $this->addEvent($event);
     }
-} 
+}

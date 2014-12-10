@@ -4,19 +4,18 @@ namespace spec\League\Event;
 
 use League\Event\EmitterInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ListenerAcceptorSpec extends ObjectBehavior
 {
     protected $emitter;
 
-    function let(EmitterInterface $emitter)
+    public function let(EmitterInterface $emitter)
     {
         $this->emitter = $emitter;
         $this->beConstructedWith($emitter);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('League\Event\ListenerAcceptor');
         $this->shouldHaveType('League\Event\ListenerAcceptorInterface');
