@@ -2,13 +2,13 @@
 
 namespace spec\League\Event;
 
+use League\Event\CallbackListener;
 use League\Event\Event;
 use League\Event\GeneratorInterface;
 use League\Event\ListenerAcceptorInterface;
 use League\Event\ListenerInterface;
 use League\Event\ListenerProviderInterface;
 use League\Event\Stub\Listener;
-use League\Event\CallbackListener;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

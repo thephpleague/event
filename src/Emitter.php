@@ -100,7 +100,9 @@ class Emitter implements EmitterInterface
      * Ensure the input is a listener.
      *
      * @param ListenerInterface|callable $listener
+     *
      * @throws InvalidArgumentException
+     *
      * @return ListenerInterface
      */
     protected function ensureListener($listener)
@@ -144,6 +146,7 @@ class Emitter implements EmitterInterface
      * Get the listeners sorted by priority for a given event.
      *
      * @param string $event
+     *
      * @return ListenerInterface[]
      */
     protected function getSortedListeners($event)
