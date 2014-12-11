@@ -13,4 +13,4 @@ the normal events are.
 
 ~~~ php
 $emitter->addListener('*', new CustomWildcardListener);
-~~
+~~~
