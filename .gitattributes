@@ -4,11 +4,11 @@
 /stubs export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore
+/.php_cs export-ignore
 /.scrutinizer.yml export-ignore
 /.travis.yml export-ignore
 /phpspec.yml export-ignore
 /phpspec.hhvm.yml export-ignore
-/composer.hhvm.json export-ignore
 /changelog.md export-ignore
 /readme.md export-ignore
 /upgrade.md export-ignore
