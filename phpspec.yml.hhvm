@@ -1,6 +1,0 @@
----
-suites:
-      event_suite:
-        namespace: League\Event
-        psr4_prefix: League\Event
-formatter.name: pretty
