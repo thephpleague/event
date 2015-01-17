@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.0 - UNRELEASED
+
+### Added
+
+- EmitterAwareInterface: an interface to be EmitterInterface aware.
+- EmitterAwareTrait: a default implementation to EmitterAwareInterface
+
+### Changed
+
+- EmitterTrait: The EmitterAware interface was extracted from this, which it now uses.
+
 ## 2.0.0 - 2014-12-09
 
 ### Added
