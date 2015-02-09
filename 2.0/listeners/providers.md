@@ -10,11 +10,12 @@ Listener providers allow for a class based listeners registration.
 ~~~ php
 <?php
 
+use League\Event\ListenerAcceptorInterface;
 use League\Event\ListenerProviderInterface;
 
 class MyProvider implements ListenerProviderInterface
 {
-    public function provide(ListenerAcceptorInterface $acceptor)
+    public function provideListeners(ListenerAcceptorInterface $acceptor)
     {
         $acceptor->addListener('event', new MyListeners);
     }
