@@ -157,7 +157,7 @@ class Emitter implements EmitterInterface
 
         $listeners = $this->listeners[$event];
 
-        usort($listeners, function ($a, $b) {
+        MergeSort::sort($listeners, function ($a, $b) {
             return $b[1] - $a[1];
         });
 
