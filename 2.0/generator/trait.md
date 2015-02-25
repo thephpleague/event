@@ -5,7 +5,7 @@ title: Generator Trait
 
 # Generator Trait
 
-The `GeneratorTrait` provides an interface to accumulate events and release them at a later time.
+The `GeneratorTrait` provides an implementation of the `GeneratorInterface` to accumulate events and release them at a later time.
 There are two methods provided by this trait:
 
 * public function releaseGeneratedEvents
