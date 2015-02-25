@@ -56,7 +56,7 @@ When you prefer a more expressive syntax you can alter the `addEvent` method nam
 ~~~ php
 class User
 {
-    use Generator {
+    use GeneratorTrait {
         addEvent as recordThat;
     }
 
