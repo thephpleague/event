@@ -18,12 +18,12 @@ events are emitted.
 ## Implementation Example
 
 ~~~ php
-use League\Event\Generator;
+use League\Event\GeneratorTrait;
 use League\Event\GeneratorInterface;
 
 class User implements GeneratorInterface
 {
-    use Generator;
+    use GeneratorTrait;
 
     public function updateAddress(Address $address)
     {
