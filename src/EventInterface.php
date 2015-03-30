@@ -28,7 +28,7 @@ interface EventInterface
     public function stopPropagation();
 
     /**
-     * Check weather propagation was stopped.
+     * Check whether propagation was stopped.
      *
      * @return bool
      */

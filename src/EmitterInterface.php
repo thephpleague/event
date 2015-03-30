@@ -40,7 +40,7 @@ interface EmitterInterface extends ListenerAcceptorInterface
     public function removeAllListeners($event);
 
     /**
-     * Check weather an event has listeners.
+     * Check whether an event has listeners.
      *
      * The first parameter should be the event name. We'll return true if the
      * event has one or more registered even listeners, and false otherwise.

@@ -14,7 +14,7 @@ interface ListenerInterface
     public function handle(EventInterface $event);
 
     /**
-     * Check weather the listener is the given parameter.
+     * Check whether the listener is the given parameter.
      *
      * @param mixed $listener
      *
