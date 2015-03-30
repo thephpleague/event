@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.1 - 2015-03-30
+
+# Altered
+
+- __Emitter::emitBatch__ now uses a foreach instead of array map to allow better exception handling.
+
 ## 2.1.0 - 2015-02-12
 
 ### Added
