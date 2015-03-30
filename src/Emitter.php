@@ -184,9 +184,13 @@ class Emitter implements EmitterInterface
      */
     public function emitBatch(array $events)
     {
-        $emit = [$this, 'emit'];
+        $results = [];
 
-        return array_map($emit, $events);
+        foreach ($events as $event) {
+            $results[] = $this->emit($event);
+        }
+
+        return $results;
     }
 
     /**
