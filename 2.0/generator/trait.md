@@ -5,7 +5,7 @@ title: Generator Trait
 
 # Generator Trait
 
-The `GeneratorTrait` provides an interface to accumulate events and release them at a later time.
+The `GeneratorTrait` provides an implementation of the `GeneratorInterface` to accumulate events and release them at a later time.
 There are two methods provided by this trait:
 
 * public function releaseGeneratedEvents
@@ -18,12 +18,12 @@ events are emitted.
 ## Implementation Example
 
 ~~~ php
-use League\Event\Generator;
+use League\Event\GeneratorTrait;
 use League\Event\GeneratorInterface;
 
 class User implements GeneratorInterface
 {
-    use Generator;
+    use GeneratorTrait;
 
     public function updateAddress(Address $address)
     {
@@ -56,7 +56,7 @@ When you prefer a more expressive syntax you can alter the `addEvent` method nam
 ~~~ php
 class User
 {
-    use Generator {
+    use GeneratorTrait {
         addEvent as recordThat;
     }
 
