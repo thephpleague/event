@@ -14,7 +14,7 @@ same implementation of `isListener` the `AbstractListener` implements this for y
 
 ~~~ php
 use League\Event\ListenerInterface;
-use League\Event\EventInterface;
+use League\Event\AbstractEvent;
 
 class DomainListener implements ListenerInterface
 {
@@ -23,7 +23,7 @@ class DomainListener implements ListenerInterface
         return $listener === $this;
     }
 
-    public function handle(EventInterface $event)
+    public function handle(AbstractEvent $event)
     {
         // Handle the event.
     }
@@ -36,11 +36,11 @@ $emitter->addListener('event.name', new DomainListener);
 
 ~~~ php
 use League\Event\AbstractListener;
-use League\Event\EventInterface;
+use League\Event\AbstractEvent;
 
 class DomainListener extends AbstractListener
 {
-    public function handle(EventInterface $event)
+    public function handle(AbstractEvent $event)
     {
         // Handle the event.
     }

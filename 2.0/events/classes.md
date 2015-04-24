@@ -8,7 +8,7 @@ title: Class Based Events
 The emitter accepts implementations of the `EventInterface` interface.
 
 ~~~ php
-use League\Event\AbstractEvent;
+use League\Event\EventInterface;
 
 class DomainEvent implements EventInterface
 {
