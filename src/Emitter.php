@@ -28,12 +28,7 @@ class Emitter implements EmitterInterface
     public function addListener($event, $listener, $priority = self::P_NORMAL)
     {
         $listener = $this->ensureListener($listener);
-
-        if (! isset($this->listeners[$event])) {
-            $this->listeners[$event] = [];
-        }
-
-        $this->listeners[$event][] = [$listener, $priority];
+        $this->listeners[$event][$priority][] = $listener;
         $this->clearSortedListeners($event);
 
         return $this;
@@ -66,18 +61,21 @@ class Emitter implements EmitterInterface
      */
     public function removeListener($event, $listener)
     {
-        $listeners = [];
-
-        if ($this->hasListeners($event)) {
-            $listeners = $this->listeners[$event];
-        }
+        $this->clearSortedListeners($event);
+        $listeners = $this->hasListeners($event)
+            ? $this->listeners[$event]
+            : [];
 
         $filter = function ($registered) use ($listener) {
-            return ! $registered[0]->isListener($listener);
+            return ! $registered->isListener($listener);
         };
 
-        $this->listeners[$event] = array_filter($listeners, $filter);
-        $this->clearSortedListeners($event);
+        foreach ($listeners as $priority => $collection) {
+            $listeners[$priority] = array_filter($collection, $filter);
+        }
+
+        $this->listeners[$event] = $listeners;
+
 
         return $this;
     }
@@ -156,14 +154,9 @@ class Emitter implements EmitterInterface
         }
 
         $listeners = $this->listeners[$event];
+        krsort($listeners);
 
-        usort($listeners, function ($a, $b) {
-            return $b[1] - $a[1];
-        });
-
-        return array_map(function ($listener) {
-            return $listener[0];
-        }, $listeners);
+        return call_user_func_array('array_merge', $listeners);
     }
 
     /**
@@ -270,8 +263,6 @@ class Emitter implements EmitterInterface
      */
     protected function clearSortedListeners($event)
     {
-        if (isset($this->sortedListeners[$event])) {
-            unset($this->sortedListeners[$event]);
-        }
+        unset($this->sortedListeners[$event]);
     }
 }
