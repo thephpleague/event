@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.2 - 2015-05-21
+
+### Fixed
+
+- Event emitting now respects the order in which the listeners were added in addition to priority.
+
 ## 2.1.1 - 2015-03-30
 
 # Altered
