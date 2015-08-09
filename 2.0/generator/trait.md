@@ -27,7 +27,7 @@ class User implements GeneratorInterface
 
     public function updateAddress(Address $address)
     {
-        $this->addres = $address;
+        $this->address = $address;
         $this->addEvent(new UserAddressWasChanged($this, $address));
     }
 }
@@ -62,7 +62,7 @@ class User
 
     public function updateAddress(Address $address)
     {
-        $this->addres = $address;
+        $this->address = $address;
         $this->recordThat(new UserAddressWasChanged($this, $address));
     }
 }
