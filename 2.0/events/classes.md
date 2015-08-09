@@ -28,5 +28,5 @@ $emitter->emit(new DomainEvent);
 
 ## AbstractEvent
 
-The package also provides an abstract class which provides a defauls `getName`
+The package also provides an abstract class which provides a default `getName`
 implementation returning the FQCN.

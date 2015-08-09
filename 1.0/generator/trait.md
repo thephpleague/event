@@ -18,13 +18,13 @@ class User
 
     public function updateAddress(Address $address)
     {
-        $this->addres = $address;
+        $this->address = $address;
         $this->addEvent(new UserAddressWasChanged($this, $address));
     }
 }
 
 $user = new User;
-$user->updateAddress(new Addres(...));
+$user->updateAddress(new Address(...));
 $events = $user->releaseEvents();
 $emitter->emitBatch($events);
 ~~~
@@ -40,7 +40,7 @@ class User
 
     public function updateAddress(Address $address)
     {
-        $this->addres = $address;
+        $this->address = $address;
         $this->recordThat(new UserAddressWasChanged($this, $address));
     }
 }
