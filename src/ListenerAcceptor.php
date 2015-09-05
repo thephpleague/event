@@ -22,7 +22,7 @@ class ListenerAcceptor implements ListenerAcceptorInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function addListener($event, $listener, $priority = self::P_NORMAL)
     {
@@ -32,7 +32,7 @@ class ListenerAcceptor implements ListenerAcceptorInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function addOneTimeListener($event, $listener, $priority = self::P_NORMAL)
     {

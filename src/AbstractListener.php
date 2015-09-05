@@ -5,7 +5,7 @@ namespace League\Event;
 abstract class AbstractListener implements ListenerInterface
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function isListener($listener)
     {
