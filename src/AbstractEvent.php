@@ -19,7 +19,7 @@ abstract class AbstractEvent implements EventInterface
     protected $emitter;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function setEmitter(EmitterInterface $emitter)
     {
@@ -29,7 +29,7 @@ abstract class AbstractEvent implements EventInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getEmitter()
     {
@@ -37,7 +37,7 @@ abstract class AbstractEvent implements EventInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function stopPropagation()
     {
@@ -47,7 +47,7 @@ abstract class AbstractEvent implements EventInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function isPropagationStopped()
     {
@@ -55,7 +55,7 @@ abstract class AbstractEvent implements EventInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getName()
     {
