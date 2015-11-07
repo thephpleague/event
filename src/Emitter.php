@@ -23,7 +23,7 @@ class Emitter implements EmitterInterface
     protected $sortedListeners = [];
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function addListener($event, $listener, $priority = self::P_NORMAL)
     {
@@ -35,7 +35,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function addOneTimeListener($event, $listener, $priority = self::P_NORMAL)
     {
@@ -46,7 +46,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function useListenerProvider(ListenerProviderInterface $provider)
     {
@@ -57,7 +57,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function removeListener($event, $listener)
     {
@@ -81,7 +81,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function removeAllListeners($event)
     {
@@ -117,7 +117,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function hasListeners($event)
     {
@@ -129,7 +129,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getListeners($event)
     {
@@ -160,7 +160,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function emit($event)
     {
@@ -173,7 +173,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function emitBatch(array $events)
     {
@@ -187,7 +187,7 @@ class Emitter implements EmitterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function emitGeneratedEvents(GeneratorInterface $generator)
     {
