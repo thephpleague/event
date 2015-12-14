@@ -113,7 +113,7 @@ class Emitter implements EmitterInterface
             return CallbackListener::fromCallable($listener);
         }
 
-        throw new InvalidArgumentException('Listeners should be be ListenerInterface, Closure or callable. Received type: '.gettype($listener));
+        throw new InvalidArgumentException('Listeners should be ListenerInterface, Closure or callable. Received type: '.gettype($listener));
     }
 
     /**
