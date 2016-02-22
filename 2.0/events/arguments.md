@@ -19,6 +19,7 @@ When using class based listeners, the method signature must comply with the inte
 Therefor the parameters must have default values.
 
 ~~~ php
+use League\Event\AbstractEvent;
 use League\Event\AbstractListener;
 
 class DomainListener extends AbstractListener
