@@ -24,7 +24,7 @@ class BufferedEmitter extends Emitter
      */
     public function emitBatch(array $events)
     {
-        foreach($events as $event) {
+        foreach ($events as $event) {
             $this->bufferedEvents[] = $event;
         }
 
@@ -40,7 +40,7 @@ class BufferedEmitter extends Emitter
     {
         $result = [];
 
-        foreach($this->bufferedEvents as $event) {
+        foreach ($this->bufferedEvents as $event) {
             $result[] = parent::emit($event);
         }
 
