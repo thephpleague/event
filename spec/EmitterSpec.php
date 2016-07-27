@@ -2,6 +2,7 @@
 
 namespace spec\League\Event;
 
+use Exception;
 use League\Event\CallbackListener;
 use League\Event\Event;
 use League\Event\GeneratorInterface;
@@ -84,9 +85,13 @@ class EmitterSpec extends ObjectBehavior
 
     public function it_should_allow_you_to_emit_events_with_additional_arguments()
     {
-        $callback = function ($event, $test, $example) {};
+        $callback = function ($event, $foo, $bar) {
+            if ($foo !== 'foo' || $bar !== 'bar') {
+                throw new Exception('Arguments do not match the expected value.');
+            }
+        };
         $this->addListener('event', $callback)->shouldReturn($this);
-        $this->emit('event', 'test', 'example')->shouldReturnAnInstanceOf('League\Event\Event');
+        $this->emit('event', 'foo', 'bar')->shouldReturnAnInstanceOf('League\Event\Event');
     }
 
     public function it_should_allow_you_to_emit_event_instances(Event $event)
@@ -111,9 +116,18 @@ class EmitterSpec extends ObjectBehavior
     
     public function it_should_allow_you_batch_emit_with_additional_arguments(Event $event)
     {
-        $callback = function ($event, $test, $example) {};
+        $callback = function ($event, $foo, $bar) {
+            if ($foo !== 'foo' || $bar !== 'bar') {
+                throw new Exception('Arguments do not match the expected value.');
+            }
+        };
+        
+        $event->getName()->willReturn('event');
+        $event->setEmitter($this)->shouldBeCalled();
+        $event->isPropagationStopped()->willReturn(false);
+        
         $this->addListener('event', $callback)->shouldReturn($this);
-        $this->emitBatch([$event], 'test', 'example')->shouldReturn([$event]);
+        $this->emitBatch([$event], 'foo', 'bar')->shouldReturn([$event]);
     }
 
     public function it_should_stop_respond_to_stopping_propagation(Event $event)
