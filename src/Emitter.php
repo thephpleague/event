@@ -180,7 +180,10 @@ class Emitter implements EmitterInterface
         $results = [];
 
         foreach ($events as $event) {
-            $results[] = $this->emit($event);
+            $results[] = call_user_func_array(
+                [$this, 'emit'],
+                [$event] + array_slice(func_get_args(), 1)
+            );
         }
 
         return $results;

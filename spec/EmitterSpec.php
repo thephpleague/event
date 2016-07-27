@@ -82,6 +82,13 @@ class EmitterSpec extends ObjectBehavior
         $this->emit('event')->shouldReturnAnInstanceOf('League\Event\Event');
     }
 
+    public function it_should_allow_you_to_emit_events_with_additional_arguments()
+    {
+        $callback = function ($event, $test, $example) {};
+        $this->addListener('event', $callback)->shouldReturn($this);
+        $this->emit('event', 'test', 'example')->shouldReturnAnInstanceOf('League\Event\Event');
+    }
+
     public function it_should_allow_you_to_emit_event_instances(Event $event)
     {
         $event->setEmitter($this)->shouldBeCalled();
@@ -100,6 +107,13 @@ class EmitterSpec extends ObjectBehavior
         $listener->handle($event)->shouldBeCalled();
         $this->addListener('event', $listener);
         $this->emitBatch([$event])->shouldReturn([$event]);
+    }
+    
+    public function it_should_allow_you_batch_emit_with_additional_arguments(Event $event)
+    {
+        $callback = function ($event, $test, $example) {};
+        $this->addListener('event', $callback)->shouldReturn($this);
+        $this->emitBatch([$event], 'test', 'example')->shouldReturn([$event]);
     }
 
     public function it_should_stop_respond_to_stopping_propagation(Event $event)
