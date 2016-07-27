@@ -182,7 +182,7 @@ class Emitter implements EmitterInterface
         foreach ($events as $event) {
             $results[] = call_user_func_array(
                 [$this, 'emit'],
-                [$event] + array_slice(func_get_args(), 1)
+                [$event] + array_slice(func_get_args(), 0)
             );
         }
 
