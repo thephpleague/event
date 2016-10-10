@@ -14,7 +14,7 @@ $emitter->addListener('event.name', function ($event) {
    // Handle the event.
 });
 // Or better:
-$emitter->addListener('event.name', CallbackListener::fromCallback(function () {
+$emitter->addListener('event.name', CallbackListener::fromCallable(function () {
     // Handle the event.
 }));
 ~~~
