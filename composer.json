@@ -13,8 +13,12 @@
         "php": ">=5.4.0"
     },
     "require-dev": {
+        "container-interop/container-interop": "^1.1",
         "henrikbjorn/phpspec-code-coverage": "~1.0.1",
         "phpspec/phpspec": "^2.2"
+    },
+    "suggest": {
+        "container-interop/container-interop": "For using the LazyListener"
     },
     "autoload": {
         "psr-4": {
