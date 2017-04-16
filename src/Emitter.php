@@ -265,4 +265,21 @@ class Emitter implements EmitterInterface
     {
         unset($this->sortedListeners[$event]);
     }
+    
+    /**
+     * Debug friendly object properties.
+     * 
+     * @return array
+     */
+    public function __debugInfo()
+    {
+        $properties = get_object_vars($this);
+        $properties['_generalManager'] = '(object) Emitter';
+        $properties['_listeners'] = [];
+        foreach ($this->listeners as $key => $listeners) {
+            $properties['_listeners'][$key] = count($listeners).' listener(s)';
+        }
+
+        return $properties;
+    }
 }
