@@ -10,10 +10,6 @@ php:
   - 7.1
   - 7.2
 
-before_install:
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ]; then rm phpspec.yml; fi;'
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ]; then mv phpspec.hhvm.yml phpspec.yml; fi;'
-
 install:
   - travis_retry composer install --no-interaction --prefer-source
 
@@ -21,5 +17,5 @@ script:
   - bin/phpspec run
 
 after_script:
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi;'
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php ocular.phar code-coverage:upload --format=php-clover coverage.xml; fi;'
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.xml
