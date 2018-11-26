@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.0 2018-11-26
+
+* Buffered event emitter was added.
+
 ## 2.1.2 - 2015-05-21
 
 ### Fixed
