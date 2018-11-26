@@ -3,7 +3,7 @@
 namespace spec\League\Event;
 
 use League\Event\Emitter;
-use League\Event\EventInterface;
+use League\Event\Event;
 use League\Event\ListenerInterface;
 use PhpSpec\ObjectBehavior;
 
@@ -11,10 +11,16 @@ class OneTimeListenerSpec extends ObjectBehavior
 {
     protected $listener;
 
+    /**
+     * @var Emitter
+     */
+    protected $emitter;
+
     public function let(ListenerInterface $listener)
     {
         $this->listener = $listener;
-        $this->beConstructedWith($this->listener);
+        $this->emitter = new Emitter();
+        $this->beConstructedWith($this->listener, $this->emitter);
     }
 
     public function it_is_initializable()
@@ -27,11 +33,10 @@ class OneTimeListenerSpec extends ObjectBehavior
         $this->getWrappedListener()->shouldReturn($this->listener);
     }
 
-    public function it_should_unregister_and_forward_the_handle_call(EventInterface $event, Emitter $emitter)
+    public function it_should_unregister_and_forward_the_handle_call()
     {
-        $event->getName()->willReturn('event');
-        $event->getEmitter()->willReturn($emitter);
-        $emitter->removeListener('event', $this->listener)->shouldBeCalled();
+        $event = Event::named('event');
+        $event->setEmitter($this->emitter);
         $this->listener->handle($event)->shouldBeCalled();
         $this->handle($event);
     }

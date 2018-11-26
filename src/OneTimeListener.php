@@ -2,8 +2,10 @@
 
 namespace League\Event;
 
-class OneTimeListener implements ListenerInterface
+class OneTimeListener implements ListenerInterface, EmitterAwareInterface
 {
+    use EmitterAwareBehaviour;
+
     /**
      * The listener instance.
      *
@@ -15,10 +17,12 @@ class OneTimeListener implements ListenerInterface
      * Create a new one time listener instance.
      *
      * @param ListenerInterface $listener
+     * @param EmitterInterface  $emitter
      */
-    public function __construct(ListenerInterface $listener)
+    public function __construct(ListenerInterface $listener, EmitterInterface $emitter)
     {
         $this->listener = $listener;
+        $this->setEmitter($emitter);
     }
 
     /**
@@ -34,11 +38,12 @@ class OneTimeListener implements ListenerInterface
     /**
      * @inheritdoc
      */
-    public function handle(EventInterface $event)
+    public function handle($event)
     {
-        $name = $event->getName();
-        $emitter = $event->getEmitter();
-        $emitter->removeListener($name, $this->listener);
+        $name = $event instanceof HasEventNameInterface
+            ? $event->getName()
+            : get_class($event);
+        $this->getEmitter()->removeListener($name, $this->listener);
 
         return call_user_func_array([$this->listener, 'handle'], func_get_args());
     }

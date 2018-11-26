@@ -2,8 +2,8 @@
 
 namespace spec\League\Event\Stub;
 
-use League\Event\EventInterface;
 use PhpSpec\ObjectBehavior;
+use stdClass;
 
 class DomainGeneratorSpec extends ObjectBehavior
 {
@@ -13,9 +13,9 @@ class DomainGeneratorSpec extends ObjectBehavior
         $this->shouldHaveType('League\Event\GeneratorInterface');
     }
 
-    public function it_should_record_an_event_internally(EventInterface $event)
+    public function it_should_record_an_event_internally()
     {
-        $this->recordAnEvent($event);
+        $this->recordAnEvent($event = new stdClass());
         $this->releaseEvents()->shouldReturn([$event]);
     }
 }

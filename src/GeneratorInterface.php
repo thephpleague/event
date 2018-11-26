@@ -7,7 +7,7 @@ interface GeneratorInterface
     /**
      * Release all the added events.
      *
-     * @return EventInterface[]
+     * @return object[]
      */
     public function releaseEvents();
 }

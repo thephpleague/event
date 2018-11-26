@@ -5,7 +5,7 @@ namespace League\Event;
 class BufferedEmitter extends Emitter
 {
     /**
-     * @var EventInterface[]
+     * @var object[]
      */
     protected $bufferedEvents = [];
 

@@ -5,8 +5,6 @@ namespace League\Event;
 class Event extends AbstractEvent
 {
     /**
-     * The event name.
-     *
      * @var string
      */
     protected $name;
@@ -21,9 +19,6 @@ class Event extends AbstractEvent
         $this->name = $name;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getName()
     {
         return $this->name;

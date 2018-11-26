@@ -40,7 +40,7 @@ class Emitter implements EmitterInterface
     public function addOneTimeListener($event, $listener, $priority = self::P_NORMAL)
     {
         $listener = $this->ensureListener($listener);
-        $listener = new OneTimeListener($listener);
+        $listener = new OneTimeListener($listener, $this);
 
         return $this->addListener($event, $listener, $priority);
     }
@@ -50,8 +50,7 @@ class Emitter implements EmitterInterface
      */
     public function useListenerProvider(ListenerProviderInterface $provider)
     {
-        $acceptor = new ListenerAcceptor($this);
-        $provider->provideListeners($acceptor);
+        $provider->provideListeners(new ListenerAcceptor($this));
 
         return $this;
     }
@@ -113,7 +112,7 @@ class Emitter implements EmitterInterface
             return CallbackListener::fromCallable($listener);
         }
 
-        throw new InvalidArgumentException('Listeners should be ListenerInterface, Closure or callable. Received type: '.gettype($listener));
+        throw new InvalidArgumentException('Listeners should be ListenerInterface, Closure or callable. Received type: ' . gettype($listener));
     }
 
     /**
@@ -121,7 +120,7 @@ class Emitter implements EmitterInterface
      */
     public function hasListeners($event)
     {
-        if (! isset($this->listeners[$event]) || count($this->listeners[$event]) === 0) {
+        if ( ! isset($this->listeners[$event]) || count($this->listeners[$event]) === 0) {
             return false;
         }
 
@@ -149,7 +148,7 @@ class Emitter implements EmitterInterface
      */
     protected function getSortedListeners($event)
     {
-        if (! $this->hasListeners($event)) {
+        if ( ! $this->hasListeners($event)) {
             return [];
         }
 
@@ -199,18 +198,19 @@ class Emitter implements EmitterInterface
     /**
      * Invoke the listeners for an event.
      *
-     * @param string         $name
-     * @param EventInterface $event
-     * @param array          $arguments
+     * @param string $name
+     * @param object $event
+     * @param array  $arguments
      *
      * @return void
      */
-    protected function invokeListeners($name, EventInterface $event, array $arguments)
+    protected function invokeListeners($name, $event, array $arguments)
     {
         $listeners = $this->getListeners($name);
+        $canStopPropagation = $event instanceof PropagationAwareInterface;
 
         foreach ($listeners as $listener) {
-            if ($event->isPropagationStopped()) {
+            if ($canStopPropagation && $event->isPropagationStopped()) {
                 break;
             }
 
@@ -221,27 +221,32 @@ class Emitter implements EmitterInterface
     /**
      * Prepare an event for emitting.
      *
-     * @param string|EventInterface $event
+     * @param string|object $event
      *
      * @return array
      */
     protected function prepareEvent($event)
     {
         $event = $this->ensureEvent($event);
-        $name = $event->getName();
-        $event->setEmitter($this);
+        $name = $event instanceof HasEventNameInterface
+            ? $event->getName()
+            : get_class($event);
+
+        if ($event instanceof EmitterAwareInterface) {
+            $event->setEmitter($this);
+        }
 
         return [$name, $event];
     }
 
     /**
-     * Ensure event input is of type EventInterface or convert it.
+     * Ensure event input is a valid event or convert it.
      *
-     * @param string|EventInterface $event
+     * @param string|object $event
      *
      * @throws InvalidArgumentException
      *
-     * @return EventInterface
+     * @return object
      */
     protected function ensureEvent($event)
     {
@@ -249,8 +254,8 @@ class Emitter implements EmitterInterface
             return Event::named($event);
         }
 
-        if (! $event instanceof EventInterface) {
-            throw new InvalidArgumentException('Events should be provides as Event instances or string, received type: '.gettype($event));
+        if ( ! is_object($event)) {
+            throw new InvalidArgumentException('Events should be provided as object or string, received type: ' . gettype($event));
         }
 
         return $event;

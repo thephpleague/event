@@ -5,7 +5,6 @@ namespace spec\League\Event;
 use League\Event\CallbackListener;
 use League\Event\Event;
 use League\Event\GeneratorInterface;
-use League\Event\ListenerAcceptorInterface;
 use League\Event\ListenerInterface;
 use League\Event\ListenerProviderInterface;
 use League\Event\Stub\Listener;
@@ -124,11 +123,15 @@ class EmitterSpec extends ObjectBehavior
         $this->getListeners('event')->shouldContain($listener);
     }
 
-    public function it_should_convert_listeners_to_one_time_listeners(ListenerInterface $listener)
+    public function it_should_handle_one_time_listeners()
     {
+        $listener = new Listener();
         $this->addOneTimeListener('event', $listener);
         $this->getListeners('event')->shouldContainInstanceOfType('League\Event\OneTimeListener');
         $this->getListeners('event')->shouldNotContain($listener);
+        $this->getListeners('event')->shouldHaveCount(1);
+        $this->emit('event');
+        $this->getListeners('event')->shouldHaveCount(0);
     }
 
     public function it_should_allow_an_any_listener(ListenerInterface $listener)

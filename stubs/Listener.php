@@ -3,12 +3,14 @@
 namespace League\Event\Stub;
 
 use League\Event\AbstractListener;
-use League\Event\EventInterface;
+use League\Event\PropagationAwareInterface;
 
 class Listener extends AbstractListener
 {
-    public function handle(EventInterface $event)
+    public function handle($event)
     {
-        $event->stopPropagation();
+        if ($event instanceof PropagationAwareInterface) {
+            $event->stopPropagation();
+        }
     }
 }

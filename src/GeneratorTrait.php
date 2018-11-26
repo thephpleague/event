@@ -7,18 +7,18 @@ trait GeneratorTrait
     /**
      * The registered events.
      *
-     * @var EventInterface[]
+     * @var object[]
      */
     protected $events = [];
 
     /**
      * Add an event.
      *
-     * @param EventInterface $event
+     * @param object $event
      *
      * @return $this
      */
-    protected function addEvent(EventInterface $event)
+    protected function addEvent($event)
     {
         $this->events[] = $event;
 
@@ -28,7 +28,7 @@ trait GeneratorTrait
     /**
      * Release all the added events.
      *
-     * @return EventInterface[]
+     * @return object[]
      */
     public function releaseEvents()
     {

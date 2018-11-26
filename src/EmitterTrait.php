@@ -99,9 +99,9 @@ trait EmitterTrait
     /**
      * Emit an event.
      *
-     * @param string|EventInterface $event
+     * @param string|object $event
      *
-     * @return EventInterface
+     * @return object
      */
     public function emit($event)
     {

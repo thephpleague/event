@@ -66,9 +66,9 @@ interface EmitterInterface extends ListenerAcceptorInterface
     /**
      * Emit an event.
      *
-     * @param string|EventInterface $event
+     * @param string|object $event
      *
-     * @return EventInterface
+     * @return object
      */
     public function emit($event);
 
@@ -86,7 +86,7 @@ interface EmitterInterface extends ListenerAcceptorInterface
      *
      * @param GeneratorInterface $generator
      *
-     * @return EventInterface[]
+     * @return object[]
      */
     public function emitGeneratedEvents(GeneratorInterface $generator);
 }

@@ -2,7 +2,7 @@
 
 namespace League\Event;
 
-trait EmitterAwareTrait
+trait EmitterAwareBehaviour
 {
     /**
      * The emitter instance.
@@ -11,13 +11,6 @@ trait EmitterAwareTrait
      */
     protected $emitter;
 
-    /**
-     * Set the Emitter.
-     *
-     * @param EmitterInterface|null $emitter
-     *
-     * @return $this
-     */
     public function setEmitter(EmitterInterface $emitter = null)
     {
         $this->emitter = $emitter;
@@ -25,17 +18,8 @@ trait EmitterAwareTrait
         return $this;
     }
 
-    /**
-     * Get the Emitter.
-     *
-     * @return EmitterInterface
-     */
     public function getEmitter()
     {
-        if ( ! $this->emitter) {
-            $this->emitter = new Emitter();
-        }
-
         return $this->emitter;
     }
 }
