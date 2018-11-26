@@ -40,7 +40,7 @@ class BufferedEmitter extends Emitter
     {
         $result = [];
 
-        foreach ($this->bufferedEvents as $event) {
+        while ($event = array_shift($this->bufferedEvents)) {
             $result[] = parent::emit($event);
         }
 
