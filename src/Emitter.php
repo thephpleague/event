@@ -162,10 +162,11 @@ class Emitter implements EmitterInterface
     /**
      * @inheritdoc
      */
-    public function emit($event)
+    public function emit($event, &...$args)
     {
         list($name, $event) = $this->prepareEvent($event);
-        $arguments = [$event] + func_get_args();
+        $arguments = array_merge([$event], $args);
+
         $this->invokeListeners($name, $event, $arguments);
         $this->invokeListeners('*', $event, $arguments);
 

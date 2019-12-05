@@ -12,7 +12,7 @@ class BufferedEmitter extends Emitter
     /**
      * @inheritdoc
      */
-    public function emit($event)
+    public function emit($event, &...$args)
     {
         $this->bufferedEvents[] = $event;
 
