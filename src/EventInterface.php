@@ -2,7 +2,9 @@
 
 namespace League\Event;
 
-interface EventInterface
+use Psr\EventDispatcher\StoppableEventInterface;
+
+interface EventInterface extends StoppableEventInterface
 {
     /**
      * Set the Emitter.
@@ -26,13 +28,6 @@ interface EventInterface
      * @return $this
      */
     public function stopPropagation();
-
-    /**
-     * Check whether propagation was stopped.
-     *
-     * @return bool
-     */
-    public function isPropagationStopped();
 
     /**
      * Get the event name.

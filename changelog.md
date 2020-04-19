@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.3.0 2020-04-18
+
+### Changed
+
+- EventInterface now extends StoppableEventInterface from PSR-14
+- AbstractEvent::isPropagationStopped now has a bool return type declaration
+- EmitterInterface now extends EventDispatcherInterface from PSR-14
+- ListenerProviderInterface now extends ListenerProviderInterface from PSR-14
+
+### Added
+
+- Emitter::dispatch: Strictly-typed alias of Emitter::emit for PSR-14
+
 ## 2.2.0 2018-11-26
 
 * Buffered event emitter was added.

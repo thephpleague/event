@@ -92,6 +92,16 @@ class EmitterSpec extends ObjectBehavior
         $this->emit($event)->shouldReturn($event);
     }
 
+    public function it_should_allow_you_to_dispatch_events(Event $event)
+    {
+        $event->setEmitter($this)->shouldBeCalled();
+        $event->getName()->willReturn('event');
+        $event->isPropagationStopped()->willReturn(false);
+        $callback = function ($event) {};
+        $this->addListener('event', $callback);
+        $this->dispatch($event)->shouldReturn($event);
+    }
+
     public function it_should_allow_batch_emitting(Event $event, ListenerInterface $listener)
     {
         $event->getName()->willReturn('event');

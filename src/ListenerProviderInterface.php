@@ -2,7 +2,9 @@
 
 namespace League\Event;
 
-interface ListenerProviderInterface
+use Psr\EventDispatcher\ListenerProviderInterface as PsrListenerProviderInterface;
+
+interface ListenerProviderInterface extends PsrListenerProviderInterface
 {
     /**
      * Provide event

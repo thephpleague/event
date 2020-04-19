@@ -49,7 +49,7 @@ abstract class AbstractEvent implements EventInterface
     /**
      * @inheritdoc
      */
-    public function isPropagationStopped()
+    public function isPropagationStopped(): bool
     {
         return $this->propagationStopped;
     }

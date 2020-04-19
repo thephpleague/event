@@ -2,7 +2,9 @@
 
 namespace League\Event;
 
-interface EmitterInterface extends ListenerAcceptorInterface
+use Psr\EventDispatcher\EventDispatcherInterface;
+
+interface EmitterInterface extends EventDispatcherInterface, ListenerAcceptorInterface
 {
     /**
      * Remove a specific listener for an event.

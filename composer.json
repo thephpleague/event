@@ -10,11 +10,15 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=7.2.0",
+        "psr/event-dispatcher": "^1.0"
     },
     "require-dev": {
         "henrikbjorn/phpspec-code-coverage": "~1.0.1",
         "phpspec/phpspec": "^2.2"
+    },
+    "provide": {
+        "psr/event-dispatcher-implementation": "1.0"
     },
     "autoload": {
         "psr-4": {
