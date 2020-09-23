@@ -61,11 +61,15 @@ class Emitter implements EmitterInterface
     public function removeListener($event, $listener)
     {
         $this->clearSortedListeners($event);
-        $listeners = $this->hasListeners($event)
-            ? $this->listeners[$event]
-            : [];
 
-        $filter = function ($registered) use ($listener) {
+        if ( ! $this->hasListeners($event)) {
+            return $this;
+        }
+
+        $listeners = $this->listeners[$event];
+
+        /** @var ListenerInterface $listener */
+        $filter = function (ListenerInterface $registered) use ($listener) {
             return ! $registered->isListener($listener);
         };
 
