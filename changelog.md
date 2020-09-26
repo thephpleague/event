@@ -20,8 +20,8 @@
 
 ### Added
 
-- EmitterAwareInterface: an interface to be EmitterInterface aware.
-- EmitterAwareTrait: a default implementation to EmitterAwareInterface
+- EventDispatcherAware: an interface to be EmitterInterface aware.
+- EventDispatcherAwareTrait: a default implementation to EventDispatcherAware
 
 ### Changed
 
@@ -34,10 +34,10 @@
 - EventInterface: an interface is derived from the AbstractEvent class to allow more flexible type hinting and custom implementations. All the code expecting an AbstractEvent now expect an EventInterface implementation, however AbstractEvent covers the most use cases.
 - Event::named: named construtor to create string based events
 - CallbackListener::fromCallable: create a callback listener from a callable.
-- ListenerAcceptorInterface: An interface (distilled from the EmitterInterface) to only focus on accepting listeners.
-- ListenerProviderInterface: An interface to focus on providing the Emitter with new listeners.
+- ListenerAcceptor: An interface (distilled from the EmitterInterface) to only focus on accepting listeners.
+- ListenerProviderInterface: An interface to focus on providing the EventDispatcher with new listeners.
 - EmitterInterface::useListenerProvider: Allows you to use an implementation of the ListenerProviderInterface to add listeners.
-- EmitterInterface::releaseGeneratedEvents: Eases the way events are released from GeneratorInterface implementations.
+- EmitterInterface::releaseGeneratedEvents: Eases the way events are released from EventGenerator implementations.
 
 ### Altered
 
@@ -51,7 +51,7 @@
 
 ### Altered
 
-- The Emitter now checks if propagation has been stopped before invoking the first listener.
+- The EventDispatcher now checks if propagation has been stopped before invoking the first listener.
 - Renamed ListenerAbstract to AbstractListener
 
 
@@ -75,4 +75,4 @@
 
 ### Added
 
-- EmitterInterface: an interface is derived from the Emitter class to allow more flexible type hinting and custom implementations. All the code expecting an Emitter now expect an EmitterInterface implementation.
+- EmitterInterface: an interface is derived from the EventDispatcher class to allow more flexible type hinting and custom implementations. All the code expecting an EventDispatcher now expect an EmitterInterface implementation.

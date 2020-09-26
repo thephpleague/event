@@ -1,5 +1,8 @@
 * text=auto
 
+/**/Stub*.php
+/**/*Test.php
+/**/*Spy.php
 /spec export-ignore
 /stubs export-ignore
 /.gitattributes export-ignore
