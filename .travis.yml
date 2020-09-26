@@ -3,8 +3,6 @@ language: php
 sudo: false
 
 php:
-  - 7.0
-  - 7.1
   - 7.2
   - 7.3
   - 7.4
@@ -13,8 +11,4 @@ install:
   - travis_retry composer install --no-interaction --prefer-source
 
 script:
-  - bin/phpspec run
-
-after_script:
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover coverage.xml
+  - vendor/bin/phpunit --coverage-text

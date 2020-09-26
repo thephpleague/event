@@ -1,25 +1,18 @@
 <?php
-declare(strict_types=1);
 
 namespace League\Event;
 
-trait GeneratorTrait
+trait EventGeneratorBehavior
 {
     /**
-     * The registered events.
-     *
      * @var object[]
      */
     protected $events = [];
 
     /**
-     * Add an event.
-     *
-     * @param object $event
-     *
      * @return $this
      */
-    protected function addEvent($event)
+    protected function recordEvent(object $event): self
     {
         $this->events[] = $event;
 
@@ -27,11 +20,9 @@ trait GeneratorTrait
     }
 
     /**
-     * Release all the added events.
-     *
      * @return object[]
      */
-    public function releaseEvents()
+    public function releaseEvents(): array
     {
         $events = $this->events;
         $this->events = [];

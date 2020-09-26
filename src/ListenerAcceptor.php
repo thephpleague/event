@@ -1,44 +1,33 @@
 <?php
-declare(strict_types=1);
 
 namespace League\Event;
 
-class ListenerAcceptor implements ListenerAcceptorInterface
+interface ListenerAcceptor
 {
     /**
-     * The emitter instance.
+     * High priority.
      *
-     * @var EmitterInterface|null
+     * @const int
      */
-    protected $emitter;
+    public const P_HIGH = 100;
 
     /**
-     * Constructor
+     * Normal priority.
      *
-     * @param EmitterInterface $emitter
+     * @const int
      */
-    public function __construct(EmitterInterface $emitter)
-    {
-        $this->emitter = $emitter;
-    }
+    public const P_NORMAL = 0;
 
     /**
-     * @inheritdoc
+     * Low priority.
+     *
+     * @const int
      */
-    public function addListener($event, $listener, $priority = self::P_NORMAL)
-    {
-        $this->emitter->addListener($event, $listener, $priority);
+    public const P_LOW = -100;
 
-        return $this;
-    }
+    public function subscribe(string $event, callable $listener, int $priority = self::P_NORMAL): void;
 
-    /**
-     * @inheritdoc
-     */
-    public function addOneTimeListener($event, $listener, $priority = self::P_NORMAL)
-    {
-        $this->emitter->addOneTimeListener($event, $listener, $priority);
+    public function subscribeOnce(string $event, callable $listener, int $priority = self::P_NORMAL): void;
 
-        return $this;
-    }
+    public function subscribeFrom(ListenerSubscriber $subscriber): void;
 }
