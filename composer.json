@@ -1,7 +1,11 @@
 {
     "name": "league/event",
     "description": "Event package",
-    "keywords": ["event", "emitter", "listener"],
+    "keywords": [
+        "event",
+        "emitter",
+        "listener"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -11,10 +15,14 @@
     ],
     "require": {
         "php": ">=7.2.0",
-        "psr/event-dispatcher": "^1.0",
-        "phpunit/phpunit": "^8.5"
+        "psr/event-dispatcher": "^1.0"
     },
     "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "provide": {
+        "psr/event-dispatcher-implementation": "1.0",
+        "symfony/event-dispatcher-implementation": "2.0"
     },
     "autoload": {
         "psr-4": {
