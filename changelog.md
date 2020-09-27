@@ -1,6 +1,11 @@
 # Changelog
 
-## 2.2.0 2018-11-26
+## 3.0.0 - unreleased
+
+* PSR-14 is now supported.
+* Classes and interfaces renamed to match PSR terminology.
+
+## 2.2.0 - 2018-11-26
 
 * Buffered event emitter was added.
 
