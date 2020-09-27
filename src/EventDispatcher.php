@@ -54,7 +54,7 @@ class EventDispatcher implements EventDispatcherInterface, ListenerAcceptor
         }
     }
 
-    public function subscribeTo(string $event, callable $listener, int $priority = self::P_NORMAL): void
+    public function subscribeTo(string $event, callable $listener, int $priority = ListenerPriority::NORMAL): void
     {
         if ( ! $this->listenerProvider instanceof ListenerAcceptor) {
             throw UnableToSubscribeListener::becauseTheListenerProviderDoesNotAcceptListeners($this->listenerProvider);
@@ -63,7 +63,7 @@ class EventDispatcher implements EventDispatcherInterface, ListenerAcceptor
         $this->listenerProvider->subscribeTo($event, $listener, $priority);
     }
 
-    public function subscribeOnceTo(string $event, callable $listener, int $priority = self::P_NORMAL): void
+    public function subscribeOnceTo(string $event, callable $listener, int $priority = ListenerPriority::NORMAL): void
     {
         if ( ! $this->listenerProvider instanceof ListenerAcceptor) {
             throw UnableToSubscribeListener::becauseTheListenerProviderDoesNotAcceptListeners($this->listenerProvider);
