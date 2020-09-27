@@ -2,6 +2,7 @@
 
 .github/ export-ignore
 phpunit.xml.dist export-ignore
+phpstan.neon export-ignore
 **/Stub*.php export-ignore
 **/*Test.php export-ignore
 **/*Spy.php export-ignore

@@ -18,7 +18,8 @@
         "psr/event-dispatcher": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^8.5",
+        "phpstan/phpstan": "^0.12.45"
     },
     "provide": {
         "psr/event-dispatcher-implementation": "1.0"

@@ -1,0 +1,6 @@
+parameters:
+    checkMissingIterableValueType: false
+    reportUnmatchedIgnoredErrors: false
+    checkGenericClassInNonGenericObjectType: false
+    ignoreErrors:
+        - '#Call to protected method recordEvent#'

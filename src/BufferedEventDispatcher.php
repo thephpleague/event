@@ -23,9 +23,11 @@ class BufferedEventDispatcher implements EventDispatcherInterface, ListenerAccep
         $this->dispatcher = $dispatcher;
     }
 
-    public function dispatch(object $event): void
+    public function dispatch(object $event): object
     {
         $this->recordEvent($event);
+
+        return $event;
     }
 
     public function dispatchBufferedEvents(): void

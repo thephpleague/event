@@ -20,13 +20,15 @@ class EventDispatcher implements EventDispatcherInterface, ListenerAcceptor
             : new PrioritizedListenerCollection();
     }
 
-    public function dispatch(object $event): void
+    public function dispatch(object $event): object
     {
         $listeners = $this->listenerProvider->getListenersForEvent($event);
 
         $event instanceof StoppableEventInterface
             ? $this->dispatchStoppableEvent($listeners, $event)
             : $this->dispatchUnstoppableEvent($listeners, $event);
+
+        return $event;
     }
 
     public function dispatchGeneratedEvents(EventGenerator $generator): void
@@ -47,7 +49,7 @@ class EventDispatcher implements EventDispatcherInterface, ListenerAcceptor
         }
     }
 
-    private function dispatchUnstoppableEvent(iterable $listeners, $event): void
+    private function dispatchUnstoppableEvent(iterable $listeners, object $event): void
     {
         foreach ($listeners as $listener) {
             $listener($event);

@@ -15,8 +15,9 @@ class BufferedEventDispatcherTest extends TestCase
         callable $scenario
     ): void {
         $internalDispatcher = new class() implements EventDispatcherInterface {
-            public function dispatch(object $event): iterable
+            public function dispatch(object $event): object
             {
+                return $event;
             }
         };
         $dispatcher = new BufferedEventDispatcher($internalDispatcher);

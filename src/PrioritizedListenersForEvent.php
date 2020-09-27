@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace League\Event;
 
-use const SORT_ASC;
-use const SORT_DESC;
 use const SORT_NUMERIC;
 
 /**
@@ -13,9 +11,9 @@ use const SORT_NUMERIC;
  */
 class PrioritizedListenersForEvent
 {
-    /** @var array<int, iterable<callable>> */
+    /** @var array<int, array<int,callable>> */
     private $listeners = [];
-    /** @var list<callable> */
+    /** @var array<int,callable> */
     private $sortedListeners = [];
     /** @var bool */
     private $isSorted = false;
