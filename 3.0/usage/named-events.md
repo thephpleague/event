@@ -24,6 +24,6 @@ class SomethingHappened implements League\Event\HasEventName
     }
 }
 
-$dispatcher->listen('this.happened', $listener);
+$dispatcher->subscribeTo('this.happened', $listener);
 $dispatcher->dispatch(new SomethingHappened('this.happened'));
 ```

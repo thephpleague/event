@@ -20,10 +20,10 @@ $listenerProvider = new PrioritizedListenerCollection();
 $dispatcher = new EventDispatcher($listenerProvider);
 
 // Subscribe with the dispatcher
-$listenerProvider->subscribe($eventIdentifier, $listener);
+$listenerProvider->subscribeTo($eventIdentifier, $listener);
 
 // Subscribe with the listener provider
-$listenerProvider->subscribe($eventIdentifier, $listener);
+$listenerProvider->subscribeTo($eventIdentifier, $listener);
 ```
 
 ## Subscribing parameters
@@ -37,7 +37,7 @@ class SomethingHappened {
     // properties (and getters)
 }
 
-$dispatcher->subscribe(SomethingHappened::class, $listener);
+$dispatcher->subscribeTo(SomethingHappened::class, $listener);
 ```
 
 The `$listener` parameter is a `callable` value. For convenience, a 
@@ -47,7 +47,7 @@ that whatever the listener accepts is an expected event object.
 Provide a callable:
 
 ```php
-$dispatcher->suscribe($eventIdentifier, function(object $event) {
+$dispatcher->subscribeTo($eventIdentifier, function(object $event) {
     
 });
 ```
@@ -62,7 +62,7 @@ class MyListener implements League\Event\Listener {
     }
 }
 
-$dispatcher->subscribe($eventIdentfier, new MyListener());
+$dispatcher->subscribeTo($eventIdentfier, new MyListener());
 ```
 
 ## Prioritizing listeners
@@ -73,7 +73,7 @@ the priority of the subscription.
 ```php
 use League\Event\ListenerAcceptor;
 
-$dispatcher->subscribe($eventIdentifier, $listener, $priority);
+$dispatcher->subscribeTo($eventIdentifier, $listener, $priority);
 ```
 
 The `$priority` parameter is an `int`. The higher the value, the earlier
@@ -83,24 +83,24 @@ it will be called.
 use League\Event\ListenerAcceptor;
 
 // Lowest priority is called last
-$dispatcher->subscribe($eventIdentifier, $lastListener, -100);
+$dispatcher->subscribeTo($eventIdentifier, $lastListener, -100);
 
 // Same priority? Subscribe order is maintained
-$dispatcher->subscribe($eventIdentifier, $secondListener, 10);
-$dispatcher->subscribe($eventIdentifier, $thirdListener, 10);
+$dispatcher->subscribeTo($eventIdentifier, $secondListener, 10);
+$dispatcher->subscribeTo($eventIdentifier, $thirdListener, 10);
 
 // Highest priority is called first
-$dispatcher->subscribe($eventIdentifier, $firstListener, PHP_INT_MAX);
+$dispatcher->subscribeTo($eventIdentifier, $firstListener, PHP_INT_MAX);
 ```
 
-The ListenerAcceptor interface exposes a couple predefined priorities.
+The ListenerPriority class exposes a couple predefined priorities.
 
 ```php
-use League\Event\ListenerAcceptor;
+use League\Event\ListenerPriority;
 
-$dispatcher->subscribe($eventIdentifier, $listener, ListenerAcceptor::P_HIGH);
-$dispatcher->subscribe($eventIdentifier, $listener, ListenerAcceptor::P_NORMAL);
-$dispatcher->subscribe($eventIdentifier, $listener, ListenerAcceptor::P_LOW);
+$dispatcher->subscribeTo($eventIdentifier, $listener, ListenerPriority::HIGH);
+$dispatcher->subscribeTo($eventIdentifier, $listener, ListenerPriority::NORMAL);
+$dispatcher->subscribeTo($eventIdentifier, $listener, ListenerPriority::LOW);
 ```
 
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Event
+title: Introduction
 ---
 
 # League\\Event

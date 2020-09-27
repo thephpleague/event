@@ -20,7 +20,7 @@ For more information about setting up the dispatcher, view the
 Listeners can subscribe to events with the dispatcher.
 
 ```php
-$dispatcher->subscribe($eventIdentifier, $listener);
+$dispatcher->subscribeTo($eventIdentifier, $listener);
 ```
 
 For more information about subscribing, view the
