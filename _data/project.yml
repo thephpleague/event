@@ -6,6 +6,6 @@ versions:
         - name: '3.0 (unreleased)'
           number: '3.0'
         - name: '2.0'
-          numer: '2.0'
+          number: '2.0'
         - name: '1.0'
-          numer: '1.0'
+          number: '1.0'
