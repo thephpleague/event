@@ -2,7 +2,7 @@
 
 namespace League\Event;
 
-trait EventDispatcherAwareTrait
+trait EventDispatcherAwareBehavior
 {
     /**
      * @var EventDispatcher|null

@@ -35,7 +35,7 @@ class EventDispatcherAwarenessTest extends TestCase
     private function eventDispatcherAwareInstance(): EventDispatcherAware
     {
         return new class() implements EventDispatcherAware {
-            use EventDispatcherAwareTrait;
+            use EventDispatcherAwareBehavior;
         };
     }
 }
