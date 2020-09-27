@@ -2,12 +2,12 @@
 
 namespace League\Event;
 
-interface GeneratorInterface
+interface EventGenerator
 {
     /**
      * Release all the added events.
      *
-     * @return EventInterface[]
+     * @return object[]
      */
     public function releaseEvents();
 }

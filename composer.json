@@ -1,7 +1,11 @@
 {
     "name": "league/event",
     "description": "Event package",
-    "keywords": ["event", "emitter", "listener"],
+    "keywords": [
+        "event",
+        "emitter",
+        "listener"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -10,28 +14,23 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=7.2.0",
+        "psr/event-dispatcher": "^1.0"
     },
     "require-dev": {
-        "henrikbjorn/phpspec-code-coverage": "~1.0.1",
-        "phpspec/phpspec": "^2.2"
+        "phpunit/phpunit": "^8.5"
+    },
+    "provide": {
+        "psr/event-dispatcher-implementation": "1.0"
     },
     "autoload": {
         "psr-4": {
             "League\\Event\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "League\\Event\\Stub\\": "stubs/"
-        }
-    },
-    "config": {
-        "bin-dir": "bin"
-    },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.2-dev"
+            "dev-master": "3.0-dev"
         }
     }
 }
