@@ -12,14 +12,11 @@ jobs:
       matrix:
         php: [ '7.2', '7.3', '7.4' ]
         composer-flags: [ '' ]
-        phpstan: [ false ]
         phpunit-flags: [ '--coverage-text' ]
         include:
           - php: '8.0'
             composer-flags: '--ignore-platform-req=php'
             phpunit-flags: '--no-coverage'
-          - php: '7.4'
-            phpstan: true
           - php: '7.2'
             composer-flags: '--prefer-lowest'
             phpunit-flags: '--no-coverage'
@@ -33,5 +30,5 @@ jobs:
       - run: composer update --no-progress ${{ matrix.composer-flags }}
       - run: vendor/bin/phpunit ${{ matrix.phpunit-flags }}
       - run: vendor/bin/phpstan analyse -l max src
-        if: ${{ matrix.phpstan }}
+        if: ${{ matrix.php == '7.4' }}
 
