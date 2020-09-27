@@ -1,20 +1,33 @@
+'3.0 (unreleased)':
+  Getting Started:
+    Introduction: '/3.0/'
+  Usage:
+    Introduction: '/3.0/usage/'
+    Dispatcher Setup: '/3.0/usage/dispatcher-setup/'
+    Subscribing To Events: '/3.0/usage/subscribing-to-events/'
+    Dispaching Events: '/3.0/usage/dispatching-events/'
+    Dynamic Event Names: '/3.0/usage/named-events/'
+#  Extra Utilities:
+#    Event Generator: '/3.0/extra-utilities/event-generator/'
+#    Listener Subscriber: '/3.0/extra-utilities/listener-subscriber/'
+#    Event Dispatcher Aware: '/3.0/extra-utilities/event-dispatcher-aware/'
 '2.0':
-    Getting Started:
-        Introduction: '/2.0/'
-        Basic Usage: '/2.0/emitter/basic-usage/'
-    Events:
-        Named Events: '/2.0/events/named/'
-        Events Classes: '/2.0/events/classes/'
-        Event Arguments: '/2.0/events/arguments/'
-        Propagation: '/2.0/events/propagation/'
-    Listeners:
-        Closure or Callable: '/2.0/listeners/callables/'
-        Listeners Classes: '/2.0/listeners/classes/'
-        Providers: '/2.0/listeners/providers/'
-        Wildcard: '/2.0/listeners/wildcard/'
-    Generator:
-        Generator Class: '/2.0/generator/class/'
-        Generator Trait: '/2.0/generator/trait/'
+  Getting Started:
+    Introduction: '/2.0/'
+    Basic Usage: '/2.0/emitter/basic-usage/'
+  Events:
+    Named Events: '/2.0/events/named/'
+    Events Classes: '/2.0/events/classes/'
+    Event Arguments: '/2.0/events/arguments/'
+    Propagation: '/2.0/events/propagation/'
+  Listeners:
+    Closure or Callable: '/2.0/listeners/callables/'
+    Listeners Classes: '/2.0/listeners/classes/'
+    Providers: '/2.0/listeners/providers/'
+    Wildcard: '/2.0/listeners/wildcard/'
+  Generator:
+    Generator Class: '/2.0/generator/class/'
+    Generator Trait: '/2.0/generator/trait/'
 '1.0':
     Getting Started:
         Introduction: '/1.0/'

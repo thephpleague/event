@@ -50,8 +50,8 @@
         <ul>
             {% assign version = page.url | remove_first: "/" | split: "/"" | first %}
             {% for v in site.data.project.versions %}
-                <li {% if version == v %}class="selected"{% endif %}>
-                    <a href="{{ v }}/">{{ v }}</a>
+                <li {% if version == v.number %}class="selected"{% endif %}>
+                    <a href="{{ v.number }}/">{{ v.name }}</a>
                 </li>
             {% endfor %}
         </ul>
