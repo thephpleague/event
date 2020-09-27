@@ -7,10 +7,10 @@
     Subscribing To Events: '/3.0/usage/subscribing-to-events/'
     Dispaching Events: '/3.0/usage/dispatching-events/'
     Dynamic Event Names: '/3.0/usage/named-events/'
-#  Extra Utilities:
-#    Event Generator: '/3.0/extra-utilities/event-generator/'
-#    Listener Subscriber: '/3.0/extra-utilities/listener-subscriber/'
-#    Event Dispatcher Aware: '/3.0/extra-utilities/event-dispatcher-aware/'
+  Extra Utilities:
+    Event Generator: '/3.0/extra-utilities/event-generator/'
+    Listener Subscriber: '/3.0/extra-utilities/listener-subscriber/'
+    Event Dispatcher Aware: '/3.0/extra-utilities/event-dispatcher-aware/'
 '2.0':
   Getting Started:
     Introduction: '/2.0/'
