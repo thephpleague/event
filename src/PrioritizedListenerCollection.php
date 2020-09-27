@@ -27,10 +27,6 @@ class PrioritizedListenerCollection implements ListenerAcceptor, ListenerProvide
 
     public function getListenersForEvent(object $event): iterable
     {
-        if ($event instanceof HasEventName) {
-            yield from $this->getListenersForEventName($event->eventName());
-        }
-
         /**
          * @var string                       $key
          * @var PrioritizedListenersForEvent $group
@@ -39,6 +35,10 @@ class PrioritizedListenerCollection implements ListenerAcceptor, ListenerProvide
             if ($event instanceof $key) {
                 yield from $group->getListeners();
             }
+        }
+
+        if ($event instanceof HasEventName) {
+            yield from $this->getListenersForEventName($event->eventName());
         }
     }
 
