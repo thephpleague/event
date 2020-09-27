@@ -3,6 +3,8 @@ layout: default
 title: Event Generator
 ---
 
+# Event Generator
+
 In some styles of programming, events are collected before they are dispatched in one go.
 The `League\Event\EventGenerator` interface is designed, so you can do just that. Along-side
 the interface, is a trait to that satisfies the requirements.

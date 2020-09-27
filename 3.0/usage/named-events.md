@@ -3,6 +3,8 @@ layout: default
 title: Dynamic Event Names
 ---
 
+# Dynamic Event Names
+
 In some cases, having an event class for every type of event is not needed.
 For those cases, a generic event can be introduced that implement
 the `League\Event\HasEventName` interface.

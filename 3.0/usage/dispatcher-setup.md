@@ -3,6 +3,8 @@ layout: default
 title: Dispatcher Setup
 ---
 
+# Dispatcher Setup
+
 The `League\Event\EventDispatcher` is the primary point of interaction
 with the `league/event` package.
 

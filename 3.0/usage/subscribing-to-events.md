@@ -3,6 +3,8 @@ layout: default
 title: Subscribing to Events
 ---
 
+# Subscribing to Events
+
 The `League\Event\ListenerAcceptor` (interface) allows you to subscribe to
 events. There are two implementations of this interface:
 
@@ -104,7 +106,7 @@ $dispatcher->subscribeTo($eventIdentifier, $listener, ListenerPriority::LOW);
 ```
 
 
-### Custom PSR-14 listener provider
+## Custom PSR-14 listener provider
 
 Unless your custom listener provider also implements the `League\Event\ListenerAcceptor`
 interface, adding new event subscriptions through the event dispatcher will not work.
@@ -112,6 +114,6 @@ interface, adding new event subscriptions through the event dispatcher will not 
 When you try to subscribe to an event with an incompatible provider, the
 `League\Event\UnableToSubscribeListener` exception will be thrown.
 
-### Dispatching events
+## Dispatching events
 
 Next up is event dispatching. View the [documentation about dispatching events](/3.0/usage/dispatching-events/)

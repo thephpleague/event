@@ -3,6 +3,8 @@ layout: default
 title: Event Dispatcher Aware
 ---
 
+# Event Dispatcher Aware
+
 To reduce boilerplate code, an interface and trait are shipped to
 quickly allow code that depends on an event dispatcher to use it.
 

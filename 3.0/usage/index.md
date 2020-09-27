@@ -3,7 +3,9 @@ layout: default
 title: Usage
 ---
 
-### Step 1: Create an event dispatcher
+# Usage
+
+## Step 1: Create an event dispatcher
 
 ```php
 use League\Event\EventDispatcher;
@@ -15,7 +17,7 @@ For more information about setting up the dispatcher, view the
 [documentation about dispatcher setup](/3.0/usage/dispatcher-setup/).
 
 
-### Step 2: Subscribe to an event
+## Step 2: Subscribe to an event
 
 Listeners can subscribe to events with the dispatcher.
 
@@ -26,7 +28,7 @@ $dispatcher->subscribeTo($eventIdentifier, $listener);
 For more information about subscribing, view the
 [documentation about subscribing to events](/3.0/usage/subscribing-to-events/).
 
-### Step 3: Dispatch an event
+## Step 3: Dispatch an event
 
 Events can be dispatched by the dispatcher.
 
