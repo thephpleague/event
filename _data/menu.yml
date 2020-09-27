@@ -11,6 +11,7 @@
     Event Generator: '/3.0/extra-utilities/event-generator/'
     Listener Subscriber: '/3.0/extra-utilities/listener-subscriber/'
     Event Dispatcher Aware: '/3.0/extra-utilities/event-dispatcher-aware/'
+    Buffered Event Dispatcher: '/3.0/extra-utilities/buffered-event-dispatcher/'
 '2.0':
   Getting Started:
     Introduction: '/2.0/'
