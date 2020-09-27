@@ -28,6 +28,19 @@ class EventDispatcherTest extends TestCase
     /**
      * @test
      */
+    public function dispatching_returns_the_event_object(): void
+    {
+        $event = new stdClass();
+        $dispatcher = new  EventDispatcher();
+
+        $returnedEvent = $dispatcher->dispatch($event);
+
+        $this->assertSame($event, $returnedEvent);
+    }
+
+    /**
+     * @test
+     */
     public function listening_to_a_named_event(): void
     {
         $dispatcher = new EventDispatcher();
