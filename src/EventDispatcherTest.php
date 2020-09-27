@@ -19,7 +19,7 @@ class EventDispatcherTest extends TestCase
         $listenerSpy = new ListenerSpy();
         $event = new stdClass;
 
-        $dispatcher->subscribe(stdClass::class, $listenerSpy);
+        $dispatcher->subscribeTo(stdClass::class, $listenerSpy);
         $dispatcher->dispatch($event);
 
         $this->assertTrue($listenerSpy->wasCalledWith($event));
@@ -34,7 +34,7 @@ class EventDispatcherTest extends TestCase
         $listenerSpy = new ListenerSpy();
         $event = new StubNamedEvent('event.name');
 
-        $dispatcher->subscribe('event.name', $listenerSpy);
+        $dispatcher->subscribeTo('event.name', $listenerSpy);
         $dispatcher->dispatch($event);
 
         $this->assertTrue($listenerSpy->wasCalledWith($event));
@@ -47,7 +47,7 @@ class EventDispatcherTest extends TestCase
     {
         $dispatcher = new EventDispatcher();
         $listenerSpy = new ListenerSpy();
-        $dispatcher->subscribe('event.name', $listenerSpy);
+        $dispatcher->subscribeTo('event.name', $listenerSpy);
         $dispatcher->dispatch(new StubNamedEvent('event.name'));
         $dispatcher->dispatch(new StubNamedEvent('other.event.name'));
 
@@ -61,7 +61,7 @@ class EventDispatcherTest extends TestCase
     {
         $listenerSpy = new ListenerSpy();
         $provider = new PrioritizedListenerCollection();
-        $provider->subscribe(stdClass::class, $listenerSpy);
+        $provider->subscribeTo(stdClass::class, $listenerSpy);
         $dispatcher = new EventDispatcher($provider);
         $event = new stdClass();
 
@@ -79,13 +79,13 @@ class EventDispatcherTest extends TestCase
         $listenerSpy = new ListenerSpy();
         $event = new StubStoppableEvent();
 
-        $dispatcher->subscribe(
+        $dispatcher->subscribeTo(
             StubStoppableEvent::class,
             function (StubStoppableEvent $event) {
                 $event->stopPropagation();
             }
         );
-        $dispatcher->subscribe(StubStoppableEvent::class, $listenerSpy);
+        $dispatcher->subscribeTo(StubStoppableEvent::class, $listenerSpy);
         $dispatcher->dispatch($event);
 
         $this->assertFalse($listenerSpy->wasCalledWith($event));
@@ -100,8 +100,8 @@ class EventDispatcherTest extends TestCase
         $oneTimeListener = new ListenerSpy();
 
         $dispatcher = new EventDispatcher();
-        $dispatcher->subscribe(stdClass::class, $normalListener);
-        $dispatcher->subscribeOnce(stdClass::class, $oneTimeListener);
+        $dispatcher->subscribeTo(stdClass::class, $normalListener);
+        $dispatcher->subscribeOnceTo(stdClass::class, $oneTimeListener);
 
         $dispatcher->dispatch(new stdClass());
         $dispatcher->dispatch(new stdClass());
@@ -136,7 +136,7 @@ class EventDispatcherTest extends TestCase
     {
         yield "subscribing" => [
             function (EventDispatcher $dispatcher) {
-                $dispatcher->subscribe(
+                $dispatcher->subscribeTo(
                     'event',
                     function () {
                     }
@@ -146,7 +146,7 @@ class EventDispatcherTest extends TestCase
 
         yield "subscribing once" => [
             function (EventDispatcher $dispatcher) {
-                $dispatcher->subscribeOnce(
+                $dispatcher->subscribeOnceTo(
                     'event',
                     function () {
                     }
@@ -156,7 +156,7 @@ class EventDispatcherTest extends TestCase
 
         yield "subscribing from subscriber" => [
             function (EventDispatcher $dispatcher) {
-                $dispatcher->subscribeFrom(
+                $dispatcher->subscribeListenersFrom(
                     new class () implements ListenerSubscriber {
                         public function subscribeListeners(ListenerAcceptor $acceptor): void
                         {
@@ -182,9 +182,9 @@ class EventDispatcherTest extends TestCase
         $appendHello = $append('Hello,');
         $appendWorld = $append('World!');
         $appendGoodBye = $append('Good bye!');
-        $dispatcher->subscribe(StubMutableEvent::class, $appendWorld, 0);
-        $dispatcher->subscribe(StubMutableEvent::class, $appendHello, 10);
-        $dispatcher->subscribe(StubMutableEvent::class, $appendGoodBye, -10);
+        $dispatcher->subscribeTo(StubMutableEvent::class, $appendWorld, 0);
+        $dispatcher->subscribeTo(StubMutableEvent::class, $appendHello, 10);
+        $dispatcher->subscribeTo(StubMutableEvent::class, $appendGoodBye, -10);
 
         $dispatcher->dispatch($event);
 
@@ -198,7 +198,7 @@ class EventDispatcherTest extends TestCase
     {
         $dispatcher = new EventDispatcher();
         $listener = new ListenerSpy();
-        $dispatcher->subscribe(stdClass::class, $listener);
+        $dispatcher->subscribeTo(stdClass::class, $listener);
 
         $eventGenerator = new class () implements EventGenerator {
             use EventGeneratorBehavior {
@@ -221,7 +221,7 @@ class EventDispatcherTest extends TestCase
         $subscriber = new class () implements ListenerSubscriber {
             public function subscribeListeners(ListenerAcceptor $acceptor): void
             {
-                $acceptor->subscribe(
+                $acceptor->subscribeTo(
                     StubMutableEvent::class,
                     function (StubMutableEvent $event) {
                         $event->append(' mutated');
@@ -230,7 +230,7 @@ class EventDispatcherTest extends TestCase
             }
         };
         $dispatcher = new EventDispatcher();
-        $dispatcher->subscribeFrom($subscriber);
+        $dispatcher->subscribeListenersFrom($subscriber);
         $event = new StubMutableEvent('this is');
         $dispatcher->dispatch($event);
 

@@ -11,7 +11,7 @@ class PrioritizedListenerCollection implements ListenerAcceptor, ListenerProvide
     /** @var array<string,PrioritizedListenersForEvent> */
     protected $listenersPerEvent = [];
 
-    public function subscribe(string $event, callable $listener, int $priority = self::P_NORMAL): void
+    public function subscribeTo(string $event, callable $listener, int $priority = self::P_NORMAL): void
     {
         $group = array_key_exists($event, $this->listenersPerEvent)
             ? $this->listenersPerEvent[$event]
@@ -20,9 +20,9 @@ class PrioritizedListenerCollection implements ListenerAcceptor, ListenerProvide
         $group->addListener($listener, $priority);
     }
 
-    public function subscribeOnce(string $event, callable $listener, int $priority = self::P_NORMAL): void
+    public function subscribeOnceTo(string $event, callable $listener, int $priority = self::P_NORMAL): void
     {
-        $this->subscribe($event, new OneTimeListener($listener), $priority);
+        $this->subscribeTo($event, new OneTimeListener($listener), $priority);
     }
 
     public function getListenersForEvent(object $event): iterable
@@ -51,7 +51,7 @@ class PrioritizedListenerCollection implements ListenerAcceptor, ListenerProvide
         return $this->listenersPerEvent[$eventName]->getListeners();
     }
 
-    public function subscribeFrom(ListenerSubscriber $subscriber): void
+    public function subscribeListenersFrom(ListenerSubscriber $subscriber): void
     {
         $subscriber->subscribeListeners($this);
     }

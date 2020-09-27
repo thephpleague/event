@@ -54,30 +54,30 @@ class EventDispatcher implements EventDispatcherInterface, ListenerAcceptor
         }
     }
 
-    public function subscribe(string $event, callable $listener, int $priority = self::P_NORMAL): void
+    public function subscribeTo(string $event, callable $listener, int $priority = self::P_NORMAL): void
     {
         if ( ! $this->listenerProvider instanceof ListenerAcceptor) {
             throw UnableToSubscribeListener::becauseTheListenerProviderDoesNotAcceptListeners($this->listenerProvider);
         }
 
-        $this->listenerProvider->subscribe($event, $listener, $priority);
+        $this->listenerProvider->subscribeTo($event, $listener, $priority);
     }
 
-    public function subscribeOnce(string $event, callable $listener, int $priority = self::P_NORMAL): void
+    public function subscribeOnceTo(string $event, callable $listener, int $priority = self::P_NORMAL): void
     {
         if ( ! $this->listenerProvider instanceof ListenerAcceptor) {
             throw UnableToSubscribeListener::becauseTheListenerProviderDoesNotAcceptListeners($this->listenerProvider);
         }
 
-        $this->listenerProvider->subscribeOnce($event, $listener, $priority);
+        $this->listenerProvider->subscribeOnceTo($event, $listener, $priority);
     }
 
-    public function subscribeFrom(ListenerSubscriber $subscriber): void
+    public function subscribeListenersFrom(ListenerSubscriber $subscriber): void
     {
         if ( ! $this->listenerProvider instanceof ListenerAcceptor) {
             throw UnableToSubscribeListener::becauseTheListenerProviderDoesNotAcceptListeners($this->listenerProvider);
         }
 
-        $this->listenerProvider->subscribeFrom($subscriber);
+        $this->listenerProvider->subscribeListenersFrom($subscriber);
     }
 }

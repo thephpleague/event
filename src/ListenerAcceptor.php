@@ -25,9 +25,9 @@ interface ListenerAcceptor
      */
     public const P_LOW = -100;
 
-    public function subscribe(string $event, callable $listener, int $priority = self::P_NORMAL): void;
+    public function subscribeTo(string $event, callable $listener, int $priority = self::P_NORMAL): void;
 
-    public function subscribeOnce(string $event, callable $listener, int $priority = self::P_NORMAL): void;
+    public function subscribeOnceTo(string $event, callable $listener, int $priority = self::P_NORMAL): void;
 
-    public function subscribeFrom(ListenerSubscriber $subscriber): void;
+    public function subscribeListenersFrom(ListenerSubscriber $subscriber): void;
 }
