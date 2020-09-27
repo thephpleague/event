@@ -2,7 +2,7 @@
   Getting Started:
     Introduction: '/3.0/'
   Usage:
-    Introduction: '/3.0/usage/'
+    Overview: '/3.0/usage/'
     Dispatcher Setup: '/3.0/usage/dispatcher-setup/'
     Subscribing To Events: '/3.0/usage/subscribing-to-events/'
     Dispaching Events: '/3.0/usage/dispatching-events/'
