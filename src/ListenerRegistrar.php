@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace League\Event;
 
-interface ListenerAcceptor
+interface ListenerRegistrar
 {
     public function subscribeTo(string $event, callable $listener, int $priority = ListenerPriority::NORMAL): void;
 

@@ -6,7 +6,7 @@ namespace League\Event;
 
 use Psr\EventDispatcher\EventDispatcherInterface;
 
-class BufferedEventDispatcher implements EventDispatcherInterface, ListenerAcceptor
+class BufferedEventDispatcher implements EventDispatcherInterface, ListenerRegistrar
 {
     use EventGeneratorBehavior {
         recordEvent as protected;
@@ -39,7 +39,7 @@ class BufferedEventDispatcher implements EventDispatcherInterface, ListenerAccep
 
     public function subscribeTo(string $event, callable $listener, int $priority = ListenerPriority::NORMAL): void
     {
-        if ( ! $this->dispatcher instanceof ListenerAcceptor) {
+        if ( ! $this->dispatcher instanceof ListenerRegistrar) {
             throw UnableToSubscribeListener::becauseTheEventDispatcherDoesNotAcceptListeners($this->dispatcher);
         }
 
@@ -48,7 +48,7 @@ class BufferedEventDispatcher implements EventDispatcherInterface, ListenerAccep
 
     public function subscribeOnceTo(string $event, callable $listener, int $priority = ListenerPriority::NORMAL): void
     {
-        if ( ! $this->dispatcher instanceof ListenerAcceptor) {
+        if ( ! $this->dispatcher instanceof ListenerRegistrar) {
             throw UnableToSubscribeListener::becauseTheEventDispatcherDoesNotAcceptListeners($this->dispatcher);
         }
 
@@ -57,7 +57,7 @@ class BufferedEventDispatcher implements EventDispatcherInterface, ListenerAccep
 
     public function subscribeListenersFrom(ListenerSubscriber $subscriber): void
     {
-        if ( ! $this->dispatcher instanceof ListenerAcceptor) {
+        if ( ! $this->dispatcher instanceof ListenerRegistrar) {
             throw UnableToSubscribeListener::becauseTheEventDispatcherDoesNotAcceptListeners($this->dispatcher);
         }
 

@@ -8,7 +8,7 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\EventDispatcher\ListenerProviderInterface;
 use Psr\EventDispatcher\StoppableEventInterface;
 
-class EventDispatcher implements EventDispatcherInterface, ListenerAcceptor
+class EventDispatcher implements EventDispatcherInterface, ListenerRegistrar
 {
     /**
      * @var ListenerProviderInterface
@@ -19,7 +19,7 @@ class EventDispatcher implements EventDispatcherInterface, ListenerAcceptor
     {
         $this->listenerProvider = $listenerProvider instanceof ListenerProviderInterface
             ? $listenerProvider
-            : new PrioritizedListenerCollection();
+            : new PrioritizedListenerRegistrar();
     }
 
     public function dispatch(object $event): object
@@ -60,7 +60,7 @@ class EventDispatcher implements EventDispatcherInterface, ListenerAcceptor
 
     public function subscribeTo(string $event, callable $listener, int $priority = ListenerPriority::NORMAL): void
     {
-        if ( ! $this->listenerProvider instanceof ListenerAcceptor) {
+        if ( ! $this->listenerProvider instanceof ListenerRegistrar) {
             throw UnableToSubscribeListener::becauseTheListenerProviderDoesNotAcceptListeners($this->listenerProvider);
         }
 
@@ -69,7 +69,7 @@ class EventDispatcher implements EventDispatcherInterface, ListenerAcceptor
 
     public function subscribeOnceTo(string $event, callable $listener, int $priority = ListenerPriority::NORMAL): void
     {
-        if ( ! $this->listenerProvider instanceof ListenerAcceptor) {
+        if ( ! $this->listenerProvider instanceof ListenerRegistrar) {
             throw UnableToSubscribeListener::becauseTheListenerProviderDoesNotAcceptListeners($this->listenerProvider);
         }
 
@@ -78,7 +78,7 @@ class EventDispatcher implements EventDispatcherInterface, ListenerAcceptor
 
     public function subscribeListenersFrom(ListenerSubscriber $subscriber): void
     {
-        if ( ! $this->listenerProvider instanceof ListenerAcceptor) {
+        if ( ! $this->listenerProvider instanceof ListenerRegistrar) {
             throw UnableToSubscribeListener::becauseTheListenerProviderDoesNotAcceptListeners($this->listenerProvider);
         }
 

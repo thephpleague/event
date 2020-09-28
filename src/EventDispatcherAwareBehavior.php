@@ -19,7 +19,7 @@ trait EventDispatcherAwareBehavior
     public function eventDispatcher(): EventDispatcher
     {
         if ($this->dispatcher === null) {
-            $this->dispatcher = new EventDispatcher(new PrioritizedListenerCollection());
+            $this->dispatcher = new EventDispatcher(new PrioritizedListenerRegistrar());
         }
 
         return $this->dispatcher;

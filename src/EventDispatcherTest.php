@@ -73,7 +73,7 @@ class EventDispatcherTest extends TestCase
     public function it_uses_a_provided_listener_provider(): void
     {
         $listenerSpy = new ListenerSpy();
-        $provider = new PrioritizedListenerCollection();
+        $provider = new PrioritizedListenerRegistrar();
         $provider->subscribeTo(stdClass::class, $listenerSpy);
         $dispatcher = new EventDispatcher($provider);
         $event = new stdClass();
@@ -171,7 +171,7 @@ class EventDispatcherTest extends TestCase
             function (EventDispatcher $dispatcher) {
                 $dispatcher->subscribeListenersFrom(
                     new class () implements ListenerSubscriber {
-                        public function subscribeListeners(ListenerAcceptor $acceptor): void
+                        public function subscribeListeners(ListenerRegistrar $acceptor): void
                         {
                         }
                     }
@@ -232,7 +232,7 @@ class EventDispatcherTest extends TestCase
     public function listeners_can_be_subscribed_through_a_subscriber(): void
     {
         $subscriber = new class () implements ListenerSubscriber {
-            public function subscribeListeners(ListenerAcceptor $acceptor): void
+            public function subscribeListeners(ListenerRegistrar $acceptor): void
             {
                 $acceptor->subscribeTo(
                     StubMutableEvent::class,

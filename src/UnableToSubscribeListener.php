@@ -17,7 +17,7 @@ class UnableToSubscribeListener extends LogicException
 
         return new UnableToSubscribeListener(
             "Unable to add listener because the configured listener provider {$providerClass} is not an instance of "
-            . ListenerAcceptor::class
+            . ListenerRegistrar::class
         );
     }
     public static function becauseTheEventDispatcherDoesNotAcceptListeners(
@@ -27,7 +27,7 @@ class UnableToSubscribeListener extends LogicException
 
         return new UnableToSubscribeListener(
             "Unable to add listener because the internal dispatcher {$providerClass} is not an instance of "
-            . ListenerAcceptor::class
+            . ListenerRegistrar::class
         );
     }
 }

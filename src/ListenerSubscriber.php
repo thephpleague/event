@@ -6,5 +6,5 @@ namespace League\Event;
 
 interface ListenerSubscriber
 {
-    public function subscribeListeners(ListenerAcceptor $acceptor): void;
+    public function subscribeListeners(ListenerRegistrar $acceptor): void;
 }
