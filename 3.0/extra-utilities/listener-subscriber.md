@@ -12,7 +12,7 @@ keep your code organized.
 ```php
 class MyListenerSubscriber implements League\Event\ListenerSubscriber
 {
-    public function subscribeListeners(ListenerAcceptor $acceptor): void
+    public function subscribeListeners(ListenerRegistrar $acceptor): void
     {
         $acceptor->subscribeTo(SomethingHappened::class, new DoThisWhenSomethingHappened());
         $acceptor->subscribeTo(SomethingElseHappened::class, new OrThisWhenSomethingElseHappened());
