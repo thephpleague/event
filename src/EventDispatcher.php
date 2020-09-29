@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace League\Event;
 
-use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\EventDispatcher\ListenerProviderInterface;
 use Psr\EventDispatcher\StoppableEventInterface;
 
-class EventDispatcher implements EventDispatcherInterface, ListenerRegistry
+class EventDispatcher implements EventDispatchingListenerRegistry
 {
     /**
      * @var ListenerProviderInterface
