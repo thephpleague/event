@@ -73,8 +73,6 @@ When subscribing to events, you influence the caller order by setting
 the priority of the subscription.
 
 ```php
-use League\Event\ListenerRegistry;
-
 $dispatcher->subscribeTo($eventIdentifier, $listener, $priority);
 ```
 
@@ -82,8 +80,6 @@ The `$priority` parameter is an `int`. The higher the value, the earlier
 it will be called.
 
 ```php
-use League\Event\ListenerRegistry;
-
 // Lowest priority is called last
 $dispatcher->subscribeTo($eventIdentifier, $lastListener, -100);
 
