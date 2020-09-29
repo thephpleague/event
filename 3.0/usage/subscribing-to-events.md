@@ -5,7 +5,7 @@ title: Subscribing to Events
 
 # Subscribing to Events
 
-The `League\Event\ListenerRegistrar` (interface) allows you to subscribe to
+The `League\Event\ListenerRegistry` (interface) allows you to subscribe to
 events. There are two implementations of this interface:
 
 1. `League\Event\EventDispatcher`
@@ -73,7 +73,7 @@ When subscribing to events, you influence the caller order by setting
 the priority of the subscription.
 
 ```php
-use League\Event\ListenerRegistrar;
+use League\Event\ListenerRegistry;
 
 $dispatcher->subscribeTo($eventIdentifier, $listener, $priority);
 ```
@@ -82,7 +82,7 @@ The `$priority` parameter is an `int`. The higher the value, the earlier
 it will be called.
 
 ```php
-use League\Event\ListenerRegistrar;
+use League\Event\ListenerRegistry;
 
 // Lowest priority is called last
 $dispatcher->subscribeTo($eventIdentifier, $lastListener, -100);
@@ -108,7 +108,7 @@ $dispatcher->subscribeTo($eventIdentifier, $listener, ListenerPriority::LOW);
 
 ## Custom PSR-14 listener provider
 
-Unless your custom listener provider also implements the `League\Event\ListenerRegistrar`
+Unless your custom listener provider also implements the `League\Event\ListenerRegistry`
 interface, adding new event subscriptions through the event dispatcher will not work.
 
 When you try to subscribe to an event with an incompatible provider, the
