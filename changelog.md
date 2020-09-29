@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.0.0 - unreleased
+## 3.0.0 - 29-09-2020
 
 * PSR-14 is now supported.
 * Classes and interfaces renamed to match PSR terminology.
