@@ -38,21 +38,21 @@ class BufferedEventDispatcherTest extends TestCase
         $listener3 = new ListenerSpy();
 
         yield "subscribing" => [
-            function (ListenerRegistrar $dispatcher) use ($listener1) {
+            function (ListenerRegistry $dispatcher) use ($listener1) {
                 $dispatcher->subscribeTo('event', $listener1);
             },
             $listener1,
         ];
 
         yield "subscribing once" => [
-            function (ListenerRegistrar $dispatcher) use ($listener2) {
+            function (ListenerRegistry $dispatcher) use ($listener2) {
                 $dispatcher->subscribeOnceTo('event', $listener2);
             },
             $listener2,
         ];
 
         yield "subscribing from subscriber" => [
-            function (ListenerRegistrar $dispatcher) use ($listener3) {
+            function (ListenerRegistry $dispatcher) use ($listener3) {
                 $dispatcher->subscribeListenersFrom(
                     new class ($listener3) implements ListenerSubscriber {
                         /**  @var Listener */
@@ -63,7 +63,7 @@ class BufferedEventDispatcherTest extends TestCase
                             $this->listener = $listener;
                         }
 
-                        public function subscribeListeners(ListenerRegistrar $acceptor): void
+                        public function subscribeListeners(ListenerRegistry $acceptor): void
                         {
                             $acceptor->subscribeTo('event', $this->listener);
                         }

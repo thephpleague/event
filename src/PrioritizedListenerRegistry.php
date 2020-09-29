@@ -6,7 +6,7 @@ namespace League\Event;
 
 use Psr\EventDispatcher\ListenerProviderInterface;
 
-class PrioritizedListenerRegistrar implements ListenerRegistrar, ListenerProviderInterface
+class PrioritizedListenerRegistry implements ListenerRegistry, ListenerProviderInterface
 {
     /** @var array<string,PrioritizedListenersForEvent> */
     protected $listenersPerEvent = [];
