@@ -6,6 +6,7 @@ namespace League\Event;
 
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use stdClass;
 
 class BufferedEventDispatcherTest extends TestCase
 {
@@ -83,11 +84,12 @@ class BufferedEventDispatcherTest extends TestCase
         $dispatcher = new BufferedEventDispatcher(new EventDispatcher());
 
         $scenario($dispatcher);
+        $dispatcher->dispatch($event = new StubNamedEvent('event'));
 
-        $dispatcher->dispatch(new StubNamedEvent('event'));
-
+        // Assert dispatching is not done yet
         $this->assertEquals(0, $listener->numberOfTimeCalled());
 
+        // Triggering a dispatch
         $dispatcher->dispatchBufferedEvents();
 
         $this->assertEquals(1, $listener->numberOfTimeCalled());
@@ -95,5 +97,25 @@ class BufferedEventDispatcherTest extends TestCase
         $dispatcher->dispatchBufferedEvents();
 
         $this->assertEquals(1, $listener->numberOfTimeCalled());
+    }
+
+    /**
+     * @test
+     */
+    public function dispatching_buffered_events_returns_the_events_in_the_order_of_dispatching(): void
+    {
+        $dispatcher = new BufferedEventDispatcher(new EventDispatcher());
+        $dispatcher->dispatch($first = new stdClass());
+        $dispatcher->dispatch($second = new stdClass());
+        $dispatcher->dispatch($third = new stdClass());
+
+        $dispatchedEvents = $dispatcher->dispatchBufferedEvents();
+
+        $this->assertIsArray($dispatchedEvents);
+        $this->assertCount(3, $dispatchedEvents);
+        $this->assertContainsOnlyInstancesOf(stdClass::class, $dispatchedEvents);
+        $this->assertSame($first, $dispatchedEvents[0]);
+        $this->assertSame($second, $dispatchedEvents[1]);
+        $this->assertSame($third, $dispatchedEvents[2]);
     }
 }

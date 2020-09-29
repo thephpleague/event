@@ -30,11 +30,18 @@ class BufferedEventDispatcher implements EventDispatcherInterface, ListenerRegis
         return $event;
     }
 
-    public function dispatchBufferedEvents(): void
+    /**
+     * @return object[]
+     */
+    public function dispatchBufferedEvents(): array
     {
+        $events = [];
+
         foreach ($this->releaseEvents() as $event) {
-            $this->dispatcher->dispatch($event);
+            $events[] = $this->dispatcher->dispatch($event);
         }
+
+        return $events;
     }
 
     public function subscribeTo(string $event, callable $listener, int $priority = ListenerPriority::NORMAL): void
