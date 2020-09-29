@@ -3,7 +3,7 @@ tagline: "Event package for your app and/or domain."
 description: "General purpose (DDD friendly) event dispatcher/emitter package."
 google_analytics_tracking_id:
 versions:
-        - name: '3.0 (unreleased)'
+        - name: '3.0 (new)'
           number: '3.0'
         - name: '2.0'
           number: '2.0'
