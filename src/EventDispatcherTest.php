@@ -128,7 +128,8 @@ class EventDispatcherTest extends TestCase
      * @test
      * @dataProvider dpScenariosCausingSubscribingFailure
      */
-    public function subscribing_does_not_work_when_the_underlying_provider_does_not_allow_subscribing(callable $scenario
+    public function subscribing_does_not_work_when_the_underlying_provider_does_not_allow_subscribing(
+        callable $scenario
     ): void {
         $provider = new class() implements ListenerProviderInterface {
             public function getListenersForEvent(object $event): iterable
@@ -170,7 +171,7 @@ class EventDispatcherTest extends TestCase
         yield "subscribing from subscriber" => [
             function (EventDispatcher $dispatcher) {
                 $dispatcher->subscribeListenersFrom(
-                    new class () implements ListenerSubscriber {
+                    new class() implements ListenerSubscriber {
                         public function subscribeListeners(ListenerRegistry $acceptor): void
                         {
                         }
@@ -213,7 +214,7 @@ class EventDispatcherTest extends TestCase
         $listener = new ListenerSpy();
         $dispatcher->subscribeTo(stdClass::class, $listener);
 
-        $eventGenerator = new class () implements EventGenerator {
+        $eventGenerator = new class() implements EventGenerator {
             use EventGeneratorBehavior {
                 recordEvent as public;
             }
@@ -231,7 +232,7 @@ class EventDispatcherTest extends TestCase
      */
     public function listeners_can_be_subscribed_through_a_subscriber(): void
     {
-        $subscriber = new class () implements ListenerSubscriber {
+        $subscriber = new class() implements ListenerSubscriber {
             public function subscribeListeners(ListenerRegistry $acceptor): void
             {
                 $acceptor->subscribeTo(

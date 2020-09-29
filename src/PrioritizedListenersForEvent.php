@@ -50,7 +50,7 @@ class PrioritizedListenersForEvent
         $this->isSorted = true;
         krsort($this->listeners, SORT_NUMERIC);
 
-        foreach($this->listeners as $group) {
+        foreach ($this->listeners as $group) {
             foreach ($group as $listener) {
                 $this->sortedListeners[] = $listener;
             }

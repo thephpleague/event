@@ -1,6 +1,7 @@
 * text=auto
 
 .github/ export-ignore
+.php_cs.dist export-ignore
 phpunit.xml.dist export-ignore
 phpstan.neon export-ignore
 **/Stub*.php export-ignore

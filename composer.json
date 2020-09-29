@@ -19,7 +19,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^8.5",
-        "phpstan/phpstan": "^0.12.45"
+        "phpstan/phpstan": "^0.12.45",
+        "friendsofphp/php-cs-fixer": "^2.16"
     },
     "provide": {
         "psr/event-dispatcher-implementation": "1.0"

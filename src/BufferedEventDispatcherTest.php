@@ -54,7 +54,7 @@ class BufferedEventDispatcherTest extends TestCase
         yield "subscribing from subscriber" => [
             function (ListenerRegistry $dispatcher) use ($listener3) {
                 $dispatcher->subscribeListenersFrom(
-                    new class ($listener3) implements ListenerSubscriber {
+                    new class($listener3) implements ListenerSubscriber {
                         /**  @var Listener */
                         private $listener;
 
