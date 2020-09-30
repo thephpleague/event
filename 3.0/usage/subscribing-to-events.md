@@ -9,23 +9,23 @@ The `League\Event\ListenerRegistry` (interface) allows you to subscribe to
 events. There are two implementations of this interface:
 
 1. `League\Event\EventDispatcher`
-2. `League\Event\PrioritizedListenerCollection`
+2. `League\Event\PrioritizedListenerRegistry`
 
 This means you can subscribe to events with the event dispatcher directly, or
-subscribe to the internal listener collection:
+subscribe to the internal listener registry:
 
 ```php
 use League\Event\EventDispatcher;
-use League\Event\PrioritizedListenerCollection;
+use League\Event\PrioritizedListenerRegistry;
 
-$listenerProvider = new PrioritizedListenerCollection();
+$listenerRegistry = new PrioritizedListenerRegistry();
 $dispatcher = new EventDispatcher($listenerProvider);
 
 // Subscribe with the dispatcher
-$listenerProvider->subscribeTo($eventIdentifier, $listener);
+$dispatcher->subscribeTo($eventIdentifier, $listener);
 
-// Subscribe with the listener provider
-$listenerProvider->subscribeTo($eventIdentifier, $listener);
+// Subscribe with the listener registry
+$listenerRegistry->subscribeTo($eventIdentifier, $listener);
 ```
 
 ## Subscribing parameters

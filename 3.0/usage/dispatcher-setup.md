@@ -19,7 +19,7 @@ $dispatcher = new EventDispatcher();
 ## Supplying a `Psr\EventDispatcher\ListenerProviderInterface`
 
 By default, the event dispatcher will create its own internal listener
-collection, which implements the listener interface as defined by PSR-14.
+registry, which implements the listener interface as defined by PSR-14.
 
 If needed, you can supply an alternate PSR-14 implementation in the constructor. 
 
