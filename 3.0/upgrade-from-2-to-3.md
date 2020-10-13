@@ -65,7 +65,7 @@ Here is an overview of all the other renames:
 ```diff
 // The emitter is now an event dispatcher
 - $emitter = new League\Event\Emitter();
-+ $dispatcher = new League\EventDispatcher();
++ $dispatcher = new League\Event\EventDispatcher();
 
 // The emit function is now called dispatch
 - $emitter->emit($event);
