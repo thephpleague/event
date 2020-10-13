@@ -28,7 +28,34 @@ For events that supply their own event name, the `League\Event\HasEventName`
 interface is introduced that allows you to specify the event name by
 implementing the `eventName` method.
 
-Because of this all, the abstract event was subsequently removed.
+Because of this all, the abstract event was subsequently removed. Additionally,
+the `League\Event\Event` class was removed.
+
+Instead of this class, you're encouraged to introduce your own event type if
+you require named events. For example:
+
+```php
+use League\Event\HasEventName;
+
+class DomainEvent implements HasEventName
+{
+    private string $eventName;
+    private function __construct(string $eventName)
+    {
+        $this->eventName = $eventName;
+    }
+
+    public function eventName(): string
+    {
+        return $this->eventName;
+    }
+
+    public static function named(string $name): DomainEvent
+    {
+        return new DomainEvent($name);
+    }
+}
+```
 
 ## PSR-14 support
 
@@ -96,4 +123,8 @@ Here is an overview of all the other renames:
 
 - $dispatcher->useListenerProvider($subscriber);
 + $dispatcher->subscribeListenersFrom($subscriber);
+
+// ListenerAcceptorInterface is now ListenerRegistry
+- use League\Event\ListenerAcceptorInterface;
++ use League\Event\ListenerRegistry;
 ```
