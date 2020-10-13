@@ -121,6 +121,7 @@ Here is an overview of all the other renames:
 - use League\Event\ListenerProviderInterface;
 + use League\Event\ListenerSubscriber;
 
+// supplying the listeners via a subscriber:
 - $dispatcher->useListenerProvider($subscriber);
 + $dispatcher->subscribeListenersFrom($subscriber);
 
