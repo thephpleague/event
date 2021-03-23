@@ -70,6 +70,19 @@ class EventDispatcherTest extends TestCase
     /**
      * @test
      */
+    public function listening_to_a_name_which_is_same_as_classname(): void
+    {
+        $dispatcher = new EventDispatcher();
+        $listenerSpy = new ListenerSpy();
+        $dispatcher->subscribeTo(StubNamedEvent::class, $listenerSpy);
+        $dispatcher->dispatch(new StubNamedEvent(StubNamedEvent::class));
+
+        $this->assertEquals(1, $listenerSpy->numberOfTimeCalled());
+    }
+
+    /**
+     * @test
+     */
     public function it_uses_a_provided_listener_provider(): void
     {
         $listenerSpy = new ListenerSpy();
