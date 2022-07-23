@@ -67,7 +67,9 @@ events. Because of this, all the terminology needed to be adjusted.
 
 ### Callable listeners
 
-PSR-14 defines listeners as any callable. The listener interface
+PSR-14 defines listeners as any callable. The listener interface specifies
+a `__invoke` method, making every class-based listener adhere to the PSR
+standard.
 
 ### Event propagation
 
