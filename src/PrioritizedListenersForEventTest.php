@@ -37,6 +37,7 @@ class PrioritizedListenersForEventTest extends TestCase
         foreach ($listeners as $listener) {
             $ret[] = $listener($event);
         }
+
         return $ret;
     }
 }
