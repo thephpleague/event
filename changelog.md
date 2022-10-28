@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.1 - 28-10-2022
+
+### Fixed
+
+- Ensure one-time-listener is removed from the sorted list of listeners in the prioritized sub-class
+
 ## 3.0.0 - 29-09-2020
 
 * PSR-14 is now supported.
