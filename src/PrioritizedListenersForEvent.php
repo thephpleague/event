@@ -48,6 +48,7 @@ class PrioritizedListenersForEvent
     private function sortListeners(): void
     {
         $this->isSorted = true;
+        $this->sortedListeners = [];
         krsort($this->listeners, SORT_NUMERIC);
 
         foreach ($this->listeners as $group) {
@@ -66,7 +67,7 @@ class PrioritizedListenersForEvent
         $this->sortedListeners = array_filter($this->sortedListeners, $filter);
 
         foreach ($this->listeners as $priority => $listeners) {
-            $this->listeners[$priority] = array_filter($this->sortedListeners, $filter);
+            $this->listeners[$priority] = array_filter($listeners, $filter);
         }
     }
 }
