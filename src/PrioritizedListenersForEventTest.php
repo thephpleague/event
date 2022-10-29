@@ -28,6 +28,8 @@ class PrioritizedListenersForEventTest extends TestCase
         $listener2 = $group->getListeners();
         $this->assertCount(3, $listener2);
         $this->assertEquals([4, 2, 1], self::inspectListener($listener2));
+        $listener3 = $group->getListeners();
+        $this->assertEquals([4, 2, 1], self::inspectListener($listener3));
     }
 
     public static function inspectListener(iterable $listeners): array

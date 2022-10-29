@@ -13,61 +13,35 @@ class PrioritizedListenersForEvent
 {
     /** @var array<int, array<int,callable>> */
     private $listeners = [];
-    /** @var array<int,callable> */
-    private $sortedListeners = [];
-    /** @var bool */
-    private $isSorted = false;
-    /** @var bool */
-    private $containsOneTimeListener = false;
+    /** @var array<int,callable>|null */
+    private $sortedListeners;
 
     public function addListener(callable $listener, int $priority): void
     {
-        $this->isSorted = false;
+        $this->sortedListeners = null;
         $this->listeners[$priority][] = $listener;
-
-        if ($listener instanceof OneTimeListener) {
-            $this->containsOneTimeListener = true;
-        }
     }
 
     public function getListeners(): iterable
     {
-        if ($this->isSorted === false) {
-            $this->sortListeners();
-        }
-
-        $listeners = $this->sortedListeners;
-
-        if ($this->containsOneTimeListener) {
-            $this->removeOneTimeListeners();
-        }
-
-        return $listeners;
+        return $this->sortedListeners ?? $this->sortListeners();
     }
 
-    private function sortListeners(): void
-    {
-        $this->isSorted = true;
-        $this->sortedListeners = [];
-        krsort($this->listeners, SORT_NUMERIC);
-
-        foreach ($this->listeners as $group) {
-            foreach ($group as $listener) {
-                $this->sortedListeners[] = $listener;
-            }
-        }
-    }
-
-    private function removeOneTimeListeners(): void
+    private function sortListeners(): array
     {
         $filter = static function ($listener): bool {
             return $listener instanceof OneTimeListener === false;
         };
-
-        $this->sortedListeners = array_filter($this->sortedListeners, $filter);
-
-        foreach ($this->listeners as $priority => $listeners) {
-            $this->listeners[$priority] = array_filter($listeners, $filter);
+        krsort($this->listeners, SORT_NUMERIC);
+        $listeners = [];
+        foreach ($this->listeners as $priority => $group) {
+            foreach ($group as $listener) {
+                $listeners[] = $listener;
+            }
+            $this->listeners[$priority] = array_filter($group, $filter);
         }
+        $this->sortedListeners = array_filter($listeners, $filter);
+
+        return $listeners;
     }
 }
