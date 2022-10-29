@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace League\Event;
 
+use function krsort;
 use const SORT_NUMERIC;
 
 /**
@@ -29,17 +30,19 @@ class PrioritizedListenersForEvent
 
     private function sortListeners(): array
     {
+        $listeners = [];
+        krsort($this->listeners, SORT_NUMERIC);
         $filter = static function ($listener): bool {
             return $listener instanceof OneTimeListener === false;
         };
-        krsort($this->listeners, SORT_NUMERIC);
-        $listeners = [];
+
         foreach ($this->listeners as $priority => $group) {
             foreach ($group as $listener) {
                 $listeners[] = $listener;
             }
             $this->listeners[$priority] = array_filter($group, $filter);
         }
+
         $this->sortedListeners = array_filter($listeners, $filter);
 
         return $listeners;

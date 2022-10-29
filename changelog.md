@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.2 - 28-10-2022
+
+### Fixed
+
+- Reduce complexity of removing one-time listeners (#102)
+
 ## 3.0.1 - 28-10-2022
 
 ### Fixed
