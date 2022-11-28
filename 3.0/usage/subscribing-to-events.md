@@ -19,7 +19,7 @@ use League\Event\EventDispatcher;
 use League\Event\PrioritizedListenerRegistry;
 
 $listenerRegistry = new PrioritizedListenerRegistry();
-$dispatcher = new EventDispatcher($listenerProvider);
+$dispatcher = new EventDispatcher($listenerRegistry);
 
 // Subscribe with the dispatcher
 $dispatcher->subscribeTo($eventIdentifier, $listener);
