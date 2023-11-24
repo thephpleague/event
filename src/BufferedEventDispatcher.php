@@ -70,4 +70,33 @@ class BufferedEventDispatcher implements EventDispatcherInterface, ListenerRegis
 
         $this->dispatcher->subscribeListenersFrom($subscriber);
     }
+
+
+
+    public function unsubscribeFor(string $event, callable $listener): void
+    {
+        if ( ! $this->dispatcher instanceof ListenerRegistry) {
+            throw UnableToUnsubscribeListener::becauseTheEventDispatcherIsNotARegistry($this->dispatcher);
+        }
+
+        $this->dispatcher->unsubscribeFor($event, $listener);
+    }
+
+    public function unsubscribeAllFor(string $event): void
+    {
+        if ( ! $this->dispatcher instanceof ListenerRegistry) {
+            throw UnableToUnsubscribeListener::becauseTheEventDispatcherIsNotARegistry($this->dispatcher);
+        }
+
+        $this->dispatcher->unsubscribeAllFor($event);
+    }
+
+    public function unsubscribeAll(callable $listener): void
+    {
+        if ( ! $this->dispatcher instanceof ListenerRegistry) {
+            throw UnableToUnsubscribeListener::becauseTheEventDispatcherIsNotARegistry($this->dispatcher);
+        }
+
+        $this->dispatcher->unsubscribeAll($listener);
+    }
 }

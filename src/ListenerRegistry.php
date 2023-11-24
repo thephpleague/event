@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace League\Event;
 
+/**
+ * @method void unsubscribeFor(string $event, callable $listener)
+ * @method void unsubscribeAll(callable $listener)
+ * @method void unsubscribeAllFor(string $event)
+ */
 interface ListenerRegistry
 {
     public function subscribeTo(string $event, callable $listener, int $priority = ListenerPriority::NORMAL): void;
