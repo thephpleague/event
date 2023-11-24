@@ -83,4 +83,31 @@ class EventDispatcher implements EventDispatchingListenerRegistry
 
         $this->listenerProvider->subscribeListenersFrom($subscriber);
     }
+
+    public function unsubscribeFor(string $event, callable $listener): void
+    {
+        if ( ! $this->listenerProvider instanceof ListenerRegistry) {
+            throw UnableToUnsubscribeListener::becauseTheListenerProviderIsNotARegistry($this->listenerProvider);
+        }
+
+        $this->listenerProvider->unsubscribeFor($event, $listener);
+    }
+
+    public function unsubscribeAllFor(string $event): void
+    {
+        if ( ! $this->listenerProvider instanceof ListenerRegistry) {
+            throw UnableToUnsubscribeListener::becauseTheListenerProviderIsNotARegistry($this->listenerProvider);
+        }
+
+        $this->listenerProvider->unsubscribeAllFor($event);
+    }
+
+    public function unsubscribeAll(callable $listener): void
+    {
+        if ( ! $this->listenerProvider instanceof ListenerRegistry) {
+            throw UnableToUnsubscribeListener::becauseTheListenerProviderIsNotARegistry($this->listenerProvider);
+        }
+
+        $this->listenerProvider->unsubscribeAll($listener);
+    }
 }
