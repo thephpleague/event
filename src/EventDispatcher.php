@@ -14,7 +14,7 @@ class EventDispatcher implements EventDispatchingListenerRegistry
      */
     protected $listenerProvider;
 
-    public function __construct(ListenerProviderInterface $listenerProvider = null)
+    public function __construct(?ListenerProviderInterface $listenerProvider = null)
     {
         $this->listenerProvider = $listenerProvider instanceof ListenerProviderInterface
             ? $listenerProvider
