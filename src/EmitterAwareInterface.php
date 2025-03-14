@@ -11,7 +11,7 @@ interface EmitterAwareInterface
      *
      * @return $this
      */
-    public function setEmitter(EmitterInterface $emitter = null);
+    public function setEmitter(?EmitterInterface $emitter = null);
 
     /**
      * Get the Emitter.
