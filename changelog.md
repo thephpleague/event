@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.0 2025-03-14
+
+* Upgraded to support PHP 8.4
+* Dropped support for PHP < 7.1
+
 ## 2.2.0 2018-11-26
 
 * Buffered event emitter was added.
